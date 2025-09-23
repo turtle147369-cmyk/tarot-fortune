@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星河占卜，塔罗启示</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="background-gradient"></div>
+
+    <div class="star-field"></div>
+
+    <div class="container">
+        <h1 class="title">星河占卜，塔罗启示</h1>
+        <p class="subtitle">选择一种牌阵，探索你的命运...</p>
+
+        <div id="form-card" class="form-card">
+            <div class="input-group">
+                <label for="name">你的称谓 (例如：死肥宅)</label>
+                <input type="text" id="name" placeholder="请输入你的名字或昵称">
+            </div>
+
+            <div class="input-group">
+                <label>你的生日</label>
+                <div class="date-selects">
+                    <select id="year-select"></select>
+                    <select id="month-select"></select>
+                    <select id="day-select"></select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="spread-select">选择占卜牌阵</label>
+                <select id="spread-select">
+                    <option value="three-card">三牌阵: 过去-现在-未来</option>
+                    <option value="five-card">五牌阵: 元素之轮</option>
+                </select>
+            </div>
+
+            <button id="fortune-btn" class="glow-on-hover">抽取我的牌阵</button>
+        </div>
+
+        <div id="result-card" class="result-card result-hidden">
+            <div class="spread-container"></div>
+            <button class="glow-on-hover" onclick="restart()">重新选择牌阵</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
