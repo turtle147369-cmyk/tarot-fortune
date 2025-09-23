@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星河占卜，塔罗启示</title> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* 通用样式和滚动 */
+        body {
+            font-family: 'Noto Serif SC', serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: #0d0126;
+            color: #f0e0ff;
+            overflow-x: hidden;
+            line-height: 1.7;
+            position: relative;
+            padding-bottom: 50px;
+        }
+
+        /* 极光式波浪流线背景 */
+        .background-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(135deg, transparent 50%, rgba(20, 100, 150, 0.4) 80%),
+                linear-gradient(25deg, transparent 50%, rgba(125, 38, 172, 0.4) 80%),
+                linear-gradient(105deg, transparent 50%, rgba(90, 20, 138, 0.4) 80%),
+                linear-gradient(195deg, transparent 50%, rgba(58, 15, 90, 0.4) 80%),
+                radial-gradient(ellipse at 80% 80%, rgba(255, 218, 107, 0.2), transparent 60%);
+            background-size: 100% 200%, 100% 200%, 100% 200%, 100% 200%, 100% 100%;
+            background-repeat: repeat-y, repeat-y, repeat-y, repeat-y, no-repeat;
+            animation: auroraFlow 10s linear infinite;
+            opacity: 0.9;
+            z-index: -2;
+        }
+
+        @keyframes auroraFlow {
+            0% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 80% 80%; }
+            100% { background-position: 0% 100%, 0% 100%, 0% 100%, 0% 100%, 80% 80%; }
+        }
+
+        /* 动态星空背景 */
+        .star-field {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect width="100%" height="100%" fill="url(#pattern)" /><defs><pattern id="pattern" width="300" height="300" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1.2" fill="rgba(255,255,255,0.15)"/><circle cx="50" cy="150" r="0.8" fill="rgba(255,255,255,0.1)"/><circle cx="200" cy="80" r="1.8" fill="rgba(255,255,255,0.2)"/><circle cx="120" cy="250" r="1" fill="rgba(255,255,255,0.12)"/><circle cx="280" cy="180" r="1.3" fill="rgba(255,255,255,0.18)"/><circle cx="180" cy="40" r="0.9" fill="rgba(255,255,255,0.11)"/></pattern></defs></svg>') repeat;
+            background-size: cover;
+            animation: starTwinkle 120s linear infinite, starScroll 200s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes starTwinkle {
+            0% { opacity: 0.8; }
+            50% { opacity: 0.6; }
+            100% { opacity: 0.8; }
+        }
+
+        @keyframes starScroll {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 200%; }
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            padding: 40px 20px;
+            max-width: 800px;
+            width: 90%;
+            margin: 50px auto;
+        }
+
+        .title {
+            font-family: 'Zhi Mang Xing', cursive;
+            font-size: 4em;
+            margin-bottom: 15px;
+            color: #ffda6b;
+            text-shadow: 0 0 20px rgba(255, 218, 107, 0.8), 0 0 8px rgba(255, 218, 107, 0.6);
+            letter-spacing: 3px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.4em;
+            margin-bottom: 50px;
+            color: #e6cfff;
+            text-shadow: 0 0 5px rgba(230, 207, 255, 0.3);
+        }
+
+        .form-card, .result-card {
+            background-color: rgba(30, 15, 50, 0.6);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 40px;
+            border: 2px solid rgba(255, 218, 107, 0.4);
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 218, 107, 0.15);
+            transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+        }
+
+        .form-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: 0 15px 60px rgba(0, 0, 0, 0.7), inset 0 0 25px rgba(255, 218, 107, 0.25);
+        }
+
+        .result-hidden {
+            display: none;
+        }
+
+        .input-group {
+            margin-bottom: 35px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            color: #f0e0ff;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(240, 224, 255, 0.3);
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 18px;
+            border: 1px solid rgba(255, 218, 107, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border-radius: 12px;
+            font-size: 1.15em;
+            box-sizing: border-box;
+            transition: background-color 0.4s, border-color 0.4s, box-shadow 0.4s;
+        }
+
+        input[type="text"]::placeholder {
+            color: #c4b8e0;
+            opacity: 0.8;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #ffda6b;
+            box-shadow: 0 0 15px rgba(255, 218, 107, 0.6);
+        }
+
+        .date-selects {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .date-selects select {
+            flex: 1;
+            padding: 18px 15px;
+            border: 1px solid rgba(255, 218, 107, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+            color: #f0e0ff;
+            border-radius: 12px;
+            font-size: 1.1em;
+            cursor: pointer;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ffda6b%22%20d%3D%22M287%20114.2L146.2%20255.7%205.4%20114.2h281.6z%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 12px;
+            padding-right: 40px;
+        }
+
+        .date-selects select option {
+            background-color: #0d0126;
+            color: #f0e0ff;
+        }
+
+        #spread-select {
+            width: 100%;
+            padding: 18px 15px;
+            border: 1px solid rgba(255, 218, 107, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+            color: #f0e0ff;
+            border-radius: 12px;
+            font-size: 1.1em;
+            cursor: pointer;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ffda6b%22%20d%3D%22M287%20114.2L146.2%20255.7%205.4%20114.2h281.6z%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 12px;
+            padding-right: 40px;
+        }
+
+        /* 按钮 */
+        .glow-on-hover {
+            padding: 18px;
+            background-color: #ffda6b;
+            color: #1a0a2f;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.6em;
+            font-weight: bold;
+            cursor: pointer;
+            letter-spacing: 2px;
+            transition: background-color 0.4s, transform 0.3s, box-shadow 0.4s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .glow-on-hover:hover {
+            background-color: #e0c25e;
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(255, 218, 107, 0.6);
+        }
+
+        /* 牌阵容器 */
+        .spread-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            min-height: auto;
+        }
+
+        /* 卡牌的通用样式 */
+        .tarot-card {
+            width: 200px;
+            text-align: center;
+            position: relative;
+        }
+
+        .tarot-card img {
+            max-width: 100%;
+            height: auto;
+            border: 3px solid rgba(255, 218, 107, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* 悬停效果：卡牌抬升 */
+        .tarot-card:hover img {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        /* 牌位名称 */
+        .card-position-name {
+            font-size: 1.2em;
+            color: #ffda6b;
+            margin-bottom: 10px;
+            display: block;
+            text-shadow: 0 0 5px rgba(255, 218, 107, 0.4);
+        }
+
+        /* 塔罗牌名称 */
+        .tarot-card-name-visible {
+            font-family: 'Zhi Mang Xing', cursive;
+            font-size: 1.6em;
+            margin: 5px 0 0;
+            color: #ffda6b;
+            text-shadow: 0 0 5px rgba(255, 218, 107, 0.4);
+        }
+
+        /* 悬浮界面容器 */
+        .card-hover-info {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(30, 15, 50, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 218, 107, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.6);
+            width: 250px;
+            max-height: 400px;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+            z-index: 20;
+            text-align: left;
+            white-space: normal;
+            pointer-events: none;
+        }
+
+        /* 鼠标悬停在 .tarot-card 容器上时显示悬浮界面 */
+        .tarot-card:hover .card-hover-info,
+        .tarot-card.active .card-hover-info {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        /* 悬浮界面中的字体样式 */
+        .card-hover-info .tarot-card-title,
+        .card-hover-info .tarot-card-detail {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1em;
+            line-height: 1.6;
+            color: #c9b1d3;
+            margin: 5px 0;
+        }
+
+        /* 三牌阵布局 */
+        .three-card-spread {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        /* 五牌阵布局 */
+        .five-card-spread {
+            display: grid;
+            grid-template-areas:
+                ". top ."
+                "left center right"
+                ". bottom .";
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 15px;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            min-height: auto;
+        }
+
+        /* 牌位与网格区域的对应 */
+        .five-card-spread .top { grid-area: top; }
+        .five-card-spread .left { grid-area: left; }
+        .five-card-spread .center { grid-area: center; }
+        .five-card-spread .right { grid-area: right; }
+        .five-card-spread .bottom { grid-area: bottom; }
+
+        .five-card-spread .tarot-card {
+            width: 150px;
+            align-self: center;
+            justify-self: center;
+        }
+
+        /* 移动设备适配 */
+        @media (max-width: 768px) {
+            .five-card-spread {
+                grid-template-areas:
+                    "top"
+                    "left"
+                    "center"
+                    "right"
+                    "bottom";
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(5, auto);
+                gap: 30px;
+            }
+            .tarot-card {
+                width: 160px;
+            }
+            input[type="text"],
+            .date-selects select,
+            #spread-select {
+                padding: 15px;
+            }
+        }
+        
+        /* === 新增的自定义消息框样式 === */
+        /* 消息提示框的半透明背景，覆盖整个屏幕 */
+        .message-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 999; /* 确保它在所有内容之上 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* 消息框本体 */
+        .message-box {
+            position: fixed; /* 改为 fixed */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(30, 15, 50, 0.9);
+            border-radius: 20px;
+            padding: 30px 40px;
+            border: 2px solid #ffda6b;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), inset 0 0 10px rgba(255, 218, 107, 0.4);
+            text-align: center;
+            max-width: 350px;
+            width: 80%;
+            color: #f0e0ff;
+            animation: fadeIn 0.3s ease-in-out;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        /* 消息框的进入动画 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+        
+        .message-box p {
+            margin: 0;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 218, 107, 0.4);
+        }
+        
+        .message-box button {
+            padding: 12px 25px;
+            background-color: #ffda6b;
+            color: #1a0a2f;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+        }
+        
+        .message-box button:hover {
+            background-color: #e0c25e;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 218, 107, 0.6);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-gradient"></div>
+
+    <div class="star-field"></div>
+
+    <div class="container">
+        <h1 class="title">星河占卜，塔罗启示</h1>
+        <p class="subtitle">选择一种牌阵，探索你的命运...</p>
+
+        <div id="form-card" class="form-card">
+            <div class="input-group">
+                <label for="name">你的称谓 (例如：死肥宅)</label>
+                <input type="text" id="name" placeholder="请输入你的名字或昵称">
+            </div>
+
+            <div class="input-group">
+                <label>你的生日</label>
+                <div class="date-selects">
+                    <select id="year-select"></select>
+                    <select id="month-select"></select>
+                    <select id="day-select"></select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="spread-select">选择占卜牌阵</label>
+                <select id="spread-select">
+                    <option value="three-card">三牌阵: 过去-现在-未来</option>
+                    <option value="five-card">五牌阵: 元素之轮</option>
+                </select>
+            </div>
+
+            <button id="fortune-btn" class="glow-on-hover">抽取我的牌阵</button>
+        </div>
+
+        <div id="result-card" class="result-card result-hidden">
+            <div class="spread-container"></div>
+            <button class="glow-on-hover" onclick="restart()">重新选择牌阵</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const yearSelect = document.getElementById('year-select');
+            const monthSelect = document.getElementById('month-select');
+            const daySelect = document.getElementById('day-select');
+            const nameInput = document.getElementById('name');
+            const fortuneBtn = document.getElementById('fortune-btn');
+            const formCard = document.getElementById('form-card');
+            const resultCard = document.getElementById('result-card');
+
+            // 填充年份下拉菜单
+            const currentYear = new Date().getFullYear();
+            for (let i = 1950; i <= currentYear; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i + ' 年';
+                yearSelect.appendChild(option);
+            }
+            yearSelect.value = 2000;
+
+            // 填充月份下拉菜单
+            for (let i = 1; i <= 12; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i + ' 月';
+                monthSelect.appendChild(option);
+            }
+            monthSelect.value = 1;
+
+            // 更新天数
+            function updateDays() {
+                const year = parseInt(yearSelect.value);
+                const month = parseInt(monthSelect.value);
+                const daysInMonth = new Date(year, month, 0).getDate();
+                daySelect.innerHTML = '';
+                for (let i = 1; i <= daysInMonth; i++) {
+                    const option = document.createElement('option');
+                    option.value = i;
+                    option.textContent = i + ' 日';
+                    daySelect.appendChild(option);
+                }
+            }
+            yearSelect.addEventListener('change', updateDays);
+            monthSelect.addEventListener('change', updateDays);
+            updateDays();
+
+  // 塔罗牌数据
+    const majorArcana = [
+        { name: '愚者', title: 'The Fool', image: 'images/the_fool.png', details: '象征新的开始、自由、纯真和冒险。它代表着一种无拘无束的精神，准备好踏上一段未知的旅程。' },
+        { name: '魔术师', title: 'The Magician', image: 'images/the_magician.png', details: '代表力量、技巧、专注和创造力。你拥有实现目标所需的所有工具，现在是时候将想法变为现实了。' },
+        { name: '女祭司', title: 'The High Priestess', image: 'images/the_high_priestess.png', details: '象征直觉、潜意识、神秘和内在智慧。这张牌提醒你倾听内心的声音，相信你的直觉。' },
+        { name: '皇后', title: 'The Empress', image: 'images/the_empress.png', details: '代表丰收、生育、母性、自然和美丽。它预示着创造力正在蓬勃发展，是时候享受生活中的美好事物了。' },
+        { name: '皇帝', title: 'The Emperor', image: 'images/the_emperor.png', details: '象征权威、结构、秩序和领导力。它表明你需要在一个领域建立稳固的基础和规则。' },
+        { name: '教皇', title: 'The Hierophant', image: 'images/the_hierophant.png', details: '代表传统、信仰、价值观和指导。它可能意味着你需要寻求导师的建议，或遵循既定的道路。' },
+        { name: '恋人', title: 'The Lovers', image: 'images/the_lovers.png', details: '象征选择、爱、关系和价值取向。你正面临一个重要的决定，它将影响你的人际关系和未来方向。' },
+        { name: '战车', title: 'The Chariot', image: 'images/the_chariot.png', details: '代表意志力、决心、胜利和控制。它鼓励你勇往直前，克服障碍，坚定地追求成功。' },
+        { name: '力量', title: 'Strength', image: 'images/strength.png', details: '象征勇气、同情心、内在力量和对本能的驾驭。这张牌提醒你，真正的力量源于内心的平静与温柔。' },
+        { name: '隐士', title: 'The Hermit', image: 'images/the_hermit.png', details: '代表内省、孤独、寻求真理和自我发现。现在是时候退一步思考，寻找内在的智慧了。' },
+        { name: '命运之轮', title: 'Wheel of Fortune', image: 'images/wheel_of_fortune.png', details: '象征循环、命运、转折和好运。生活正发生不可预测的变化，把握机会，迎接新的开始。' },
+        { name: '正义', title: 'Justice', image: 'images/justice.png', details: '代表公平、真理、因果和法律。它提醒你行为要公正，并承担相应的责任。' },
+        { name: '倒吊人', title: 'The Hanged Man', image: 'images/the_hanged_man.png', details: '象征新的视角、牺牲、放下和暂停。你需要放弃旧的思维模式，从不同的角度看问题。' },
+        { name: '死神', title: 'Death', image: 'images/death.png', details: '代表结束、转变、重生和释放。虽然名字吓人，但它预示着一个旧的阶段即将结束，新的开始即将到来。' },
+        { name: '节制', title: 'Temperance', image: 'images/temperance.png', details: '象征平衡、中庸、和谐和耐心。它提醒你将对立的力量融合在一起，保持平和的心态。' },
+        { name: '魔鬼', title: 'The Devil', image: 'images/the_devil.png', details: '代表诱惑、束缚、物质主义和阴影面。它暗示你可能被某种执念或不良习惯所束缚，需要勇气去面对和挣脱。' },
+        { name: '高塔', title: 'The Tower', image: 'images/the_tower.png', details: '象征突然的改变、混乱、颠覆和启示。虽然过程痛苦，但它会摧毁不稳固的根基，为真正的成长腾出空间。' },
+        { name: '星星', title: 'The Star', image: 'images/the_star.png', details: '代表希望、灵感、宁静和更新。它为你带来希望和清晰的指引，提醒你相信未来。' },
+        { name: '月亮', title: 'The Moon', image: 'images/the_moon.png', details: '象征幻觉、潜意识、不安和直觉。它提醒你提防欺骗，并相信你的直觉来穿越不确定的时期。' },
+        { name: '太阳', title: 'The Sun', image: 'images/the_sun.png', details: '代表成功、喜悦、活力和光明。这是塔罗牌中最积极的牌之一，预示着一切都将顺利。' },
+        { name: '审判', title: 'Judgement', image: 'images/judgement.png', details: '象征重生、审视、召唤和觉醒。你正在接受自己过去的行动，并准备好进入人生的新阶段。' },
+        { name: '世界', title: 'The World', image: 'images/the_world.png', details: '代表完成、成就、整合和圆满。它预示着一段旅程的成功结束，你已经实现了你的目标。' }
+    ];
+            function getRandomCards(num) {
+                // 随机化算法
+                const shuffled = [...majorArcana].sort(() => 0.5 - Math.random());
+                return shuffled.slice(0, num);
+            }
+
+            fortuneBtn.addEventListener('click', () => {
+                // 验证名称输入框是否为空
+                if (nameInput.value.trim() === '') {
+                    showMessageBox('请输入你的称谓，才能开始占卜哦！');
+                    return; // 停止执行后续代码
+                }
+
+                const spreadType = document.getElementById('spread-select').value;
+                let selectedCards = [];
+
+                if (spreadType === 'three-card') {
+                    selectedCards = getRandomCards(3).map((card, index) => {
+                        const positions = ['过去 (Past)', '现在 (Present)', '未来 (Future)'];
+                        return {
+                            ...card,
+                            position: positions[index]
+                        };
+                    });
+                } else if (spreadType === 'five-card') {
+                    selectedCards = getRandomCards(5).map((card, index) => {
+                        const positions = ['现状与目标', '挑战与机遇', '内在力量', '未来发展', '最终结果'];
+                        return {
+                            ...card,
+                            position: positions[index]
+                        };
+                    });
+                }
+
+                displayResult(spreadType, selectedCards);
+            });
+
+            function displayResult(spreadType, cards) {
+                const spreadContainer = resultCard.querySelector('.spread-container');
+                spreadContainer.innerHTML = '';
+
+                if (spreadType === 'three-card') {
+                    spreadContainer.className = 'spread-container three-card-spread';
+                } else if (spreadType === 'five-card') {
+                    spreadContainer.className = 'spread-container five-card-spread';
+                }
+
+                cards.forEach((card, index) => {
+                    const cardDiv = document.createElement('div');
+                    cardDiv.className = 'tarot-card';
+
+                    if (spreadType === 'three-card') {
+                        const positions = ['past-card', 'present-card', 'future-card'];
+                        cardDiv.classList.add(positions[index]);
+                    } else if (spreadType === 'five-card') {
+                        const positions = ['top', 'left', 'center', 'right', 'bottom'];
+                        cardDiv.classList.add(positions[index]);
+                    }
+
+                    cardDiv.innerHTML = `
+                        <span class="card-position-name">${card.position}</span>
+                        <img class="card-img" src="${card.image}" alt="${card.name}">
+                        <div class="card-hover-info">
+                            <h3 class="tarot-card-name">${card.name}</h3>
+                            <h4 class="tarot-card-title">${card.title}</h4>
+                            <p class="tarot-card-detail">${card.details}</p>
+                        </div>
+                    `;
+                    spreadContainer.appendChild(cardDiv);
+
+                    // 移动端点击显示/隐藏悬浮信息
+                    cardDiv.addEventListener('touchstart', (event) => {
+                        // 阻止事件冒泡到父元素，防止多次触发
+                        event.stopPropagation();
+                        // 切换 'active' 类
+                        cardDiv.classList.toggle('active');
+                    });
+                });
+
+                // 增加点击空白处隐藏悬浮信息的监听器
+                document.body.addEventListener('touchstart', (event) => {
+                    // 检查点击的元素是否在 .tarot-card 内部
+                    if (!event.target.closest('.tarot-card')) {
+                        // 如果不是，则移除所有牌的 'active' 类
+                        document.querySelectorAll('.tarot-card').forEach(card => {
+                            card.classList.remove('active');
+                        });
+                    }
+                });
+
+                formCard.classList.add('result-hidden');
+                resultCard.classList.remove('result-hidden');
+            }
+
+            window.restart = function() {
+                formCard.classList.remove('result-hidden');
+                resultCard.classList.add('result-hidden');
+                // 重置日期和天数
+                yearSelect.value = 2000;
+                monthSelect.value = 1;
+                updateDays();
+            };
+
+            // 自定义的消息提示框，代替alert，因为alert在某些环境下无法显示
+            function showMessageBox(message) {
+                // 确保之前没有消息框，避免重复创建
+                if (document.querySelector('.message-overlay')) {
+                    return;
+                }
+
+                // 创建背景遮罩层
+                const overlay = document.createElement('div');
+                overlay.className = 'message-overlay';
+
+                const messageBox = document.createElement('div');
+                messageBox.className = 'message-box';
+                messageBox.innerHTML = `
+                    <div class="message-content">
+                        <p>${message}</p>
+                        <button class="message-ok glow-on-hover">确定</button>
+                    </div>
+                `;
+
+                document.body.appendChild(overlay);
+                document.body.appendChild(messageBox);
+
+                const okButton = messageBox.querySelector('.message-ok');
+                okButton.addEventListener('click', () => {
+                    document.body.removeChild(overlay);
+                    document.body.removeChild(messageBox);
+                    // 移除后将焦点放回输入框，方便用户直接输入
+                    nameInput.focus();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
