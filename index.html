@@ -7,7 +7,62 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
     <style>
+	.intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #1a0933, #0d0126 80%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 2000;
+    animation: fadeOut 2s ease forwards;
+    animation-delay: 3s; /* 动画展示 3 秒后淡出 */
+}
+
+/* 标题动画 */
+.intro-title {
+    font-family: 'Zhi Mang Xing', cursive;
+    font-size: 3.5em;
+    color: #ffda6b;
+    text-shadow: 0 0 20px rgba(255, 218, 107, 0.9), 0 0 8px rgba(255, 218, 107, 0.6);
+    opacity: 0;
+    animation: fadeInUp 2s ease forwards;
+}
+
+/* 副标题 */
+.intro-subtitle {
+        font-family: 'Cinzel Decorative', serif;
+        font-size: 1.6em;
+        margin-top: 20px;
+        color:#ffda6b;
+        text-shadow: 0 0 12px rgba(230, 207, 255, 0.6);
+        opacity: 0;
+        animation: fadeIn 1.5s ease forwards;
+        animation-delay: 1.5s;
+    }
+
+/* 动画效果 */
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
         /* 通用样式 */
         body {
             font-family: 'Noto Serif SC', serif;
@@ -528,26 +583,30 @@
             transform: translateY(-2px);
             box-shadow: 5px 15px rgba(255, 218, 107, 0.6);
         }
+
     </style>
 </head>
 <body>
-
+    <div class="intro-screen">
+    <div class="intro-title">星河占卜</div>
+    <div class="intro-subtitle">塔罗启示，指引命运之路</div>
+</div>
     <div class="background-gradient"></div>
 
     <div class="star-field"></div>
 
     <div class="container">
         <h1 class="title">星河占卜，塔罗启示</h1>
-        <p class="subtitle">选择一种牌阵，探索你的命运...</p>
+        <p class="subtitle">选择一种牌阵后，集中精神默念需要指引的问题...</p>
 
         <div id="form-card" class="form-card">
             <div class="input-group">
-                <label for="name">你的称谓 (例如：死肥宅)</label>
+                <label for="name">你的称谓</label>
                 <input type="text" id="name" placeholder="请输入你的名字或昵称">
             </div>
 
             <div class="input-group">
-                <label>你的生日</label>
+                <label>出生年 / 月 / 日</label>
                 <div class="date-selects">
                     <select id="year-select"></select>
                     <select id="month-select"></select>
@@ -556,23 +615,29 @@
             </div>
 
             <div class="input-group">
-                <label for="spread-select">选择占卜牌阵</label>
+                <label for="spread-select">选择想占卜的牌阵</label>
                 <select id="spread-select">
                     <option value="three-card">三牌阵: 过去-现在-未来</option>
-                    <option value="five-card">五牌阵: 元素之轮</option>
+                    <option value="five-card">五牌阵: 十字阵列</option>
                 </select>
             </div>
 
-            <button id="fortune-btn" class="glow-on-hover">抽取我的牌阵</button>
+            <button id="fortune-btn" class="glow-on-hover">静心冥想，开始占卜</button>
         </div>
 
         <div id="result-card" class="result-card result-hidden">
             <div class="spread-container"></div>
-            <button class="glow-on-hover" onclick="restart()">重新选择牌阵</button>
+            <button class="glow-on-hover" onclick="restart()">重新占卜</button>
         </div>
     </div>
 
     <script>
+window.addEventListener('load', () => {
+    const intro = document.querySelector('.intro-screen');
+    setTimeout(() => {
+        intro.style.display = 'none';
+    }, 3000); // 5 秒后彻底移除
+});
         document.addEventListener('DOMContentLoaded', () => {
             const yearSelect = document.getElementById('year-select');
             const monthSelect = document.getElementById('month-select');
