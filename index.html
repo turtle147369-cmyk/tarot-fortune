@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* 通用样式和滚动 */
+        /* 通用样式 */
         body {
             font-family: 'Noto Serif SC', serif;
             margin: 0;
@@ -25,7 +25,6 @@
             padding-bottom: 50px;
         }
 
-        /* 极光式波浪流线背景 */
         .background-gradient {
             position: fixed;
             top: 0;
@@ -354,12 +353,18 @@
 
         /* 三牌阵布局 */
         .three-card-spread {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 40px;
-            flex-wrap: wrap;
-            max-width: 800px;
+            justify-items: center;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;  
             margin: 0 auto;
+        }
+
+        .three-card-spread .tarot-card {
+            width: 180px;   
         }
 
         /* 五牌阵布局 */
@@ -414,7 +419,6 @@
             }
         }
         
-        /* === 新增的自定义消息框样式 === */
         /* 消息提示框的半透明背景，覆盖整个屏幕 */
         .message-overlay {
             position: fixed;
@@ -424,7 +428,7 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(5px);
-            z-index: 999; /* 确保它在所有内容之上 */
+            z-index: 999; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -432,7 +436,7 @@
         
         /* 消息框本体 */
         .message-box {
-            position: fixed; /* 改为 fixed */
+            position: fixed; 
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -542,7 +546,7 @@
             const formCard = document.getElementById('form-card');
             const resultCard = document.getElementById('result-card');
 
-            // 填充年份下拉菜单
+            // 年份菜单
             const currentYear = new Date().getFullYear();
             for (let i = 1950; i <= currentYear; i++) {
                 const option = document.createElement('option');
@@ -552,7 +556,7 @@
             }
             yearSelect.value = 2000;
 
-            // 填充月份下拉菜单
+            // 月份菜单
             for (let i = 1; i <= 12; i++) {
                 const option = document.createElement('option');
                 option.value = i;
@@ -781,13 +785,13 @@
             ];
 
             function getRandomCards(num) {
-                // 随机化算法
+                // 随机算法
                 const shuffled = [...majorArcana].sort(() => 0.5 - Math.random());
                 const selected = shuffled.slice(0, num);
                 
-                // 随机为每张卡牌添加正位或逆位属性
+                // 随机每张卡牌添加正逆位属性
                 return selected.map(card => {
-                    const isReversed = Math.random() < 0.5; // 50%的几率逆位
+                    const isReversed = Math.random() < 0.5; // 50%几率逆位
                     return {
                         ...card,
                         isReversed
@@ -799,7 +803,7 @@
                 // 验证名称输入框是否为空
                 if (nameInput.value.trim() === '') {
                     showMessageBox('请输入你的称谓，才能开始占卜哦！');
-                    return; // 停止执行后续代码
+                    return; // 停止执行后续
                 }
 
                 const spreadType = document.getElementById('spread-select').value;
@@ -896,7 +900,6 @@
                 updateDays();
             };
 
-            // 自定义的消息提示框，代替alert，因为alert在某些环境下无法显示
             function showMessageBox(message) {
                 // 确保之前没有消息框，避免重复创建
                 if (document.querySelector('.message-overlay')) {
@@ -923,7 +926,7 @@
                 okButton.addEventListener('click', () => {
                     document.body.removeChild(overlay);
                     document.body.removeChild(messageBox);
-                    // 移除后将焦点放回输入框，方便用户直接输入
+                    
                     nameInput.focus();
                 });
             }
@@ -931,4 +934,5 @@
     </script>
 </body>
 </html>
+
 
