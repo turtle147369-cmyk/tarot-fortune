@@ -242,8 +242,9 @@
 
         /* 卡牌的通用样式 */
         .tarot-card {
-            width: 150px;  
-            height: 220px;  
+            width: 100%;     
+            height: auto;     
+            display: block;
         }
 
         .tarot-card img {
@@ -353,24 +354,13 @@
         /* 三牌阵布局 */
         .three-card-spread {
             display: grid;
-            grid-template-areas:
-                ". top ."
-                "left center right"
-                ". bottom .";
             grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(3, 1fr);
             gap: 15px;
             width: 100%;
             max-width: 800px;
             margin: 0 auto;
-            justify-items: center; 
-            align-items: center;   
         }
-
-         .three-card-spread .left   { grid-area: left; }
-         .three-card-spread .center { grid-area: center; }
-         .three-card-spread .right  { grid-area: right; }
-
+        
         /* 五牌阵布局 */
         .five-card-spread {
             display: grid;
@@ -871,6 +861,7 @@
                     `;
                     spreadContainer.appendChild(cardDiv);
 
+                
                     // 移动端点击显示/隐藏悬浮信息
                     cardDiv.addEventListener('touchstart', (event) => {
                         // 阻止事件冒泡到父元素，防止多次触发
@@ -938,6 +929,7 @@
     </script>
 </body>
 </html>
+
 
 
 
