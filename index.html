@@ -49,28 +49,69 @@
             100% { background-position: 0% 100%, 0% 100%, 0% 100%, 0% 100%, 80% 80%; }
         }
 
-        /* 动态星空背景 */
+        /* 动态星空和流星雨背景 */
         .star-field {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect width="100%" height="100%" fill="url(#pattern)" /><defs><pattern id="pattern" width="300" height="300" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1.2" fill="rgba(255,255,255,0.15)"/><circle cx="50" cy="150" r="0.8" fill="rgba(255,255,255,0.1)"/><circle cx="200" cy="80" r="1.8" fill="rgba(255,255,255,0.2)"/><circle cx="120" cy="250" r="1" fill="rgba(255,255,255,0.12)"/><circle cx="280" cy="180" r="1.3" fill="rgba(255,255,255,0.18)"/><circle cx="180" cy="40" r="0.9" fill="rgba(255,255,255,0.11)"/></pattern></defs></svg>') repeat;
-            background-size: cover;
-            animation: starTwinkle 120s linear infinite, starScroll 200s linear infinite;
             z-index: -1;
+            /* **新增**：流星容器 */
+            pointer-events: none;
         }
 
-        @keyframes starTwinkle {
-            0% { opacity: 0.8; }
-            50% { opacity: 0.6; }
-            100% { opacity: 0.8; }
+        /* **新增**：单个星星样式 */
+        .star {
+            position: absolute;
+            background-color: #ffffff;
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkle 1.5s infinite ease-in-out;
+            transform: scale(0);
         }
 
-        @keyframes starScroll {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 200% 200%; }
+        /* **新增**：星星闪烁动画 */
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 0.8; transform: scale(1); }
+        }
+        
+        /* **新增**：流星样式和动画 */
+        .meteor {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0));
+            border-radius: 50%;
+            transform: rotate(45deg);
+            animation: meteor-fall 5s linear forwards;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* **新增**：流星尾巴效果 */
+        .meteor::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
+            transform: rotate(180deg);
+        }
+
+        /* **新增**：流星下落动画 */
+        @keyframes meteor-fall {
+            0% {
+                transform: translateX(0px) translateY(-50px) rotate(45deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateX(400px) translateY(400px) rotate(45deg);
+                opacity: 0;
+            }
         }
 
         .container {
@@ -242,8 +283,8 @@
 
         /* 卡牌的通用样式 */
         .tarot-card {
-            width: 100%;     
-            height: auto;     
+            width: 100%;
+            height: auto;
             display: block;
         }
 
@@ -422,7 +463,7 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(5px);
-            z-index: 999; 
+            z-index: 999;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -430,7 +471,7 @@
         
         /* 消息框本体 */
         .message-box {
-            position: fixed; 
+            position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -539,6 +580,8 @@
             const fortuneBtn = document.getElementById('fortune-btn');
             const formCard = document.getElementById('form-card');
             const resultCard = document.getElementById('result-card');
+            const starField = document.querySelector('.star-field');
+            const cardHoverInfo = document.querySelector('.card-hover-info');
 
             // 年份菜单
             const currentYear = new Date().getFullYear();
@@ -575,6 +618,40 @@
             yearSelect.addEventListener('change', updateDays);
             monthSelect.addEventListener('change', updateDays);
             updateDays();
+            
+            // **新增**：生成闪烁的星星
+            function createStars() {
+                const numberOfStars = 150; // 星星的数量
+                for (let i = 0; i < numberOfStars; i++) {
+                    const star = document.createElement('div');
+                    star.className = 'star';
+                    const size = Math.random() * 2 + 1; // 随机大小
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    star.style.top = `${Math.random() * 100}%`;
+                    star.style.left = `${Math.random() * 100}%`;
+                    star.style.animationDelay = `${Math.random() * 1.5}s`;
+                    starField.appendChild(star);
+                }
+            }
+            createStars(); // 页面加载时生成星星
+
+            // **新增**：生成流星雨
+            function createMeteor() {
+                const meteor = document.createElement('div');
+                meteor.className = 'meteor';
+                meteor.style.left = `${Math.random() * 100}%`;
+                meteor.style.top = `${Math.random() * 20}%`; // 从页面顶部生成
+                starField.appendChild(meteor);
+
+                // 动画结束后移除流星元素
+                meteor.addEventListener('animationend', () => {
+                    meteor.remove();
+                });
+            }
+
+            // 每隔一段时间生成一颗流星
+            setInterval(createMeteor, 3000); // 每3秒生成一颗流星
 
             // 塔罗牌数据
             const majorArcana = [
@@ -860,26 +937,6 @@
                         </div>
                     `;
                     spreadContainer.appendChild(cardDiv);
-
-                
-                    // 移动端点击显示/隐藏悬浮信息
-                    cardDiv.addEventListener('touchstart', (event) => {
-                        // 阻止事件冒泡到父元素，防止多次触发
-                        event.stopPropagation();
-                        // 切换 'active' 类
-                        cardDiv.classList.toggle('active');
-                    });
-                });
-
-                // 增加点击空白处隐藏悬浮信息的监听器
-                document.body.addEventListener('touchstart', (event) => {
-                    // 检查点击的元素是否在 .tarot-card 内部
-                    if (!event.target.closest('.tarot-card')) {
-                        // 如果不是，则移除所有牌的 'active' 类
-                        document.querySelectorAll('.tarot-card').forEach(card => {
-                            card.classList.remove('active');
-                        });
-                    }
                 });
 
                 formCard.classList.add('result-hidden');
@@ -893,6 +950,7 @@
                 yearSelect.value = 2000;
                 monthSelect.value = 1;
                 updateDays();
+                nameInput.value = '';
             };
 
             function showMessageBox(message) {
@@ -929,6 +987,3 @@
     </script>
 </body>
 </html>
-
-
-
