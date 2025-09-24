@@ -242,9 +242,8 @@
 
         /* 卡牌的通用样式 */
         .tarot-card {
-            width: 200px;
-            text-align: center;
-            position: relative;
+            width: 150px;  
+            height: 220px;  
         }
 
         .tarot-card img {
@@ -354,18 +353,23 @@
         /* 三牌阵布局 */
         .three-card-spread {
             display: grid;
+            grid-template-areas:
+                ". top ."
+                "left center right"
+                ". bottom .";
             grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            justify-items: center;
-            align-items: center;
+            grid-template-rows: repeat(3, 1fr);
+            gap: 15px;
             width: 100%;
-            max-width: 800px;  
+            max-width: 800px;
             margin: 0 auto;
+            justify-items: center; 
+            align-items: center;   
         }
 
-        .three-card-spread .tarot-card {
-            width: 180px;   
-        }
+         .three-card-spread .left   { grid-area: left; }
+         .three-card-spread .center { grid-area: center; }
+         .three-card-spread .right  { grid-area: right; }
 
         /* 五牌阵布局 */
         .five-card-spread {
@@ -934,5 +938,6 @@
     </script>
 </body>
 </html>
+
 
 
