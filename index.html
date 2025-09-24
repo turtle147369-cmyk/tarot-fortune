@@ -1,1113 +1,1135 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>星河占卜，塔罗启示</title> 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* 通用样式和滚动 */
-        body {
-            font-family: 'Noto Serif SC', serif;
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            background-color: #0d0126;
-            color: #f0e0ff;
-            overflow-x: hidden;
-            line-height: 1.7;
-            position: relative;
-            padding-bottom: 50px;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星河占卜，塔罗启示</title> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* 通用樣式和滾動 */
+        body {
+            font-family: 'Noto Serif SC', serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: #0d0126;
+            color: #f0e0ff;
+            overflow-x: hidden;
+            line-height: 1.7;
+            position: relative;
+            padding-bottom: 50px;
+        }
 
-        /* 极光式波浪流线背景 */
-        .background-gradient {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background:
-                linear-gradient(135deg, transparent 50%, rgba(20, 100, 150, 0.4) 80%),
-                linear-gradient(25deg, transparent 50%, rgba(125, 38, 172, 0.4) 80%),
-                linear-gradient(105deg, transparent 50%, rgba(90, 20, 138, 0.4) 80%),
-                linear-gradient(195deg, transparent 50%, rgba(58, 15, 90, 0.4) 80%),
-                radial-gradient(ellipse at 80% 80%, rgba(255, 218, 107, 0.2), transparent 60%);
-            background-size: 100% 200%, 100% 200%, 100% 200%, 100% 200%, 100% 100%;
-            background-repeat: repeat-y, repeat-y, repeat-y, repeat-y, no-repeat;
-            animation: auroraFlow 10s linear infinite;
-            opacity: 0.9;
-            z-index: -2;
-        }
+        /* 极光式波浪流線背景 */
+        .background-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(135deg, transparent 50%, rgba(20, 100, 150, 0.4) 80%),
+                linear-gradient(25deg, transparent 50%, rgba(125, 38, 172, 0.4) 80%),
+                linear-gradient(105deg, transparent 50%, rgba(90, 20, 138, 0.4) 80%),
+                linear-gradient(195deg, transparent 50%, rgba(58, 15, 90, 0.4) 80%),
+                radial-gradient(ellipse at 80% 80%, rgba(255, 218, 107, 0.2), transparent 60%);
+            background-size: 100% 200%, 100% 200%, 100% 200%, 100% 200%, 100% 100%;
+            background-repeat: repeat-y, repeat-y, repeat-y, repeat-y, no-repeat;
+            animation: auroraFlow 10s linear infinite;
+            opacity: 0.9;
+            z-index: -2;
+        }
 
-        @keyframes auroraFlow {
-            0% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 80% 80%; }
-            100% { background-position: 0% 100%, 0% 100%, 0% 100%, 0% 100%, 80% 80%; }
-        }
+        @keyframes auroraFlow {
+            0% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 80% 80%; }
+            100% { background-position: 0% 100%, 0% 100%, 0% 100%, 0% 100%, 80% 80%; }
+        }
 
-        /* 动态星空背景 */
-        .star-field {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect width="100%" height="100%" fill="url(#pattern)" /><defs><pattern id="pattern" width="300" height="300" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1.2" fill="rgba(255,255,255,0.15)"/><circle cx="50" cy="150" r="0.8" fill="rgba(255,255,255,0.1)"/><circle cx="200" cy="80" r="1.8" fill="rgba(255,255,255,0.2)"/><circle cx="120" cy="250" r="1" fill="rgba(255,255,255,0.12)"/><circle cx="280" cy="180" r="1.3" fill="rgba(255,255,255,0.18)"/><circle cx="180" cy="40" r="0.9" fill="rgba(255,255,255,0.11)"/></pattern></defs></svg>') repeat;
-            background-size: cover;
-            animation: starTwinkle 120s linear infinite, starScroll 200s linear infinite;
-            z-index: -1;
-        }
+        /* 動態星空背景 */
+        .star-field {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect width="100%" height="100%" fill="url(#pattern)" /><defs><pattern id="pattern" width="300" height="300" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1.2" fill="rgba(255,255,255,0.15)"/><circle cx="50" cy="150" r="0.8" fill="rgba(255,255,255,0.1)"/><circle cx="200" cy="80" r="1.8" fill="rgba(255,255,255,0.2)"/><circle cx="120" cy="250" r="1" fill="rgba(255,255,255,0.12)"/><circle cx="280" cy="180" r="1.3" fill="rgba(255,255,255,0.18)"/><circle cx="180" cy="40" r="0.9" fill="rgba(255,255,255,0.11)"/></pattern></defs></svg>') repeat;
+            background-size: cover;
+            animation: starTwinkle 120s linear infinite, starScroll 200s linear infinite;
+            z-index: -1;
+        }
 
-        @keyframes starTwinkle {
-            0% { opacity: 0.8; }
-            50% { opacity: 0.6; }
-            100% { opacity: 0.8; }
-        }
+        @keyframes starTwinkle {
+            0% { opacity: 0.8; }
+            50% { opacity: 0.6; }
+            100% { opacity: 0.8; }
+        }
 
-        @keyframes starScroll {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 200% 200%; }
-        }
+        @keyframes starScroll {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 200%; }
+        }
 
-        .container {
-            text-align: center;
-            position: relative;
-            z-index: 10;
-            padding: 40px 20px;
-            max-width: 800px;
-            width: 90%;
-            margin: 50px auto;
-        }
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            padding: 40px 20px;
+            max-width: 800px;
+            width: 90%;
+            margin: 50px auto;
+        }
 
-        .title {
-            font-family: 'Zhi Mang Xing', cursive;
-            font-size: 4em;
-            margin-bottom: 15px;
-            color: #ffda6b;
-            text-shadow: 0 0 20px rgba(255, 218, 107, 0.8), 0 0 8px rgba(255, 218, 107, 0.6);
-            letter-spacing: 3px;
-            line-height: 1.2;
-        }
+        .title {
+            font-family: 'Zhi Mang Xing', cursive;
+            font-size: 4em;
+            margin-bottom: 15px;
+            color: #ffda6b;
+            text-shadow: 0 0 20px rgba(255, 218, 107, 0.8), 0 0 8px rgba(255, 218, 107, 0.6);
+            letter-spacing: 3px;
+            line-height: 1.2;
+        }
 
-        .subtitle {
-            font-family: 'Noto Serif SC', serif;
-            font-size: 1.4em;
-            margin-bottom: 50px;
-            color: #e6cfff;
-            text-shadow: 0 0 5px rgba(230, 207, 255, 0.3);
-        }
+        .subtitle {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.4em;
+            margin-bottom: 50px;
+            color: #e6cfff;
+            text-shadow: 0 0 5px rgba(230, 207, 255, 0.3);
+        }
 
-        .form-card, .result-card {
-            background-color: rgba(30, 15, 50, 0.6);
-            backdrop-filter: blur(15px);
-            border-radius: 25px;
-            padding: 40px;
-            border: 2px solid rgba(255, 218, 107, 0.4);
-            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 218, 107, 0.15);
-            transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
-        }
+        .form-card, .result-card {
+            background-color: rgba(30, 15, 50, 0.6);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 40px;
+            border: 2px solid rgba(255, 218, 107, 0.4);
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 218, 107, 0.15);
+            transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+        }
 
-        .form-card:hover {
-            transform: translateY(-10px) scale(1.01);
-            box-shadow: 0 15px 60px rgba(0, 0, 0, 0.7), inset 0 0 25px rgba(255, 218, 107, 0.25);
-        }
+        .form-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: 0 15px 60px rgba(0, 0, 0, 0.7), inset 0 0 25px rgba(255, 218, 107, 0.25);
+        }
 
-        .result-hidden {
-            display: none;
-        }
+        .result-hidden {
+            display: none;
+        }
 
-        .input-group {
-            margin-bottom: 35px;
-            text-align: left;
-        }
+        .input-group {
+            margin-bottom: 35px;
+            text-align: left;
+        }
 
-        .input-group label {
-            display: block;
-            margin-bottom: 15px;
-            font-size: 1.3em;
-            color: #f0e0ff;
-            font-weight: bold;
-            text-shadow: 0 0 5px rgba(240, 224, 255, 0.3);
-        }
+        .input-group label {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            color: #f0e0ff;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(240, 224, 255, 0.3);
+        }
 
-        input[type="text"] {
-            width: 100%;
-            padding: 18px;
-            border: 1px solid rgba(255, 218, 107, 0.3);
-            background: rgba(255, 255, 255, 0.08);
-            color: #fff;
-            border-radius: 12px;
-            font-size: 1.15em;
-            box-sizing: border-box;
-            transition: background-color 0.4s, border-color 0.4s, box-shadow 0.4s;
-        }
+        input[type="text"] {
+            width: 100%;
+            padding: 18px;
+            border: 1px solid rgba(255, 218, 107, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border-radius: 12px;
+            font-size: 1.15em;
+            box-sizing: border-box;
+            transition: background-color 0.4s, border-color 0.4s, box-shadow 0.4s;
+        }
 
-        input[type="text"]::placeholder {
-            color: #c4b8e0;
-            opacity: 0.8;
-        }
+        input[type="text"]::placeholder {
+            color: #c4b8e0;
+            opacity: 0.8;
+        }
 
-        input[type="text"]:focus {
-            outline: none;
-            background: rgba(255, 255, 255, 0.15);
-            border-color: #ffda6b;
-            box-shadow: 0 0 15px rgba(255, 218, 107, 0.6);
-        }
+        input[type="text"]:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #ffda6b;
+            box-shadow: 0 0 15px rgba(255, 218, 107, 0.6);
+        }
 
-        .date-selects {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px;
-        }
+        .date-selects {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
 
-        .date-selects select {
-            flex: 1;
-            padding: 18px 15px;
-            border: 1px solid rgba(255, 218, 107, 0.3);
-            background: rgba(255, 255, 255, 0.08);
-            color: #f0e0ff;
-            border-radius: 12px;
-            font-size: 1.1em;
-            cursor: pointer;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ffda6b%22%20d%3D%22M287%20114.2L146.2%20255.7%205.4%20114.2h281.6z%22%2F%3E%3C%2Fsvg%3E');
-            background-repeat: no-repeat;
-            background-position: right 15px center;
-            background-size: 12px;
-            padding-right: 40px;
-        }
+        .date-selects select {
+            flex: 1;
+            padding: 18px 15px;
+            border: 1px solid rgba(255, 218, 107, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+            color: #f0e0ff;
+            border-radius: 12px;
+            font-size: 1.1em;
+            cursor: pointer;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ffda6b%22%20d%3D%22M287%20114.2L146.2%20255.7%205.4%20114.2h281.6z%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 12px;
+            padding-right: 40px;
+        }
 
-       .date-selects select option,
-            #spread-select option {
-            background-color: #0d0126;
-            color: #f0e0ff;
-        }
+       .date-selects select option,
+            #spread-select option {
+            background-color: #0d0126;
+            color: #f0e0ff;
+        }
 
-        #spread-select {
-            width: 100%;
-            padding: 18px 15px;
-            border: 1px solid rgba(255, 218, 107, 0.3);
-            background: rgba(255, 255, 255, 0.08);
-            color: #f0e0ff;
-            border-radius: 12px;
-            font-size: 1.1em;
-            cursor: pointer;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ffda6b%22%20d%3D%22M287%20114.2L146.2%20255.7%205.4%20114.2h281.6z%22%2F%3E%3C%2Fsvg%3E');
-            background-repeat: no-repeat;
-            background-position: right 15px center;
-            background-size: 12px;
-            padding-right: 40px;
-        }
+        #spread-select {
+            width: 100%;
+            padding: 18px 15px;
+            border: 1px solid rgba(255, 218, 107, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+            color: #f0e0ff;
+            border-radius: 12px;
+            font-size: 1.1em;
+            cursor: pointer;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ffda6b%22%20d%3D%22M287%20114.2L146.2%20255.7%205.4%20114.2h281.6z%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 12px;
+            padding-right: 40px;
+        }
 
-        /* 按钮 */
-        .glow-on-hover {
-            padding: 18px;
-            background-color: #ffda6b;
-            color: #1a0a2f;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.6em;
-            font-weight: bold;
-            cursor: pointer;
-            letter-spacing: 2px;
-            transition: background-color 0.4s, transform 0.3s, box-shadow 0.4s;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
+        /* 按鈕 */
+        .glow-on-hover {
+            padding: 18px;
+            background-color: #ffda6b;
+            color: #1a0a2f;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.6em;
+            font-weight: bold;
+            cursor: pointer;
+            letter-spacing: 2px;
+            transition: background-color 0.4s, transform 0.3s, box-shadow 0.4s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
 
-        .glow-on-hover:hover {
-            background-color: #e0c25e;
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 12px 30px rgba(255, 218, 107, 0.6);
-        }
+        .glow-on-hover:hover {
+            background-color: #e0c25e;
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(255, 218, 107, 0.6);
+        }
 
-        /* 牌阵容器 */
-        .spread-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            min-height: auto;
-        }
+        /* 牌陣容器 */
+        .spread-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            min-height: auto;
+        }
 
-        /* 卡牌的通用样式 */
-        .tarot-card {
-            width: 200px;
-            text-align: center;
-            position: relative;
-        }
+        /* 卡牌的通用樣式 */
+        .tarot-card {
+            width: 200px;
+            text-align: center;
+            position: relative;
+        }
 
-        .tarot-card img {
-            max-width: 100%;
-            height: auto;
-            border: 3px solid rgba(255, 218, 107, 0.7);
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease-in-out;
-        }
+        .tarot-card img {
+            max-width: 100%;
+            height: auto;
+            border: 3px solid rgba(255, 218, 107, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease-in-out;
+        }
 
-        /* 悬停效果：卡牌抬升 */
-        .tarot-card:hover img {
-            transform: translateY(-5px) scale(1.05);
-        }
+        /* 懸停效果：卡牌抬升 */
+        .tarot-card:hover img {
+            transform: translateY(-5px) scale(1.05);
+        }
 
-        /* 牌位名称 */
-        .card-position-name {
-            font-size: 1.2em;
-            color: #ffda6b;
-            margin-bottom: 10px;
-            display: block;
-            text-shadow: 0 0 5px rgba(255, 218, 107, 0.4);
-        }
+        /* 牌位名稱 */
+        .card-position-name {
+            font-size: 1.2em;
+            color: #ffda6b;
+            margin-bottom: 10px;
+            display: block;
+            text-shadow: 0 0 5px rgba(255, 218, 107, 0.4);
+        }
 
-        /* 塔罗牌名称 */
-        .tarot-card-name-visible {
-            font-family: 'Zhi Mang Xing', cursive;
-            font-size: 1.6em;
-            margin: 5px 0 0;
-            color: #ffda6b;
-            text-shadow: 0 0 5px rgba(255, 218, 107, 0.4);
-        }
+        /* 塔羅牌名稱 */
+        .tarot-card-name-visible {
+            font-family: 'Zhi Mang Xing', cursive;
+            font-size: 1.6em;
+            margin: 5px 0 0;
+            color: #ffda6b;
+            text-shadow: 0 0 5px rgba(255, 218, 107, 0.4);
+        }
 
-        /* 悬浮界面容器 */
-        .card-hover-info {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(30, 15, 50, 0.95);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 218, 107, 0.6);
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.6);
-            width: 250px;
-            max-height: 400px;
-            overflow-y: auto;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-            z-index: 20;
-            text-align: left;
-            white-space: normal;
-            pointer-events: none;
-        }
+        /* 懸浮介面容器 */
+        .card-hover-info {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(30, 15, 50, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 218, 107, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.6);
+            width: 250px;
+            max-height: 400px;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+            z-index: 20;
+            text-align: left;
+            white-space: normal;
+            pointer-events: none;
+        }
 
-        /* 鼠标悬停在 .tarot-card 容器上时显示悬浮界面 */
-        .tarot-card:hover .card-hover-info,
-        .tarot-card.active .card-hover-info {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-        }
+        /* 鼠標懸停在 .tarot-card 容器上時顯示懸浮介面 */
+        .tarot-card:hover .card-hover-info,
+        .tarot-card.active .card-hover-info {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
 
-        /* 悬浮界面中的字体样式 */
-        .card-hover-info .tarot-card-title,
-        .card-hover-info .tarot-card-detail {
-            font-family: 'Noto Serif SC', serif;
-            font-size: 1em;
-            line-height: 1.6;
-            color: #c9b1d3;
-            margin: 5px 0;
-        }
+        /* 懸浮介面中的字體樣式 */
+        .card-hover-info .tarot-card-title,
+        .card-hover-info .tarot-card-detail {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1em;
+            line-height: 1.6;
+            color: #c9b1d3;
+            margin: 5px 0;
+        }
 
-        /* 三牌阵布局 */
-        .three-card-spread {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
+        /* 三牌陣佈局 */
+        .three-card-spread {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
 
-        /* 五牌阵布局 */
-        .five-card-spread {
-            display: grid;
-            grid-template-areas:
-                ". top ."
-                "left center right"
-                ". bottom .";
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(3, 1fr);
-            gap: 15px;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-            min-height: auto;
-        }
+        /* 五牌陣佈局 */
+        .five-card-spread {
+            display: grid;
+            grid-template-areas:
+                ". top ."
+                "left center right"
+                ". bottom .";
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 15px;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            min-height: auto;
+        }
 
-        /* 牌位与网格区域的对应 */
-        .five-card-spread .top { grid-area: top; }
-        .five-card-spread .left { grid-area: left; }
-        .five-card-spread .center { grid-area: center; }
-        .five-card-spread .right { grid-area: right; }
-        .five-card-spread .bottom { grid-area: bottom; }
+        /* 牌位與網格區域的對應 */
+        .five-card-spread .top { grid-area: top; }
+        .five-card-spread .left { grid-area: left; }
+        .five-card-spread .center { grid-area: center; }
+        .five-card-spread .right { grid-area: right; }
+        .five-card-spread .bottom { grid-area: bottom; }
 
-        .five-card-spread .tarot-card {
-            width: 150px;
-            align-self: center;
-            justify-self: center;
-        }
+        .five-card-spread .tarot-card {
+            width: 150px;
+            align-self: center;
+            justify-self: center;
+        }
 
-        /* 移动设备适配 */
-        @media (max-width: 768px) {
-            .five-card-spread {
-                grid-template-areas:
-                    "top"
-                    "left"
-                    "center"
-                    "right"
-                    "bottom";
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(5, auto);
-                gap: 30px;
-            }
-            .tarot-card {
-                width: 160px;
-            }
-            input[type="text"],
-            .date-selects select,
-            #spread-select {
-                padding: 15px;
-            }
-        }
-        
-        /* === 新增的自定义消息框样式 === */
-        /* 消息提示框的半透明背景，覆盖整个屏幕 */
-        .message-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
-            z-index: 999; /* 确保它在所有内容之上 */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        /* 消息框本体 */
-        .message-box {
-            position: fixed; /* 改为 fixed */
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(30, 15, 50, 0.9);
-            border-radius: 20px;
-            padding: 30px 40px;
-            border: 2px solid #ffda6b;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), inset 0 0 10px rgba(255, 218, 107, 0.4);
-            text-align: center;
-            max-width: 350px;
-            width: 80%;
-            color: #f0e0ff;
-            animation: fadeIn 0.3s ease-in-out;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        
-        /* 消息框的进入动画 */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translate(-50%, -50%) scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: translate(-50%, -50%) scale(1);
-            }
-        }
-        
-        .message-box p {
-            margin: 0;
-            font-size: 1.2em;
-            font-weight: bold;
-            text-shadow: 0 0 5px rgba(255, 218, 107, 0.4);
-        }
-        
-        .message-box button {
-            padding: 12px 25px;
-            background-color: #ffda6b;
-            color: #1a0a2f;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
-        }
-        
-        .message-box button:hover {
-            background-color: #e0c25e;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 218, 107, 0.6);
-        }
-    </style>
+        /* 移動設備適配 */
+        @media (max-width: 768px) {
+            .five-card-spread {
+                grid-template-areas:
+                    "top"
+                    "left"
+                    "center"
+                    "right"
+                    "bottom";
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(5, auto);
+                gap: 30px;
+            }
+            .tarot-card {
+                width: 160px;
+            }
+            input[type="text"],
+            .date-selects select,
+            #spread-select {
+                padding: 15px;
+            }
+        }
+        
+        /* === 新增的自定義消息框樣式 === */
+        /* 消息提示框的半透明背景，覆蓋整個螢幕 */
+        .message-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 999; /* 確保它在所有內容之上 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* 消息框本體 */
+        .message-box {
+            position: fixed; /* 改為 fixed */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(30, 15, 50, 0.9);
+            border-radius: 20px;
+            padding: 30px 40px;
+            border: 2px solid #ffda6b;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), inset 0 0 10px rgba(255, 218, 107, 0.4);
+            text-align: center;
+            max-width: 350px;
+            width: 80%;
+            color: #f0e0ff;
+            animation: fadeIn 0.3s ease-in-out;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        /* 消息框的進入動畫 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+        
+        .message-box p {
+            margin: 0;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 218, 107, 0.4);
+        }
+        
+        .message-box button {
+            padding: 12px 25px;
+            background-color: #ffda6b;
+            color: #1a0a2f;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+        }
+        
+        .message-box button:hover {
+            background-color: #e0c25e;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 218, 107, 0.6);
+        }
+    </style>
 </head>
 <body>
 
-    <div class="background-gradient"></div>
+    <div class="background-gradient"></div>
 
-    <div class="star-field"></div>
+    <div class="star-field"></div>
 
-    <div class="container">
-        <h1 class="title">星河占卜，塔罗启示</h1>
-        <p class="subtitle">选择一种牌阵，探索你的命运...</p>
+    <div class="container">
+        <h1 class="title">星河占卜，塔罗启示</h1>
+        <p class="subtitle">選擇一種牌陣，探索你的命運...</p>
 
-        <div id="form-card" class="form-card">
-            <div class="input-group">
-                <label for="name">你的称谓 (例如：死肥宅)</label>
-                <input type="text" id="name" placeholder="请输入你的名字或昵称">
-            </div>
+        <div id="form-card" class="form-card">
+            <div class="input-group">
+                <label for="name">你的稱謂 (例如：死肥宅)</label>
+                <input type="text" id="name" placeholder="請輸入你的名字或暱稱">
+            </div>
 
-            <div class="input-group">
-                <label>你的生日</label>
-                <div class="date-selects">
-                    <select id="year-select"></select>
-                    <select id="month-select"></select>
-                    <select id="day-select"></select>
-                </div>
-            </div>
+            <div class="input-group">
+                <label>你的生日</label>
+                <div class="date-selects">
+                    <select id="year-select"></select>
+                    <select id="month-select"></select>
+                    <select id="day-select"></select>
+                </div>
+            </div>
 
-            <div class="input-group">
-                <label for="spread-select">选择占卜牌阵</label>
-                <select id="spread-select">
-                    <option value="three-card">三牌阵: 过去-现在-未来</option>
-                    <option value="five-card">五牌阵: 元素之轮</option>
-                </select>
-            </div>
+            <div class="input-group">
+                <label for="spread-select">選擇占卜牌陣</label>
+                <select id="spread-select">
+                    <option value="three-card">三牌陣: 過去-現在-未來</option>
+                    <option value="five-card">五牌陣: 元素之輪</option>
+                </select>
+            </div>
 
-            <button id="fortune-btn" class="glow-on-hover">抽取我的牌阵</button>
-        </div>
+            <button id="fortune-btn" class="glow-on-hover">抽取我的牌陣</button>
+        </div>
 
-        <div id="result-card" class="result-card result-hidden">
-            <div class="spread-container"></div>
-            <button class="glow-on-hover" onclick="restart()">重新选择牌阵</button>
-        </div>
-    </div>
+        <div id="result-card" class="result-card result-hidden">
+            <div class="spread-container"></div>
+            <button class="glow-on-hover" onclick="restart()">重新選擇牌陣</button>
+        </div>
+    </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const yearSelect = document.getElementById('year-select');
-            const monthSelect = document.getElementById('month-select');
-            const daySelect = document.getElementById('day-select');
-            const nameInput = document.getElementById('name');
-            const fortuneBtn = document.getElementById('fortune-btn');
-            const formCard = document.getElementById('form-card');
-            const resultCard = document.getElementById('result-card');
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const yearSelect = document.getElementById('year-select');
+            const monthSelect = document.getElementById('month-select');
+            const daySelect = document.getElementById('day-select');
+            const nameInput = document.getElementById('name');
+            const fortuneBtn = document.getElementById('fortune-btn');
+            const formCard = document.getElementById('form-card');
+            const resultCard = document.getElementById('result-card');
 
-            // 填充年份下拉菜单
-            const currentYear = new Date().getFullYear();
-            for (let i = 1950; i <= currentYear; i++) {
-                const option = document.createElement('option');
-                option.value = i;
-                option.textContent = i + ' 年';
-                yearSelect.appendChild(option);
-            }
-            yearSelect.value = 2000;
+            // 填充年份下拉菜單
+            const currentYear = new Date().getFullYear();
+            for (let i = 1950; i <= currentYear; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i + ' 年';
+                yearSelect.appendChild(option);
+            }
+            yearSelect.value = 2000;
 
-            // 填充月份下拉菜单
-            for (let i = 1; i <= 12; i++) {
-                const option = document.createElement('option');
-                option.value = i;
-                option.textContent = i + ' 月';
-                monthSelect.appendChild(option);
-            }
-            monthSelect.value = 1;
+            // 填充月份下拉菜單
+            for (let i = 1; i <= 12; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i + ' 月';
+                monthSelect.appendChild(option);
+            }
+            monthSelect.value = 1;
 
-            // 更新天数
-            function updateDays() {
-                const year = parseInt(yearSelect.value);
-                const month = parseInt(monthSelect.value);
-                const daysInMonth = new Date(year, month, 0).getDate();
-                daySelect.innerHTML = '';
-                for (let i = 1; i <= daysInMonth; i++) {
-                    const option = document.createElement('option');
-                    option.value = i;
-                    option.textContent = i + ' 日';
-                    daySelect.appendChild(option);
-                }
-            }
-            yearSelect.addEventListener('change', updateDays);
-            monthSelect.addEventListener('change', updateDays);
-            updateDays();
+            // 更新天數
+            function updateDays() {
+                const year = parseInt(yearSelect.value);
+                const month = parseInt(monthSelect.value);
+                const daysInMonth = new Date(year, month, 0).getDate();
+                daySelect.innerHTML = '';
+                for (let i = 1; i <= daysInMonth; i++) {
+                    const option = document.createElement('option');
+                    option.value = i;
+                    option.textContent = i + ' 日';
+                    daySelect.appendChild(option);
+                }
+            }
+            yearSelect.addEventListener('change', updateDays);
+            monthSelect.addEventListener('change', updateDays);
+            updateDays();
 
-  // 塔罗牌数据
-  const majorArcana = [
-    {
-        name: '愚者',
-        title: 'The Fool',
-        image: 'images/the_fool.png',
-        upright: {
-            basic: '新的開始、自由、勇於冒險、潛力無限、純真。',
-            love: '一段新戀情的開始，或是關係中新的階段。放下過往的包袱，享受當下。',
-            career: '新的工作機會或專案。不要害怕跳出舒適圈，這是一個學習與成長的絕佳機會。',
-            spiritual: '心靈的覺醒，開始探索未知的領域。相信直覺，踏上屬於你的旅程。'
-        },
-        reversed: {
-            basic: '魯莽、不負責任、缺乏計畫、冒險失敗、猶豫不決。',
-            love: '關係中的不成熟或輕率。可能因為害怕承諾而錯失機會。',
-            career: '對工作的態度不嚴肅，導致錯失良機。缺乏準備，行動草率。',
-            spiritual: '逃避內心的成長，拒絕面對挑戰。內在的恐懼阻礙了前進的步伐。'
-        },
-        symbolism: '牌中人背著包袱，手持白玫瑰，腳下懸崖，象徵著無所畏懼的旅程。白色狗代表忠誠和潛意識的引導。',
-        advice: '「擁抱不確定性，但不要缺乏準備。這是一個全新的開始，你的潛力無限。」'
-    },
-    {
-        name: '魔術師',
-        title: 'The Magician',
-        image: 'images/the_magician.png',
-        upright: {
-            basic: '力量、技巧、創造力、意志力、將想法化為現實。',
-            love: '善於表達情感，擁有吸引對方的魅力。關係充滿創造力和新鮮感。',
-            career: '你擁有實現目標所需的所有工具和才能。現在是展現實力，將計畫付諸行動的絕佳時機。',
-            spiritual: '透過意念的力量創造現實。你的思想和言語具有強大的影響力。'
-        },
-        reversed: {
-            basic: '欺騙、濫用權力、缺乏技巧、不專注、猶豫不決。',
-            love: '關係中存在欺騙或操控。一方可能利用花言巧語來達到目的。',
-            career: '想法太多但行動太少。技能不足，導致專案停滯不前。',
-            spiritual: '缺乏自我控制，濫用靈性力量。與內在的創造力脫節。'
-        },
-        symbolism: '魔術師頭上有無限符號，手持魔杖指向天空，另一手指向地面，象徵「如其在上，如其在下」。桌上的四種元素代表他擁有創造所需的所有工具。',
-        advice: '「你的內在擁有無窮的力量，去創造你想要的一切。行動起來，讓想法成為現實。」'
-    },
-    {
-        name: '女祭司',
-        title: 'The High Priestess',
-        image: 'images/the_high_priestess.png',
-        upright: {
-            basic: '直覺、潛意識、內在智慧、神秘、傾聽內心的聲音。',
-            love: '一段深層次的心靈連結。這段關係不只看表面，更需用心去感受。',
-            career: '工作需要你信任直覺，而不是僅依賴事實。適合從事需要洞察力的工作。',
-            spiritual: '心靈成長的關鍵時期。冥想、夢境和直覺會給你重要的指引。'
-        },
-        reversed: {
-            basic: '忽略直覺、秘密被揭露、表面化、膚淺、情緒化。',
-            love: '關係中存在未說出的秘密或不信任。忽略了內心的警示。',
-            career: '在工作中過於依賴邏輯，忽略了第六感。無法理解深層次的資訊。',
-            spiritual: '與自己的靈性脫節，不願意面對內心的真相。感到心靈上的空虛。'
-        },
-        symbolism: '女祭司坐在黑白兩柱之間，代表二元性。她手中的托拉卷軸象徵神秘知識。腳下的月亮代表潛意識。',
-        advice: '「安靜下來，傾聽內心的聲音。所有的答案，都在你的直覺深處。」'
-    },
-    {
-        name: '皇后',
-        title: 'The Empress',
-        image: 'images/the_empress.png',
-        upright: {
-            basic: '豐收、生育、母性、創造力、自然、美麗。',
-            love: '一段充滿愛、溫暖與豐盛的關係。你或伴侶正在孕育新的生命或計畫。',
-            career: '創造力達到高峰，適合從事藝術、設計或任何需要想像力的工作。你的努力將結出豐碩的果實。',
-            spiritual: '與大自然和宇宙的創造能量連結。你的心靈充滿了滋養與愛。'
-        },
-        reversed: {
-            basic: '缺乏創造力、不孕不育、過度放縱、依賴、缺乏安全感。',
-            love: '關係中的控制欲或佔有欲。可能感到缺乏愛與滋養。',
-            career: '創意枯竭，無法取得進展。可能因為過度放縱而忽略了工作。',
-            spiritual: '與自然失去連結，心靈感到空虛。不願意滋養自己的心靈。'
-        },
-        symbolism: '皇后坐在田野中，身旁有麥穗、河流，她身上的長袍有石榴圖案，象徵豐饒、生育與生命。',
-        advice: '「滋養自己，愛你的創造力。豐盛的果實，正在等待你收穫。」'
-    },
-    {
-        name: '皇帝',
-        title: 'The Emperor',
-        image: 'images/the_emperor.png',
-        upright: {
-            basic: '權威、結構、秩序、領導力、掌控、父親般的保護。',
-            love: '在關係中扮演保護者或領導者的角色。關係穩固，但可能缺乏浪漫。',
-            career: '適合擔任領導者或決策者。你的計畫和策略將為團隊帶來穩定和成功。',
-            spiritual: '建立起穩固的個人原則和信念。你的心靈需要紀律和結構。'
-        },
-        reversed: {
-            basic: '暴君、濫用權力、僵化、缺乏控制、缺乏紀律。',
-            love: '關係中的控制欲或霸道。可能因為過於強勢而讓對方感到窒息。',
-            career: '在工作中過於專制，不願聽取他人意見。計畫混亂，缺乏條理。',
-            spiritual: '過於固執己見，不願意接受新的觀念。你的心靈變得僵化。'
-        },
-        symbolism: '皇帝坐在石頭寶座上，手持權杖，身著盔甲，象徵權威、穩定和保護。身後的山脈代表著堅不可摧的意志。',
-        advice: '「為你的生活建立穩固的結構，但不要讓它變成牢籠。用你的力量去保護和引導。」'
-    },
-    {
-        name: '教皇',
-        title: 'The Hierophant',
-        image: 'images/the_hierophant.png',
-        upright: {
-            basic: '傳統、信仰、指導、教育、道德觀、尋求幫助。',
-            love: '一段基於共同價值觀和傳統的關係。可能需要遵循家庭或社會的期望。',
-            career: '尋求導師或專家的建議。適合在傳統行業或學術領域發展。',
-            spiritual: '與某個信仰體系或精神導師連結。你的心靈正在尋找真理和歸屬感。'
-        },
-        reversed: {
-            basic: '打破傳統、固執己見、不願學習、不信任權威。',
-            love: '關係中的教條或傳統觀念阻礙了真愛。可能因為反叛而與家人產生衝突。',
-            career: '拒絕學習新的知識或技能。可能因為反叛權威而導致工作停滯。',
-            spiritual: '心靈上的獨斷，不願接受他人的引導。與自己的信仰脫節。'
-        },
-        symbolism: '教皇坐在寶座上，兩位信徒跪在他腳下。他手持三層十字架，象徵宗教權威。',
-        advice: '「遵循你內心的道德準則，同時保持開放的心態，去接受新的知識和觀念。」'
-    },
-    {
-        name: '戀人',
-        title: 'The Lovers',
-        image: 'images/the_lovers.png',
-        upright: {
-            basic: '選擇、愛、關係、和諧、價值觀、結合。',
-            love: '一段充滿愛與激情的關係。你正處於一個重要的關係轉折點，需要做出忠於內心的選擇。',
-            career: '面臨兩個工作或專案的選擇。這不僅是關於金錢，更是關於你的熱情和價值觀。',
-            spiritual: '與自己內心的光明與黑暗、男性與女性能量達到平衡。你的心靈充滿了和諧。'
-        },
-        reversed: {
-            basic: '衝突、分離、錯誤的選擇、不信任、關係破裂。',
-            love: '關係中的不和諧或背叛。可能因為錯誤的選擇而感到後悔。',
-            career: '做出了一個錯誤的職業選擇。在工作上與同事或夥伴產生衝突。',
-            spiritual: '內在的能量失衡。在精神道路上感到迷茫。'
-        },
-        symbolism: '亞當和夏娃站在生命之樹下，天使拉斐爾在上方祝福。象徵著二元性的結合和神聖的選擇。',
-        advice: '「聆聽你內心的聲音，做出忠於自己的選擇。愛與和諧是你的指引。」'
-    },
-    {
-        name: '戰車',
-        title: 'The Chariot',
-        image: 'images/the_chariot.png',
-        upright: {
-            basic: '意志力、決心、勝利、控制、自信。',
-            love: '一段關係的快速發展。你對這段關係充滿信心，並願意為它努力。',
-            career: '你的決心和努力將帶來巨大的成功。你正在朝著目標全速前進，無人能擋。',
-            spiritual: '你的心靈正在經歷一次快速的成長。你已經掌控了自己的情緒，並朝著更高的目標前進。'
-        },
-        reversed: {
-            basic: '缺乏控制、失敗、方向不清、魯莽、被動。',
-            love: '關係中的爭吵或衝突，無法控制自己的情緒。可能因為過於強勢而導致關係破裂。',
-            career: '計畫混亂，目標不清。你的努力可能無法得到回報，因為你沒有掌控好方向。',
-            spiritual: '心靈上的掙扎。你感到無力，無法控制自己的思想和情緒。'
-        },
-        symbolism: '戰士站在戰車上，由黑白兩隻斯芬克斯拉動。他沒有韁繩，而是用意志力來控制方向。',
-        advice: '「控制你的意志力，而不是被它控制。你的決心將帶你走向勝利。」'
-    },
-    {
-        name: '力量',
-        title: 'Strength',
-        image: 'images/strength.png',
-        upright: {
-            basic: '勇氣、同情心、內在力量、溫柔的掌控、耐心。',
-            love: '用愛和耐心來解決關係中的問題。你擁有溫柔的力量來維持關係的和諧。',
-            career: '你具備克服任何挑戰的勇氣和韌性。你的耐心和毅力將贏得他人的尊重。',
-            spiritual: '你已經掌握了自己的本能和欲望，達到了內在的平靜。你與自己的靈性有著深刻的連結。'
-        },
-        reversed: {
-            basic: '軟弱、缺乏自信、恐懼、缺乏控制、被動。',
-            love: '關係中的不安全感或恐懼。你可能感到無力，無法解決關係中的問題。',
-            career: '在工作中感到膽怯或缺乏自信。你無法承擔責任或領導他人。',
-            spiritual: '被自己的恐懼和陰影所控制。你的心靈感到脆弱和無助。'
-        },
-        symbolism: '一位溫柔的女子，頭上有無限符號，正在輕撫一頭獅子。獅子象徵本能和原始力量，女子象徵理性和溫柔。',
-        advice: '「真正的力量並非來自武力，而是源於你內心的平靜與溫柔。用愛去馴服你的恐懼。」'
-    },
-    {
-        name: '隱士',
-        title: 'The Hermit',
-        image: 'images/the_hermit.png',
-        upright: {
-            basic: '內省、孤獨、尋求真理、自我發現、智慧。',
-            love: '關係需要冷靜思考，暫時保持距離。這是一個評估關係和尋找方向的好時機。',
-            career: '需要深入研究，不要急於求成。適合獨立工作或深入探討某個專案。',
-            spiritual: '心靈的內在探索。你需要遠離喧囂，獨自思考，才能找到真正的自我。'
-        },
-        reversed: {
-            basic: '孤立、逃避現實、孤獨、不願尋求幫助、與世隔絕。',
-            love: '在關係中過於孤僻或疏遠。可能因為逃避問題而與伴侶失去連結。',
-            career: '在工作中過於孤僻，不願與他人合作。你的想法可能脫離現實。',
-            spiritual: '感到心靈上的孤立，不願與他人分享你的內在。你的心靈感到空虛。'
-        },
-        symbolism: '隱士手提一盞燈，燈內有一顆六芒星。他站在山頂，象徵著智慧和尋求真理。',
-        advice: '「退一步，看清全局。你的智慧不在外界，而在你內心深處。」'
-    },
-    {
-        name: '命運之輪',
-        title: 'Wheel of Fortune',
-        image: 'images/wheel_of_fortune.png',
-        upright: {
-            basic: '循環、命運、轉折、好運、機遇。',
-            love: '關係中的轉折點。可能是一段新戀情的開始，或是舊愛回歸。',
-            career: '事業中的好運氣。可能是一個意想不到的機會，或是一次幸運的轉變。',
-            spiritual: '心靈上的轉變。你正在經歷一次重要的靈性成長，並與自己的命運連結。'
-        },
-        reversed: {
-            basic: '壞運氣、無法控制、停滯、意外的挫折。',
-            love: '關係中的挫折或不幸。可能因為不可控的因素而導致關係破裂。',
-            career: '事業中的不幸。可能是一個意想不到的挫折或失敗。',
-            spiritual: '心靈上的停滯。你感到無力，無法控制自己的命運。'
-        },
-        symbolism: '牌中有一個巨大的輪子，上面有不同的符號，代表命運的循環。四個角落的聖獸象徵四個福音書和四種元素。',
-        advice: '「生活就像一個輪子，有起有落。順應變化，把握機會，你的運氣將會好轉。」'
-    },
-    {
-        name: '正義',
-        title: 'Justice',
-        image: 'images/justice.png',
-        upright: {
-            basic: '公平、真理、因果報應、法律、平衡。',
-            love: '一段公平和誠實的關係。你或伴侶正在為過去的行為負責。',
-            career: '在工作中得到公平的待遇。你的努力將會得到應有的回報。',
-            spiritual: '你的心靈正在尋求平衡。你正在為自己的行為負責，並與自己的因果報應和解。'
-        },
-        reversed: {
-            basic: '不公平、偏見、不誠實、不負責任、失衡。',
-            love: '關係中的不公平或不誠實。你或伴侶正在逃避責任。',
-            career: '在工作中受到不公平的待遇。可能因為缺乏誠信而導致失敗。',
-            spiritual: '心靈上的失衡。你無法為自己的行為負責。'
-        },
-        symbolism: '正義女神手持寶劍和天平，坐在寶座上，象徵著力量、平衡和公正。',
-        advice: '「誠實地面對自己和他人。你所做的一切，都會以某種方式回到你身上。」'
-    },
-    {
-        name: '倒吊人',
-        title: 'The Hanged Man',
-        image: 'images/the_hanged_man.png',
-        upright: {
-            basic: '新的視角、犧牲、放下、暫停、啟示。',
-            love: '為了關係，你需要做出一些犧牲。這段關係需要你從一個全新的角度去看待。',
-            career: '暫時的停頓，以獲得新的想法。你可能需要放棄一個計畫，才能取得更大的成功。',
-            spiritual: '你正在經歷一次重要的靈性覺醒。你的心靈需要放空，才能接受新的啟示。'
-        },
-        reversed: {
-            basic: '固執、不願犧牲、停滯不前、被動、自私。',
-            love: '在關係中不願做出犧牲。你感到停滯不前，無法解決關係中的問題。',
-            career: '在工作中過於固執己見，不願接受新的想法。你的努力可能徒勞無功。',
-            spiritual: '你的心靈感到被困，無法前進。你拒絕接受新的觀念。'
-        },
-        symbolism: '倒吊人被吊在樹上，頭下腳上。他看起來很平靜，周圍有一圈光環，象徵著啟示和新的視角。',
-        advice: '「放手，你會得到更多。有時，退一步是為了看得更遠。」'
-    },
-    {
-        name: '死神',
-        title: 'Death',
-        image: 'images/death.png',
-        upright: {
-            basic: '結束、轉變、重生、釋放、放下。',
-            love: '一段關係的結束，但這也是一個新的開始。你或伴侶需要放下過去，才能迎接未來。',
-            career: '一個專案或工作的結束。這是一個重新評估你的職業道路，尋找新機會的好時機。',
-            spiritual: '心靈上的重生。你正在經歷一次重要的轉變，並與過去的自己告別。'
-        },
-        reversed: {
-            basic: '抗拒改變、停滯不前、害怕結束、拖延。',
-            love: '在關係中不願面對現實，抗拒結束。你感到被困，無法前進。',
-            career: '在工作中不願放棄舊的計畫。你的努力可能無法得到回報，因為你沒有放手。',
-            spiritual: '你的心靈感到被困，無法前進。你拒絕接受新的觀念。'
-        },
-        symbolism: '死神騎著白馬，手持黑旗，上面有白玫瑰。他正在穿越一片田野，象徵著生命的循環。',
-        advice: '「接受改變，才能獲得新生。結束是另一個開始。」'
-    },
-    {
-        name: '節制',
-        title: 'Temperance',
-        image: 'images/temperance.png',
-        upright: {
-            basic: '平衡、中庸、和諧、耐心、融合。',
-            love: '一段充滿和諧和平衡的關係。你和伴侶可以互相支持，共同成長。',
-            career: '在工作中保持平衡。你的努力將會得到回報，但你需要有耐心。',
-            spiritual: '你的心靈達到了平衡。你可以融合對立的力量，並與自己和解。'
-        },
-        reversed: {
-            basic: '不平衡、衝突、過度、失衡。',
-            love: '關係中的不和諧或衝突。你和伴侶無法找到平衡點。',
-            career: '在工作中過於衝動，缺乏耐心。你的努力可能無法得到回報。',
-            spiritual: '心靈上的失衡。你無法融合對立的力量。'
-        },
-        symbolism: '一位天使將兩個杯子裡的水混合。一個杯子在地上，一個在天上，象徵著融合和平衡。',
-        advice: '「尋找生活的平衡點。你的耐心和和諧將為你帶來平靜和成功。」'
-    },
-    {
-        name: '魔鬼',
-        title: 'The Devil',
-        image: 'images/the_devil.png',
-        upright: {
-            basic: '誘惑、束縛、物質主義、陰影面、執念。',
-            love: '一段充滿誘惑或沉溺的關係。你可能被關係中的物質或肉體所束縛。',
-            career: '工作中的誘惑或執念。你可能被金錢或權力所控制。',
-            spiritual: '面對你內心的陰影。你需要有勇氣去面對和掙脫。'
-        },
-        reversed: {
-            basic: '解脫、自由、擺脫束縛、面對陰影。',
-            love: '你和伴侶正在擺脫一段不健康的關係。你開始面對問題，並尋求解決方案。',
-            career: '你正在擺脫對金錢或權力的執念。你開始尋找更有意義的工作。',
-            spiritual: '你的心靈正在尋求自由。你開始面對你內心的陰影。'
-        },
-        symbolism: '魔鬼坐在寶座上，手持火炬，腳下有兩個人被鎖鏈鎖住。這兩個人看起來很痛苦，但鎖鏈很鬆，象徵著你可以隨時掙脫。',
-        advice: '「你擁有自由意志。你的束縛，是你自己創造的。只有你，才能掙脫它。」'
-    },
-    {
-        name: '高塔',
-        title: 'The Tower',
-        image: 'images/the_tower.png',
-        upright: {
-            basic: '突然的改變、混亂、顛覆、啟示、崩塌。',
-            love: '一段關係的突然結束。這是一個痛苦的過程，但它會為你帶來新的開始。',
-            career: '事業中的突然改變。可能是一個專案的失敗，或是一次裁員。',
-            spiritual: '心靈上的顛覆。你的舊觀念正在崩塌，你將會獲得新的啟示。'
-        },
-        reversed: {
-            basic: '抗拒改變、停滯不前、小規模的危機。',
-            love: '你和伴侶正在抗拒一段關係的結束。你感到被困，無法前進。',
-            career: '在工作中不願接受新的變化。你的努力可能無法得到回報。',
-            spiritual: '心靈上的停滯。你拒絕接受新的觀念。'
-        },
-        symbolism: '高塔被雷電擊中，兩個人從塔頂墜落。象徵著突然的改變和舊的結構的崩塌。',
-        advice: '「接受改變，才能獲得新生。高塔的崩塌，是為了給真正的成長騰出空間。」'
-    },
-    {
-        name: '星星',
-        title: 'The Star',
-        image: 'images/the_star.png',
-        upright: {
-            basic: '希望、靈感、寧靜、更新、治癒。',
-            love: '一段充滿希望和治癒的關係。你和伴侶可以互相支持，共同成長。',
-            career: '事業中的好運氣。你將會獲得新的靈感，並取得成功。',
-            spiritual: '你的心靈充滿了希望。你與宇宙有著深刻的連結，並與自己的靈性有著深刻的連結。'
-        },
-        reversed: {
-            basic: '缺乏希望、失望、感覺與世界脫節、悲觀。',
-            love: '關係中的不安全感或恐懼。你感到無力，無法解決關係中的問題。',
-            career: '在工作中感到膽怯或缺乏自信。你無法承擔責任或領導他人。',
-            spiritual: '你的心靈感到脆弱和無助。你與自己的靈性有著深刻的連結。'
-        },
-        symbolism: '一位裸體女子將兩個杯子裡的水倒入河流。一個杯子在地上，一個在天上，象徵著水的循環和生命的流動。',
-        advice: '「相信未來，你的希望將會實現。你的心靈，正在被治癒。」'
-    },
-    {
-        name: '月亮',
-        title: 'The Moon',
-        image: 'images/the_moon.png',
-        upright: {
-            basic: '幻覺、潛意識、不安、直覺、欺騙。',
-            love: '關係中的不確定性或幻覺。你感到迷茫，無法看清真相。',
-            career: '工作中的不確定性或幻覺。你感到迷茫，無法看清真相。',
-            spiritual: '你的心靈正在經歷一次重要的轉變。你與自己的潛意識有著深刻的連結。'
-        },
-        reversed: {
-            basic: '幻覺消失、真相大白、恐懼得到緩解。',
-            love: '關係中的不確定性或幻覺。你感到迷茫，無法看清真相。',
-            career: '工作中的不確定性或幻覺。你感到迷茫，無法看清真相。',
-            spiritual: '你的心靈正在經歷一次重要的轉變。你與自己的潛意識有著深刻的連結。'
-        },
-        symbolism: '月亮在天上，下方有兩隻狗在嚎叫，一隻螃蟹從水中爬出，象徵著幻覺、潛意識和不安。',
-        advice: '「相信你的直覺，穿越不確定的時期。你的心靈，正在被治癒。」'
-    },
-    {
-        name: '太陽',
-        title: 'The Sun',
-        image: 'images/the_sun.png',
-        upright: {
-            basic: '成功、喜悅、活力、光明、自信。',
-            love: '一段充滿愛、歡樂和成功的關係。你和伴侶可以互相支持，共同成長。',
-            career: '在工作中取得巨大的成功。你的努力將會得到應有的回報。',
-            spiritual: '你的心靈充滿了希望。你與宇宙有著深刻的連結，並與自己的靈性有著深刻的連結。'
-        },
-        reversed: {
-            basic: '缺乏熱情、悲觀、失敗、自大。',
-            love: '關係中的不和諧或衝突。你和伴侶無法找到平衡點。',
-            career: '在工作中缺乏熱情。你的努力可能無法得到回報。',
-            spiritual: '心靈上的失衡。你無法融合對立的力量。'
-        },
-        symbolism: '太陽在天上，下方有兩個孩子在玩耍。他們看起來很開心，象徵著成功、喜悅和活力。',
-        advice: '「散發你的光芒，享受你所擁有的一切。你的心靈，正在被治癒。」'
-    },
-    {
-        name: '審判',
-        title: 'Judgement',
-        image: 'images/judgement.png',
-        upright: {
-            basic: '重生、審視、召喚、覺醒、寬恕。',
-            love: '一段關係的重生。你和伴侶可以互相寬恕，共同成長。',
-            career: '在工作中取得巨大的成功。你的努力將會得到應有的回報。',
-            spiritual: '你的心靈充滿了希望。你與宇宙有著深刻的連結，並與自己的靈性有著深刻的連結。'
-        },
-        reversed: {
-            basic: '缺乏自我寬恕、逃避責任、不願改變。',
-            love: '關係中的不和諧或衝突。你和伴侶無法找到平衡點。',
-            career: '在工作中缺乏熱情。你的努力可能無法得到回報。',
-            spiritual: '心靈上的失衡。你無法融合對立的力量。'
-        },
-        symbolism: '一位天使吹響號角，死人從墳墓中復活。象徵著重生、審視和覺醒。',
-        advice: '「聆聽你內心的召喚，做出忠於自己的選擇。你的心靈，正在被治癒。」'
-    },
-    {
-        name: '世界',
-        title: 'The World',
-        image: 'images/the_world.png',
-        upright: {
-            basic: '完成、成就、圓滿、整合、旅程的結束。',
-            love: '一段關係的圓滿。你和伴侶可以互相支持，共同成長。',
-            career: '在工作中取得巨大的成功。你的努力將會得到應有的回報。',
-            spiritual: '你的心靈充滿了希望。你與宇宙有著深刻的連結，並與自己的靈性有著深刻的連結。'
-        },
-        reversed: {
-            basic: '不完整的成就、延遲、缺乏統一。',
-            love: '關係中的不和諧或衝突。你和伴侶無法找到平衡點。',
-            career: '在工作中缺乏熱情。你的努力可能無法得到回報。',
-            spiritual: '心靈上的失衡。你無法融合對立的力量。'
-        },
-        symbolism: '一位裸體女子站在一個花環中，手持兩根魔杖。四個角落的聖獸象徵四種元素。',
-        advice: '「慶祝你的成就，享受你的圓滿。你的旅程，已經完成了。」'
-    }
-];
+            // 塔羅牌數據
+            const majorArcana = [
+                {
+                    name: '愚者',
+                    title: 'The Fool',
+                    image: 'images/the_fool.png',
+                    upright: {
+                        basic: '新的開始、自由、勇於冒險、潛力無限、純真。',
+                        love: '一段新戀情的開始，或是關係中新的階段。放下過往的包袱，享受當下。',
+                        career: '新的工作機會或專案。不要害怕跳出舒適圈，這是一個學習與成長的絕佳機會。',
+                        spiritual: '心靈的覺醒，開始探索未知的領域。相信直覺，踏上屬於你的旅程。'
+                    },
+                    reversed: {
+                        basic: '魯莽、不負責任、缺乏計畫、冒險失敗、猶豫不決。',
+                        love: '關係中的不成熟或輕率。可能因為害怕承諾而錯失機會。',
+                        career: '對工作的態度不嚴肅，導致錯失良機。缺乏準備，行動草率。',
+                        spiritual: '逃避內心的成長，拒絕面對挑戰。內在的恐懼阻礙了前進的步伐。'
+                    },
+                    symbolism: '牌中人背著包袱，手持白玫瑰，腳下懸崖，象徵著無所畏懼的旅程。白色狗代表忠誠和潛意識的引導。',
+                    advice: '「擁抱不確定性，但不要缺乏準備。這是一個全新的開始，你的潛力無限。」'
+                },
+                {
+                    name: '魔術師',
+                    title: 'The Magician',
+                    image: 'images/the_magician.png',
+                    upright: {
+                        basic: '力量、技巧、創造力、意志力、將想法化為現實。',
+                        love: '善於表達情感，擁有吸引對方的魅力。關係充滿創造力和新鮮感。',
+                        career: '你擁有實現目標所需的所有工具和才能。現在是展現實力，將計畫付諸行動的絕佳時機。',
+                        spiritual: '透過意念的力量創造現實。你的思想和言語具有強大的影響力。'
+                    },
+                    reversed: {
+                        basic: '欺騙、濫用權力、缺乏技巧、不專注、猶豫不決。',
+                        love: '關係中存在欺騙或操控。一方可能利用花言巧語來達到目的。',
+                        career: '想法太多但行動太少。技能不足，導致專案停滯不前。',
+                        spiritual: '缺乏自我控制，濫用靈性力量。與內在的創造力脫節。'
+                    },
+                    symbolism: '魔術師頭上有無限符號，手持魔杖指向天空，另一手指向地面，象徵「如其在上，如其在下」。桌上的四種元素代表他擁有創造所需的所有工具。',
+                    advice: '「你的內在擁有無窮的力量，去創造你想要的一切。行動起來，讓想法成為現實。」'
+                },
+                {
+                    name: '女祭司',
+                    title: 'The High Priestess',
+                    image: 'images/the_high_priestess.png',
+                    upright: {
+                        basic: '直覺、潛意識、內在智慧、神秘、傾聽內心的聲音。',
+                        love: '一段深層次的心靈連結。這段關係不只看表面，更需用心去感受。',
+                        career: '工作需要你信任直覺，而不是僅依賴事實。適合從事需要洞察力的工作。',
+                        spiritual: '心靈成長的關鍵時期。冥想、夢境和直覺會給你重要的指引。'
+                    },
+                    reversed: {
+                        basic: '忽略直覺、秘密被揭露、表面化、膚淺、情緒化。',
+                        love: '關係中存在未說出的秘密或不信任。忽略了內心的警示。',
+                        career: '在工作中過於依賴邏輯，忽略了第六感。無法理解深層次的資訊。',
+                        spiritual: '與自己的靈性脫節，不願意面對內心的真相。感到心靈上的空虛。'
+                    },
+                    symbolism: '女祭司坐在黑白兩柱之間，代表二元性。她手中的托拉卷軸象徵神秘知識。腳下的月亮代表潛意識。',
+                    advice: '「安靜下來，傾聽內心的聲音。所有的答案，都在你的直覺深處。」'
+                },
+                {
+                    name: '皇后',
+                    title: 'The Empress',
+                    image: 'images/the_empress.png',
+                    upright: {
+                        basic: '豐收、生育、母性、創造力、自然、美麗。',
+                        love: '一段充滿愛、溫暖與豐盛的關係。你或伴侶正在孕育新的生命或計畫。',
+                        career: '創造力達到高峰，適合從事藝術、設計或任何需要想像力的工作。你的努力將結出豐碩的果實。',
+                        spiritual: '與大自然和宇宙的創造能量連結。你的心靈充滿了滋養與愛。'
+                    },
+                    reversed: {
+                        basic: '缺乏創造力、不孕不育、過度放縱、依賴、缺乏安全感。',
+                        love: '關係中的控制欲或佔有欲。可能感到缺乏愛與滋養。',
+                        career: '創意枯竭，無法取得進展。可能因為過度放縱而忽略了工作。',
+                        spiritual: '與自然失去連結，心靈感到空虛。不願意滋養自己的心靈。'
+                    },
+                    symbolism: '皇后坐在田野中，身旁有麥穗、河流，她身上的長袍有石榴圖案，象徵豐饒、生育與生命。',
+                    advice: '「滋養自己，愛你的創造力。豐盛的果實，正在等待你收穫。」'
+                },
+                {
+                    name: '皇帝',
+                    title: 'The Emperor',
+                    image: 'images/the_emperor.png',
+                    upright: {
+                        basic: '權威、結構、秩序、領導力、掌控、父親般的保護。',
+                        love: '在關係中扮演保護者或領導者的角色。關係穩固，但可能缺乏浪漫。',
+                        career: '適合擔任領導者或決策者。你的計畫和策略將為團隊帶來穩定和成功。',
+                        spiritual: '建立起穩固的個人原則和信念。你的心靈需要紀律和結構。'
+                    },
+                    reversed: {
+                        basic: '暴君、濫用權力、僵化、缺乏控制、缺乏紀律。',
+                        love: '關係中的控制欲或霸道。可能因為過於強勢而讓對方感到窒息。',
+                        career: '在工作中過於專制，不願聽取他人意見。計畫混亂，缺乏條理。',
+                        spiritual: '過於固執己見，不願意接受新的觀念。你的心靈變得僵化。'
+                    },
+                    symbolism: '皇帝坐在石頭寶座上，手持權杖，身著盔甲，象徵權威、穩定和保護。身後的山脈代表著堅不可摧的意志。',
+                    advice: '「為你的生活建立穩固的結構，但不要讓它變成牢籠。用你的力量去保護和引導。」'
+                },
+                {
+                    name: '教皇',
+                    title: 'The Hierophant',
+                    image: 'images/the_hierophant.png',
+                    upright: {
+                        basic: '傳統、信仰、指導、教育、道德觀、尋求幫助。',
+                        love: '一段基於共同價值觀和傳統的關係。可能需要遵循家庭或社會的期望。',
+                        career: '尋求導師或專家的建議。適合在傳統行業或學術領域發展。',
+                        spiritual: '與某個信仰體系或精神導師連結。你的心靈正在尋找真理和歸屬感。'
+                    },
+                    reversed: {
+                        basic: '打破傳統、固執己見、不願學習、不信任權威。',
+                        love: '關係中的教條或傳統觀念阻礙了真愛。可能因為反叛而與家人產生衝突。',
+                        career: '拒絕學習新的知識或技能。可能因為反叛權威而導致工作停滯。',
+                        spiritual: '心靈上的獨斷，不願接受他人的引導。與自己的信仰脫節。'
+                    },
+                    symbolism: '教皇坐在寶座上，兩位信徒跪在他腳下。他手持三層十字架，象徵宗教權威。',
+                    advice: '「遵循你內心的道德準則，同時保持開放的心態，去接受新的知識和觀念。」'
+                },
+                {
+                    name: '戀人',
+                    title: 'The Lovers',
+                    image: 'images/the_lovers.png',
+                    upright: {
+                        basic: '選擇、愛、關係、和諧、價值觀、結合。',
+                        love: '一段充滿愛與激情的關係。你正處於一個重要的關係轉折點，需要做出忠於內心的選擇。',
+                        career: '面臨兩個工作或專案的選擇。這不僅是關於金錢，更是關於你的熱情和價值觀。',
+                        spiritual: '與自己內心的光明與黑暗、男性與女性能量達到平衡。你的心靈充滿了和諧。'
+                    },
+                    reversed: {
+                        basic: '衝突、分離、錯誤的選擇、不信任、關係破裂。',
+                        love: '關係中的不和諧或背叛。可能因為錯誤的選擇而感到後悔。',
+                        career: '做出了一個錯誤的職業選擇。在工作上與同事或夥伴產生衝突。',
+                        spiritual: '內在的能量失衡。在精神道路上感到迷茫。'
+                    },
+                    symbolism: '亞當和夏娃站在生命之樹下，天使拉斐爾在上方祝福。象徵著二元性的結合和神聖的選擇。',
+                    advice: '「聆聽你內心的聲音，做出忠於自己的選擇。愛與和諧是你的指引。」'
+                },
+                {
+                    name: '戰車',
+                    title: 'The Chariot',
+                    image: 'images/the_chariot.png',
+                    upright: {
+                        basic: '意志力、決心、勝利、控制、自信。',
+                        love: '一段關係的快速發展。你對這段關係充滿信心，並願意為它努力。',
+                        career: '你的決心和努力將帶來巨大的成功。你正在朝著目標全速前進，無人能擋。',
+                        spiritual: '你的心靈正在經歷一次快速的成長。你已經掌控了自己的情緒，並朝著更高的目標前進。'
+                    },
+                    reversed: {
+                        basic: '缺乏控制、失敗、方向不清、魯莽、被動。',
+                        love: '關係中的爭吵或衝突，無法控制自己的情緒。可能因為過於強勢而導致關係破裂。',
+                        career: '計畫混亂，目標不清。你的努力可能無法得到回報，因為你沒有掌控好方向。',
+                        spiritual: '心靈上的掙扎。你感到無力，無法控制自己的思想和情緒。'
+                    },
+                    symbolism: '戰士站在戰車上，由黑白兩隻斯芬克斯拉動。他沒有韁繩，而是用意志力來控制方向。',
+                    advice: '「控制你的意志力，而不是被它控制。你的決心將帶你走向勝利。」'
+                },
+                {
+                    name: '力量',
+                    title: 'Strength',
+                    image: 'images/strength.png',
+                    upright: {
+                        basic: '勇氣、同情心、內在力量、溫柔的掌控、耐心。',
+                        love: '用愛和耐心來解決關係中的問題。你擁有溫柔的力量來維持關係的和諧。',
+                        career: '你具備克服任何挑戰的勇氣和韌性。你的耐心和毅力將贏得他人的尊重。',
+                        spiritual: '你已經掌握了自己的本能和欲望，達到了內在的平靜。你與自己的靈性有著深刻的連結。'
+                    },
+                    reversed: {
+                        basic: '軟弱、缺乏自信、恐懼、缺乏控制、被動。',
+                        love: '關係中的不安全感或恐懼。你可能感到無力，無法解決關係中的問題。',
+                        career: '在工作中感到膽怯或缺乏自信。你無法承擔責任或領導他人。',
+                        spiritual: '被自己的恐懼和陰影所控制。你的心靈感到脆弱和無助。'
+                    },
+                    symbolism: '一位溫柔的女子，頭上有無限符號，正在輕撫一頭獅子。獅子象徵本能和原始力量，女子象徵理性和溫柔。',
+                    advice: '「真正的力量並非來自武力，而是源於你內心的平靜與溫柔。用愛去馴服你的恐懼。」'
+                },
+                {
+                    name: '隱士',
+                    title: 'The Hermit',
+                    image: 'images/the_hermit.png',
+                    upright: {
+                        basic: '內省、孤獨、尋求真理、自我發現、智慧。',
+                        love: '關係需要冷靜思考，暫時保持距離。這是一個評估關係和尋找方向的好時機。',
+                        career: '需要深入研究，不要急於求成。適合獨立工作或深入探討某個專案。',
+                        spiritual: '心靈的內在探索。你需要遠離喧囂，獨自思考，才能找到真正的自我。'
+                    },
+                    reversed: {
+                        basic: '孤立、逃避現實、孤獨、不願尋求幫助、與世隔絕。',
+                        love: '在關係中過於孤僻或疏遠。可能因為逃避問題而與伴侶失去連結。',
+                        career: '在工作中過於孤僻，不願與他人合作。你的想法可能脫離現實。',
+                        spiritual: '感到心靈上的孤立，不願與他人分享你的內在。你的心靈感到空虛。'
+                    },
+                    symbolism: '隱士手提一盞燈，燈內有一顆六芒星。他站在山頂，象徵著智慧和尋求真理。',
+                    advice: '「退一步，看清全局。你的智慧不在外界，而在你內心深處。」'
+                },
+                {
+                    name: '命運之輪',
+                    title: 'Wheel of Fortune',
+                    image: 'images/wheel_of_fortune.png',
+                    upright: {
+                        basic: '循環、命運、轉折、好運、機遇。',
+                        love: '關係中的轉折點。可能是一段新戀情的開始，或是舊愛回歸。',
+                        career: '事業中的好運氣。可能是一個意想不到的機會，或是一次幸運的轉變。',
+                        spiritual: '心靈上的轉變。你正在經歷一次重要的靈性成長，並與自己的命運連結。'
+                    },
+                    reversed: {
+                        basic: '壞運氣、無法控制、停滯、意外的挫折。',
+                        love: '關係中的挫折或不幸。可能因為不可控的因素而導致關係破裂。',
+                        career: '事業中的不幸。可能是一個意想不到的挫折或失敗。',
+                        spiritual: '心靈上的停滯。你感到無力，無法控制自己的命運。'
+                    },
+                    symbolism: '牌中有一個巨大的輪子，上面有不同的符號，代表命運的循環。四個角落的聖獸象徵四個福音書和四種元素。',
+                    advice: '「生活就像一個輪子，有起有落。順應變化，把握機會，你的運氣將會好轉。」'
+                },
+                {
+                    name: '正義',
+                    title: 'Justice',
+                    image: 'images/justice.png',
+                    upright: {
+                        basic: '公平、真理、因果報應、法律、平衡。',
+                        love: '一段公平和誠實的關係。你或伴侶正在為過去的行為負責。',
+                        career: '在工作中得到公平的待遇。你的努力將會得到應有的回報。',
+                        spiritual: '你的心靈正在尋求平衡。你正在為自己的行為負責，並與自己的因果報應和解。'
+                    },
+                    reversed: {
+                        basic: '不公平、偏見、不誠實、不負責任、失衡。',
+                        love: '關係中的不公平或不誠實。你或伴侶正在逃避責任。',
+                        career: '在工作中受到不公平的待遇。可能因為缺乏誠信而導致失敗。',
+                        spiritual: '心靈上的失衡。你無法為自己的行為負責。'
+                    },
+                    symbolism: '正義女神手持寶劍和天平，坐在寶座上，象徵著力量、平衡和公正。',
+                    advice: '「誠實地面對自己和他人。你所做的一切，都會以某種方式回到你身上。」'
+                },
+                {
+                    name: '倒吊人',
+                    title: 'The Hanged Man',
+                    image: 'images/the_hanged_man.png',
+                    upright: {
+                        basic: '新的視角、犧牲、放下、暫停、啟示。',
+                        love: '為了關係，你需要做出一些犧牲。這段關係需要你從一個全新的角度去看待。',
+                        career: '暫時的停頓，以獲得新的想法。你可能需要放棄一個計畫，才能取得更大的成功。',
+                        spiritual: '你正在經歷一次重要的靈性覺醒。你的心靈需要放空，才能接受新的啟示。'
+                    },
+                    reversed: {
+                        basic: '固執、不願犧牲、停滯不前、被動、自私。',
+                        love: '在關係中不願做出犧牲。你感到停滯不前，無法解決關係中的問題。',
+                        career: '在工作中過於固執己見，不願接受新的想法。你的努力可能徒勞無功。',
+                        spiritual: '你的心靈感到被困，無法前進。你拒絕接受新的觀念。'
+                    },
+                    symbolism: '倒吊人被吊在樹上，頭下腳上。他看起來很平靜，周圍有一圈光環，象徵著啟示和新的視角。',
+                    advice: '「放手，你會得到更多。有時，退一步是為了看得更遠。」'
+                },
+                {
+                    name: '死神',
+                    title: 'Death',
+                    image: 'images/death.png',
+                    upright: {
+                        basic: '結束、轉變、重生、釋放、放下。',
+                        love: '一段關係的結束，但這也是一個新的開始。你或伴侶需要放下過去，才能迎接未來。',
+                        career: '一個專案或工作的結束。這是一個重新評估你的職業道路，尋找新機會的好時機。',
+                        spiritual: '心靈上的重生。你正在經歷一次重要的轉變，並與過去的自己告別。'
+                    },
+                    reversed: {
+                        basic: '抗拒改變、停滯不前、害怕結束、拖延。',
+                        love: '在關係中不願面對現實，抗拒結束。你感到被困，無法前進。',
+                        career: '在工作中不願放棄舊的計畫。你的努力可能無法得到回報。',
+                        spiritual: '心靈上的停滯。你拒絕接受新的觀念。'
+                    },
+                    symbolism: '死神騎著白馬，手持黑旗，上面有白玫瑰。他正在穿越一片田野，象徵著生命的循環。',
+                    advice: '「接受改變，才能獲得新生。結束是另一個開始。」'
+                },
+                {
+                    name: '節制',
+                    title: 'Temperance',
+                    image: 'images/temperance.png',
+                    upright: {
+                        basic: '平衡、中庸、和諧、耐心、融合。',
+                        love: '一段充滿和諧和平衡的關係。你和伴侶可以互相支持，共同成長。',
+                        career: '在工作中保持平衡。你的努力將會得到回報，但你需要有耐心。',
+                        spiritual: '你的心靈達到了平衡。你可以融合對立的力量，並與自己和解。'
+                    },
+                    reversed: {
+                        basic: '不平衡、衝突、過度、失衡。',
+                        love: '關係中的不和諧或衝突。你和伴侶無法找到平衡點。',
+                        career: '在工作中過於衝動，缺乏耐心。你的努力可能無法得到回報。',
+                        spiritual: '心靈上的失衡。你無法融合對立的力量。'
+                    },
+                    symbolism: '一位天使將兩個杯子裡的水混合。一個杯子在地上，一個在天上，象徵著融合和平衡。',
+                    advice: '「尋找生活的平衡點。你的耐心和和諧將為你帶來平靜和成功。」'
+                },
+                {
+                    name: '魔鬼',
+                    title: 'The Devil',
+                    image: 'images/the_devil.png',
+                    upright: {
+                        basic: '誘惑、束縛、物質主義、陰影面、執念。',
+                        love: '一段充滿誘惑或沉溺的關係。你可能被關係中的物質或肉體所束縛。',
+                        career: '工作中的誘惑或執念。你可能被金錢或權力所控制。',
+                        spiritual: '面對你內心的陰影。你需要有勇氣去面對和掙脫。'
+                    },
+                    reversed: {
+                        basic: '解脫、自由、擺脫束縛、面對陰影。',
+                        love: '你和伴侶正在擺脫一段不健康的關係。你開始面對問題，並尋求解決方案。',
+                        career: '你正在擺脫對金錢或權力的執念。你開始尋找更有意義的工作。',
+                        spiritual: '你的心靈正在尋求自由。你開始面對你內心的陰影。'
+                    },
+                    symbolism: '魔鬼坐在寶座上，手持火炬，腳下有兩個人被鎖鏈鎖住。這兩個人看起來很痛苦，但鎖鏈很鬆，象徵著你可以隨時掙脫。',
+                    advice: '「你擁有自由意志。你的束縛，是你自己創造的。只有你，才能掙脫它。」'
+                },
+                {
+                    name: '高塔',
+                    title: 'The Tower',
+                    image: 'images/the_tower.png',
+                    upright: {
+                        basic: '突然的改變、混亂、顛覆、啟示、崩塌。',
+                        love: '一段關係的突然結束。這是一個痛苦的過程，但它會為你帶來新的開始。',
+                        career: '事業中的突然改變。可能是一個專案的失敗，或是一次裁員。',
+                        spiritual: '心靈上的顛覆。你的舊觀念正在崩塌，你將會獲得新的啟示。'
+                    },
+                    reversed: {
+                        basic: '抗拒改變、停滯不前、小規模的危機。',
+                        love: '你和伴侶正在抗拒一段關係的結束。你感到被困，無法前進。',
+                        career: '在工作中不願接受新的變化。你的努力可能無法得到回報。',
+                        spiritual: '心靈上的停滯。你拒絕接受新的觀念。'
+                    },
+                    symbolism: '高塔被雷電擊中，兩個人從塔頂墜落。象徵著突然的改變和舊的結構的崩塌。',
+                    advice: '「接受改變，才能獲得新生。高塔的崩塌，是為了給真正的成長騰出空間。」'
+                },
+                {
+                    name: '星星',
+                    title: 'The Star',
+                    image: 'images/the_star.png',
+                    upright: {
+                        basic: '希望、靈感、寧靜、更新、治癒。',
+                        love: '一段充滿希望和治癒的關係。你和伴侶可以互相支持，共同成長。',
+                        career: '事業中的好運氣。你將會獲得新的靈感，並取得成功。',
+                        spiritual: '你的心靈充滿了希望。你與宇宙有著深刻的連結，並與自己的靈性有著深刻的連結。'
+                    },
+                    reversed: {
+                        basic: '缺乏希望、失望、感覺與世界脫節、悲觀。',
+                        love: '關係中的不安全感或恐懼。你感到無力，無法解決關係中的問題。',
+                        career: '在工作中感到膽怯或缺乏自信。你無法承擔責任或領導他人。',
+                        spiritual: '你的心靈感到脆弱和無助。你與自己的靈性有著深刻的連結。'
+                    },
+                    symbolism: '一位裸體女子將兩個杯子裡的水倒入河流。一個杯子在地上，一個在天上，象徵著水的循環和生命的流動。',
+                    advice: '「相信未來，你的希望將會實現。你的心靈，正在被治癒。」'
+                },
+                {
+                    name: '月亮',
+                    title: 'The Moon',
+                    image: 'images/the_moon.png',
+                    upright: {
+                        basic: '幻覺、潛意識、不安、直覺、欺騙。',
+                        love: '關係中的不確定性或幻覺。你感到迷茫，無法看清真相。',
+                        career: '工作中的不確定性或幻覺。你感到迷茫，無法看清真相。',
+                        spiritual: '你的心靈正在經歷一次重要的轉變。你與自己的潛意識有著深刻的連結。'
+                    },
+                    reversed: {
+                        basic: '幻覺消失、真相大白、恐懼得到緩解。',
+                        love: '關係中的不確定性或幻覺。你感到迷茫，無法看清真相。',
+                        career: '工作中的不確定性或幻覺。你感到迷茫，無法看清真相。',
+                        spiritual: '你的心靈正在經歷一次重要的轉變。你與自己的潛意識有著深刻的連結。'
+                    },
+                    symbolism: '月亮在天上，下方有兩隻狗在嚎叫，一隻螃蟹從水中爬出，象徵著幻覺、潛意識和不安。',
+                    advice: '「相信你的直覺，穿越不確定的時期。你的心靈，正在被治癒。」'
+                },
+                {
+                    name: '太陽',
+                    title: 'The Sun',
+                    image: 'images/the_sun.png',
+                    upright: {
+                        basic: '成功、喜悅、活力、光明、自信。',
+                        love: '一段充滿愛、歡樂和成功的關係。你和伴侶可以互相支持，共同成長。',
+                        career: '在工作中取得巨大的成功。你的努力將會得到應有的回報。',
+                        spiritual: '你的心靈充滿了希望。你與宇宙有著深刻的連結，並與自己的靈性有著深刻的連結。'
+                    },
+                    reversed: {
+                        basic: '缺乏熱情、悲觀、失敗、自大。',
+                        love: '關係中的不和諧或衝突。你和伴侶無法找到平衡點。',
+                        career: '在工作中缺乏熱情。你的努力可能無法得到回報。',
+                        spiritual: '心靈上的失衡。你無法融合對立的力量。'
+                    },
+                    symbolism: '太陽在天上，下方有兩個孩子在玩耍。他們看起來很開心，象徵著成功、喜悅和活力。',
+                    advice: '「散發你的光芒，享受你所擁有的一切。你的心靈，正在被治癒。」'
+                },
+                {
+                    name: '審判',
+                    title: 'Judgement',
+                    image: 'images/judgement.png',
+                    upright: {
+                        basic: '重生、審視、召喚、覺醒、寬恕。',
+                        love: '一段關係的重生。你和伴侶可以互相寬恕，共同成長。',
+                        career: '在工作中取得巨大的成功。你的努力將會得到應有的回報。',
+                        spiritual: '你的心靈充滿了希望。你與宇宙有著深刻的連結，並與自己的靈性有著深刻的連結。'
+                    },
+                    reversed: {
+                        basic: '缺乏自我寬恕、逃避責任、不願改變。',
+                        love: '關係中的不和諧或衝突。你和伴侶無法找到平衡點。',
+                        career: '在工作中缺乏熱情。你的努力可能無法得到回報。',
+                        spiritual: '心靈上的失衡。你無法融合對立的力量。'
+                    },
+                    symbolism: '一位天使吹響號角，死人從墳墓中復活。象徵著重生、審視和覺醒。',
+                    advice: '「聆聽你內心的召喚，做出忠於自己的選擇。你的心靈，正在被治癒。」'
+                },
+                {
+                    name: '世界',
+                    title: 'The World',
+                    image: 'images/the_world.png',
+                    upright: {
+                        basic: '完成、成就、圓滿、整合、旅程的結束。',
+                        love: '一段關係的圓滿。你和伴侶可以互相支持，共同成長。',
+                        career: '在工作中取得巨大的成功。你的努力將會得到應有的回報。',
+                        spiritual: '你的心靈充滿了希望。你與宇宙有著深刻的連結，並與自己的靈性有著深刻的連結。'
+                    },
+                    reversed: {
+                        basic: '不完整的成就、延遲、缺乏統一。',
+                        love: '關係中的不和諧或衝突。你和伴侶無法找到平衡點。',
+                        career: '在工作中缺乏熱情。你的努力可能無法得到回報。',
+                        spiritual: '心靈上的失衡。你無法融合對立的力量。'
+                    },
+                    symbolism: '一位裸體女子站在一個花環中，手持兩根魔杖。四個角落的聖獸象徵四種元素。',
+                    advice: '「慶祝你的成就，享受你的圓滿。你的旅程，已經完成了。」'
+                }
+            ];
+            
+            const spreadData = {
+                'three-card': {
+                    title: '三牌陣: 過去 - 現在 - 未來',
+                    positions: ['過去', '現在', '未來']
+                },
+                'five-card': {
+                    title: '五牌陣: 元素之輪',
+                    positions: [
+                        { name: '火 (行動力)', className: 'top' },
+                        { name: '風 (思想)', className: 'left' },
+                        { name: '核心 (你的目標)', className: 'center' },
+                        { name: '水 (情感)', className: 'right' },
+                        { name: '土 (物質)', className: 'bottom' }
+                    ]
+                }
+            };
 
-            function getRandomCards(num) {
-                // 随机化算法
-                const shuffled = [...majorArcana].sort(() => 0.5 - Math.random());
-                return shuffled.slice(0, num);
-            }
+            // 新增一個函數來隨機抽取卡牌並決定正位或逆位
+            function getRandomCards(num) {
+                const shuffled = [...majorArcana].sort(() => 0.5 - Math.random());
+                const result = shuffled.slice(0, num).map(card => {
+                    const isReversed = Math.random() < 0.5; // 50%的機率為逆位
+                    return {
+                        ...card,
+                        isReversed: isReversed
+                    };
+                });
+                return result;
+            }
 
-            fortuneBtn.addEventListener('click', () => {
-                // 验证名称输入框是否为空
-                if (nameInput.value.trim() === '') {
-                    showMessageBox('请输入你的称谓，才能开始占卜哦！');
-                    return; // 停止执行后续代码
-                }
+            fortuneBtn.addEventListener('click', () => {
+                if (nameInput.value.trim() === '') {
+                    showMessageBox('請輸入你的稱謂，才能開始占卜哦！');
+                    return;
+                }
 
-                const spreadType = document.getElementById('spread-select').value;
-                let selectedCards = [];
+                const spreadType = document.getElementById('spread-select').value;
+                let selectedCards = getRandomCards(spreadType === 'three-card' ? 3 : 5).map((card, index) => {
+                    const positions = spreadType === 'three-card' ? ['過去 (Past)', '現在 (Present)', '未來 (Future)'] : ['現狀與目標', '挑戰與機遇', '內在力量', '未來發展', '最終結果'];
+                    return {
+                        ...card,
+                        position: positions[index]
+                    };
+                });
+                
+                displayResult(spreadType, selectedCards);
+            });
 
-                if (spreadType === 'three-card') {
-                    selectedCards = getRandomCards(3).map((card, index) => {
-                        const positions = ['过去 (Past)', '现在 (Present)', '未来 (Future)'];
-                        return {
-                            ...card,
-                            position: positions[index]
-                        };
-                    });
-                } else if (spreadType === 'five-card') {
-                    selectedCards = getRandomCards(5).map((card, index) => {
-                        const positions = ['现状与目标', '挑战与机遇', '内在力量', '未来发展', '最终结果'];
-                        return {
-                            ...card,
-                            position: positions[index]
-                        };
-                    });
-                }
+            function displayResult(spreadType, cards) {
+                const spreadContainer = resultCard.querySelector('.spread-container');
+                spreadContainer.innerHTML = '';
 
-                displayResult(spreadType, selectedCards);
-            });
+                if (spreadType === 'three-card') {
+                    spreadContainer.className = 'spread-container three-card-spread';
+                } else if (spreadType === 'five-card') {
+                    spreadContainer.className = 'spread-container five-card-spread';
+                }
 
-            function displayResult(spreadType, cards) {
-                const spreadContainer = resultCard.querySelector('.spread-container');
-                spreadContainer.innerHTML = '';
+                cards.forEach((card, index) => {
+                    const cardDiv = document.createElement('div');
+                    cardDiv.className = 'tarot-card';
 
-                if (spreadType === 'three-card') {
-                    spreadContainer.className = 'spread-container three-card-spread';
-                } else if (spreadType === 'five-card') {
-                    spreadContainer.className = 'spread-container five-card-spread';
-                }
+                    if (spreadType === 'three-card') {
+                        const positions = ['past-card', 'present-card', 'future-card'];
+                        cardDiv.classList.add(positions[index]);
+                    } else if (spreadType === 'five-card') {
+                        const positions = ['top', 'left', 'center', 'right', 'bottom'];
+                        cardDiv.classList.add(positions[index]);
+                    }
 
-                cards.forEach((card, index) => {
-                    const cardDiv = document.createElement('div');
-                    cardDiv.className = 'tarot-card';
+                    // 根據正位或逆位動態獲取解說
+                    const cardMeaning = card.isReversed ? card.reversed : card.upright;
+                    const cardOrientation = card.isReversed ? '（逆位）' : '（正位）';
 
-                    if (spreadType === 'three-card') {
-                        const positions = ['past-card', 'present-card', 'future-card'];
-                        cardDiv.classList.add(positions[index]);
-                    } else if (spreadType === 'five-card') {
-                        const positions = ['top', 'left', 'center', 'right', 'bottom'];
-                        cardDiv.classList.add(positions[index]);
-                    }
+                    cardDiv.innerHTML = `
+                        <span class="card-position-name">${card.position}</span>
+                        <img class="card-img" src="${card.image}" alt="${card.name}">
+                        <div class="card-hover-info">
+                            <h3 class="tarot-card-name">${card.name} ${cardOrientation}</h3>
+                            <h4 class="tarot-card-title">${card.title}</h4>
+                            
+                            <h5 style="color:#FFDA6B; margin: 10px 0 5px;">【基本】</h5>
+                            <p class="tarot-card-detail">${cardMeaning.basic}</p>
 
-                    cardDiv.innerHTML = `
-                        <span class="card-position-name">${card.position}</span>
-                        <img class="card-img" src="${card.image}" alt="${card.name}">
-                        <div class="card-hover-info">
-                            <h3 class="tarot-card-name">${card.name}</h3>
-                            <h4 class="tarot-card-title">${card.title}</h4>
-                            <p class="tarot-card-detail">${card.details}</p>
-                        </div>
-                    `;
-                    spreadContainer.appendChild(cardDiv);
+                            <h5 style="color:#FFDA6B; margin: 10px 0 5px;">【愛情】</h5>
+                            <p class="tarot-card-detail">${cardMeaning.love}</p>
 
-                    // 移动端点击显示/隐藏悬浮信息
-                    cardDiv.addEventListener('touchstart', (event) => {
-                        // 阻止事件冒泡到父元素，防止多次触发
-                        event.stopPropagation();
-                        // 切换 'active' 类
-                        cardDiv.classList.toggle('active');
-                    });
-                });
+                            <h5 style="color:#FFDA6B; margin: 10px 0 5px;">【事業】</h5>
+                            <p class="tarot-card-detail">${cardMeaning.career}</p>
 
-                // 增加点击空白处隐藏悬浮信息的监听器
-                document.body.addEventListener('touchstart', (event) => {
-                    // 检查点击的元素是否在 .tarot-card 内部
-                    if (!event.target.closest('.tarot-card')) {
-                        // 如果不是，则移除所有牌的 'active' 类
-                        document.querySelectorAll('.tarot-card').forEach(card => {
-                            card.classList.remove('active');
-                        });
-                    }
-                });
+                            <h5 style="color:#FFDA6B; margin: 10px 0 5px;">【心靈】</h5>
+                            <p class="tarot-card-detail">${cardMeaning.spiritual}</p>
+                            
+                            <h5 style="color:#FFDA6B; margin: 10px 0 5px;">【牌面象徵】</h5>
+                            <p class="tarot-card-detail">${card.symbolism}</p>
 
-                formCard.classList.add('result-hidden');
-                resultCard.classList.remove('result-hidden');
-            }
+                            <h5 style="color:#FFDA6B; margin: 10px 0 5px;">【給你的建議】</h5>
+                            <p class="tarot-card-detail">${card.advice}</p>
 
-            window.restart = function() {
-                formCard.classList.remove('result-hidden');
-                resultCard.classList.add('result-hidden');
-                // 重置日期和天数
-                yearSelect.value = 2000;
-                monthSelect.value = 1;
-                updateDays();
-            };
+                        </div>
+                    `;
+                    spreadContainer.appendChild(cardDiv);
 
-            // 自定义的消息提示框，代替alert，因为alert在某些环境下无法显示
-            function showMessageBox(message) {
-                // 确保之前没有消息框，避免重复创建
-                if (document.querySelector('.message-overlay')) {
-                    return;
-                }
+                    // 移动端点击显示/隐藏悬浮信息
+                    cardDiv.addEventListener('touchstart', (event) => {
+                        event.stopPropagation();
+                        // 移除所有其他牌的active状态，只保留当前点击的牌
+                        document.querySelectorAll('.tarot-card').forEach(otherCard => {
+                            if (otherCard !== cardDiv) {
+                                otherCard.classList.remove('active');
+                            }
+                        });
+                        cardDiv.classList.toggle('active');
+                    });
+                });
+                
+                document.body.addEventListener('touchstart', (event) => {
+                    if (!event.target.closest('.tarot-card') && !event.target.closest('.message-box')) {
+                        document.querySelectorAll('.tarot-card').forEach(card => {
+                            card.classList.remove('active');
+                        });
+                    }
+                });
 
-                // 创建背景遮罩层
-                const overlay = document.createElement('div');
-                overlay.className = 'message-overlay';
+                formCard.classList.add('result-hidden');
+                resultCard.classList.remove('result-hidden');
+            }
 
-                const messageBox = document.createElement('div');
-                messageBox.className = 'message-box';
-                messageBox.innerHTML = `
-                    <div class="message-content">
-                        <p>${message}</p>
-                        <button class="message-ok glow-on-hover">确定</button>
-                    </div>
-                `;
+            window.restart = function() {
+                formCard.classList.remove('result-hidden');
+                resultCard.classList.add('result-hidden');
+                // 重置日期和天数
+                yearSelect.value = 2000;
+                monthSelect.value = 1;
+                updateDays();
+            };
 
-                document.body.appendChild(overlay);
-                document.body.appendChild(messageBox);
-
-                const okButton = messageBox.querySelector('.message-ok');
-                okButton.addEventListener('click', () => {
-                    document.body.removeChild(overlay);
-                    document.body.removeChild(messageBox);
-                    // 移除后将焦点放回输入框，方便用户直接输入
-                    nameInput.focus();
-                });
-            }
-        });
-    </script>
+            // 自定义的消息提示框，代替alert，因为alert在某些环境下无法显示
+            function showMessageBox(message) {
+                if (document.querySelector('.message-overlay')) {
+                    return;
+                }
+                const overlay = document.createElement('div');
+                overlay.className = 'message-overlay';
+                const messageBox = document.createElement('div');
+                messageBox.className = 'message-box';
+                messageBox.innerHTML = `
+                    <div class="message-content">
+                        <p>${message}</p>
+                        <button class="message-ok glow-on-hover">確定</button>
+                    </div>
+                `;
+                document.body.appendChild(overlay);
+                document.body.appendChild(messageBox);
+                const okButton = messageBox.querySelector('.message-ok');
+                okButton.addEventListener('click', () => {
+                    document.body.removeChild(overlay);
+                    document.body.removeChild(messageBox);
+                    nameInput.focus();
+                });
+            }
+        });
+    </script>
 </body>
 </html>
-
-
-
-
-
