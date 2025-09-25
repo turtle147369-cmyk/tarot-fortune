@@ -449,14 +449,16 @@
         }
 
         /* 三牌阵布局 */
-        .three-card-spread {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        three-card-spread {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, auto);
+        gap: 30px;
+ 	   }
+
+  	  .three-card-spread .tarot-card {
+        width: 160px;
+        justify-self: center;
+  	  }
         
         /* 五牌阵布局 */
         .five-card-spread {
@@ -1053,3 +1055,4 @@ window.addEventListener('load', () => {
     </script>
 </body>
 </html>
+
