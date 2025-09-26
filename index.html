@@ -37,18 +37,21 @@
 
 /* 副标题 */
 .intro-subtitle {
-        font-family: 'Cinzel Decorative', serif;
-        font-size: 1.6em;
-        margin-top: 20px;
-        color:#ffda6b;
-        text-shadow: 0 0 12px rgba(230, 207, 255, 0.6);
-        opacity: 0;
-        animation: fadeIn 1.5s ease forwards;
-        animation-delay: 1.5s;
-		text-align: center;
-		align-self: center;
-		width: 100%;
-    }
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.6em;
+    margin-top: 20px;
+    color: #ffda6b;
+    text-shadow: 0 0 12px rgba(230, 207, 255, 0.6);
+    opacity: 0;
+    animation: fadeIn 1.5s ease forwards;
+    animation-delay: 1.5s;
+    text-align: center;
+    position: absolute; /* 新增 */
+    bottom: 30%; /* 调整这个值来控制垂直位置 */
+    left: 50%; /* 新增 */
+    transform: translateX(-50%); /* 新增 */
+    width: 90%; /* 可选，控制最大宽度 */
+}
 
 /* 动画效果 */
 @keyframes fadeInUp {
@@ -1058,7 +1061,6 @@ window.addEventListener('load', () => {
     </script>
 </body>
 </html>
-
 
 
 
