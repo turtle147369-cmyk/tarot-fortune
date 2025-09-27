@@ -9,67 +9,63 @@
     <link href="https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
     <style>
-	.intro-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, #1a0933, #0d0126 80%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    z-index: 2000;
-    animation: fadeOut 2s ease forwards;
-    animation-delay: 3s; /* 动画展示 3 秒后淡出 */
-}
+        .intro-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #1a0933, #0d0126 80%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 2000;
+            animation: fadeOut 2s ease forwards;
+            animation-delay: 3s;
+        }
 
-/* 标题动画 */
-.intro-title {
-    font-family: 'Zhi Mang Xing', cursive;
-    font-size: 3.5em;
-    color: #ffda6b;
-    text-shadow: 0 0 20px rgba(255, 218, 107, 0.9), 0 0 8px rgba(255, 218, 107, 0.6);
-    opacity: 0;
-    animation: fadeInUp 2s ease forwards;
-}
+        .intro-title {
+            font-family: 'Zhi Mang Xing', cursive;
+            font-size: 3.5em;
+            color: #ffda6b;
+            text-shadow: 0 0 20px rgba(255, 218, 107, 0.9), 0 0 8px rgba(255, 218, 107, 0.6);
+            opacity: 0;
+            animation: fadeInUp 2s ease forwards;
+        }
 
-/* 副标题 */
-.intro-subtitle {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 1.6em;
-    margin-top: 20px;
-    color: #ffda6b;
-    text-shadow: 0 0 12px rgba(230, 207, 255, 0.6);
-    opacity: 0;
-    animation: fadeIn 1.5s ease forwards;
-    animation-delay: 1.5s;
-    text-align: center;
-    position: absolute; /* 新增 */
-    bottom: 30%; /* 调整这个值来控制垂直位置 */
-    left: 50%; /* 新增 */
-    transform: translateX(-50%); /* 新增 */
-    width: 90%; /* 可选，控制最大宽度 */
-}
+        .intro-subtitle {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.6em;
+            margin-top: 20px;
+            color: #ffda6b;
+            text-shadow: 0 0 12px rgba(230, 207, 255, 0.6);
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards;
+            animation-delay: 1.5s;
+            text-align: center;
+            position: absolute;
+            bottom: 30%; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 90%; 
+        }
 
-/* 动画效果 */
-@keyframes fadeInUp {
-    0% { opacity: 0; transform: translateY(30px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
 
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
 
-@keyframes fadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; visibility: hidden; }
-}
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; visibility: hidden; }
+        }
 
-        /* 通用样式 */
         body {
             font-family: 'Noto Serif SC', serif;
             margin: 0;
@@ -110,7 +106,6 @@
             100% { background-position: 0% 100%, 0% 100%, 0% 100%, 0% 100%, 80% 80%; }
         }
 
-        /* 动态星空和流星雨背景 */
         .star-field {
             position: fixed;
             top: 0;
@@ -118,11 +113,9 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            /* 流星容器 */
             pointer-events: none;
         }
 
-        /* 单个星星样式 */
         .star {
             position: absolute;
             background-color: #ffffff;
@@ -132,13 +125,11 @@
             transform: scale(0);
         }
 
-        /* 星星闪烁动画 */
         @keyframes twinkle {
             0%, 100% { opacity: 0; transform: scale(0); }
             50% { opacity: 0.8; transform: scale(1); }
         }
-        
-        /* 流星样式和动画 */
+
         .meteor {
             position: absolute;
             width: 2px;
@@ -150,8 +141,7 @@
             pointer-events: none;
             z-index: 0;
         }
-        
-        /* 流星尾巴效果 */
+
         .meteor::before {
             content: '';
             position: absolute;
@@ -163,7 +153,6 @@
             transform: rotate(0deg);
         }
 
-        /* 流星下落动画 */
         @keyframes meteor-fall {
             0% {
                 transform: translateX(0px) translateY(-50px) rotate(45deg);
@@ -310,7 +299,6 @@
             padding-right: 40px;
         }
 
-        /* 按钮 */
         .glow-on-hover {
             padding: 18px;
             background-color: #ffda6b;
@@ -333,7 +321,6 @@
             box-shadow: 0 12px 30px rgba(255, 218, 107, 0.6);
         }
 
-        /* 牌阵容器 */
         .spread-container {
             display: flex;
             flex-wrap: wrap;
@@ -342,12 +329,11 @@
             min-height: auto;
         }
 
-        /* 卡牌的通用样式 */
         .tarot-card {
             width: 100%;
             height: auto;
             display: block;
-	    position: relative;
+            position: relative;
         }
 
         .tarot-card img {
@@ -358,13 +344,11 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s ease-in-out;
         }
-        
-        /* 逆位牌旋转180度 */
+
         .tarot-card.reversed img {
             transform: rotate(180deg);
         }
 
-        /* 悬停效果：卡牌抬升 */
         .tarot-card:hover img {
             transform: translateY(-5px) scale(1.05);
         }
@@ -373,7 +357,6 @@
             transform: translateY(-5px) scale(1.05) rotate(180deg);
         }
 
-        /* 牌位名称 */
         .card-position-name {
             font-size: 1.2em;
             color: #ffda6b;
@@ -382,7 +365,6 @@
             text-shadow: 0 0 5px rgba(255, 218, 107, 0.4);
         }
 
-        /* 塔罗牌名称 */
         .tarot-card-name-visible {
             font-family: 'Zhi Mang Xing', cursive;
             font-size: 1.6em;
@@ -391,7 +373,6 @@
             text-shadow: 0 0 5px rgba(255, 218, 107, 0.4);
         }
 
-        /* 悬浮界面容器 */
         .card-hover-info {
             position: absolute;
             top: 0%;
@@ -415,7 +396,6 @@
             pointer-events: none;
         }
 
-        /* 鼠标悬停在 .tarot-card 容器上时显示悬浮界面 */
         .tarot-card:hover .card-hover-info,
         .tarot-card.active .card-hover-info {
             opacity: 1;
@@ -423,7 +403,6 @@
             pointer-events: auto;
         }
 
-        /* 悬浮界面中的字体样式 */
         .card-hover-info h3,
         .card-hover-info h4,
         .card-hover-info p {
@@ -432,7 +411,7 @@
             color: #c9b1d3;
             margin: 5px 0;
         }
-        
+
         .card-hover-info h4 {
             font-size: 1.2em;
             color: #f0e0ff;
@@ -440,12 +419,12 @@
             border-bottom: 1px solid rgba(255, 218, 107, 0.3);
             padding-bottom: 5px;
         }
-        
+
         .card-hover-info p {
             font-size: 1em;
             margin-top: 10px;
         }
-        
+
         .card-hover-info .keywords,
         .card-hover-info .suggestion {
             font-style: italic;
@@ -454,19 +433,17 @@
             margin-top: 15px;
         }
 
-        /* 三牌阵布局 */
         three-card-spread {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(3, auto);
-        gap: 30px;
- 	   }
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, auto);
+            gap: 30px;
+        }
 
-  	  .three-card-spread .tarot-card {
-        width: 160px;
-        justify-self: center;
-  	  }
-        
-        /* 五牌阵布局 */
+        .three-card-spread .tarot-card {
+            width: 160px;
+            justify-self: center;
+        }
+
         .five-card-spread {
             display: grid;
             grid-template-areas:
@@ -482,7 +459,6 @@
             min-height: auto;
         }
 
-        /* 牌位与网格区域的对应 */
         .five-card-spread .top { grid-area: top; }
         .five-card-spread .left { grid-area: left; }
         .five-card-spread .center { grid-area: center; }
@@ -495,7 +471,6 @@
             justify-self: center;
         }
 
-        /* 移动设备适配 */
         @media (max-width: 768px) {
             .five-card-spread {
                 grid-template-areas:
@@ -517,8 +492,7 @@
                 padding: 15px;
             }
         }
-        
-        /* 消息提示框的半透明背景，覆盖整个屏幕 */
+
         .message-overlay {
             position: fixed;
             top: 0;
@@ -532,8 +506,7 @@
             justify-content: center;
             align-items: center;
         }
-        
-        /* 消息框本体 */
+
         .message-box {
             position: fixed;
             top: 50%;
@@ -554,8 +527,7 @@
             flex-direction: column;
             gap: 20px;
         }
-        
-        /* 消息框的进入动画 */
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -566,14 +538,14 @@
                 transform: translate(-50%, -50%) scale(1);
             }
         }
-        
+
         .message-box p {
             margin: 0;
             font-size: 1.2em;
             font-weight: bold;
             text-shadow: 0 0 5px rgba(255, 218, 107, 0.4);
         }
-        
+
         .message-box button {
             padding: 12px 25px;
             background-color: #ffda6b;
@@ -585,7 +557,7 @@
             cursor: pointer;
             transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
         }
-        
+
         .message-box button:hover {
             background-color: #e0c25e;
             transform: translateY(-2px);
@@ -596,9 +568,9 @@
 </head>
 <body>
     <div class="intro-screen">
-    <div class="intro-title">星河占卜</div>
-    <div class="intro-subtitle">塔罗启示，指引命运之路</div>
-</div>
+        <div class="intro-title">星河占卜</div>
+        <div class="intro-subtitle">塔罗启示，指引命运之路</div>
+    </div>
     <div class="background-gradient"></div>
 
     <div class="star-field"></div>
@@ -640,12 +612,12 @@
     </div>
 
     <script>
-window.addEventListener('load', () => {
-    const intro = document.querySelector('.intro-screen');
-    setTimeout(() => {
-        intro.style.display = 'none';
-    }, 3000); // 5 秒后彻底移除
-});
+        window.addEventListener('load', () => {
+            const intro = document.querySelector('.intro-screen');
+            setTimeout(() => {
+                intro.style.display = 'none';
+            }, 3000); 
+        });
         document.addEventListener('DOMContentLoaded', () => {
             const yearSelect = document.getElementById('year-select');
             const monthSelect = document.getElementById('month-select');
@@ -657,7 +629,6 @@ window.addEventListener('load', () => {
             const starField = document.querySelector('.star-field');
             const cardHoverInfo = document.querySelector('.card-hover-info');
 
-            // 年份菜单
             const currentYear = new Date().getFullYear();
             for (let i = 1950; i <= currentYear; i++) {
                 const option = document.createElement('option');
@@ -667,7 +638,6 @@ window.addEventListener('load', () => {
             }
             yearSelect.value = 2000;
 
-            // 月份菜单
             for (let i = 1; i <= 12; i++) {
                 const option = document.createElement('option');
                 option.value = i;
@@ -676,7 +646,6 @@ window.addEventListener('load', () => {
             }
             monthSelect.value = 1;
 
-            // 更新天数
             function updateDays() {
                 const year = parseInt(yearSelect.value);
                 const month = parseInt(monthSelect.value);
@@ -692,14 +661,13 @@ window.addEventListener('load', () => {
             yearSelect.addEventListener('change', updateDays);
             monthSelect.addEventListener('change', updateDays);
             updateDays();
-            
-            // **新增**：生成闪烁的星星
+
             function createStars() {
-                const numberOfStars = 150; // 星星的数量
+                const numberOfStars = 150; 
                 for (let i = 0; i < numberOfStars; i++) {
                     const star = document.createElement('div');
                     star.className = 'star';
-                    const size = Math.random() * 2 + 1; // 随机大小
+                    const size = Math.random() * 2 + 1; 
                     star.style.width = `${size}px`;
                     star.style.height = `${size}px`;
                     star.style.top = `${Math.random() * 100}%`;
@@ -708,235 +676,688 @@ window.addEventListener('load', () => {
                     starField.appendChild(star);
                 }
             }
-            createStars(); // 页面加载时生成星星
+            createStars(); 
 
-            // **新增**：生成流星雨
             function createMeteor() {
                 const meteor = document.createElement('div');
                 meteor.className = 'meteor';
                 meteor.style.left = `${Math.random() * 100}%`;
-                meteor.style.top = `${Math.random() * 20}%`; // 从页面顶部生成
+                meteor.style.top = `${Math.random() * 20}%`; 
                 starField.appendChild(meteor);
 
-                // 动画结束后移除流星元素
                 meteor.addEventListener('animationend', () => {
                     meteor.remove();
                 });
             }
 
-            // 每隔一段时间生成一颗流星
-            setInterval(createMeteor, 3000); // 每3秒生成一颗流星
+            setInterval(createMeteor, 3000); 
 
-            // 塔罗牌数据
-            const majorArcana = [
+            const fullTarotDeck = [
                 {
-                    name: '愚者',
-                    title: 'The Fool',
-                    image: 'images/the_fool.png',
-                    uprightMeaning: '新的开始、自由、纯真、冒险、潜力、无忧无虑。',
-                    reversedMeaning: '鲁莽、不负责任、缺乏方向、轻率、被束缚。',
-                    keywords: '冒险, 新开始, 自由, 潜能',
-                    suggestion: '拥抱新的可能性，放手一搏，但请记住保持理性和责任心。详细解读请至abc169.vip'
+                    name: '&#x611A;&#x8005;', title: 'The Fool', image: 'images/the_fool.png', 
+                    uprightMeaning: '&#x65B0;&#x7684;&#x5F00;&#x59CB;&#x3001;&#x81EA;&#x7531;&#x3001;&#x7EAF;&#x771F;&#x3001;&#x5192;&#x9669;&#x3001;&#x6F5C;&#x529B;&#x3001;&#x65E0;&#x5FE7;&#x65E0;&#x8651;&#x3002;',
+                    reversedMeaning: '&#x9C81;&#x83BD;&#x3001;&#x4E0D;&#x8D1F;&#x8D23;&#x4EFB;&#x3001;&#x7F3A;&#x4E4F;&#x65B9;&#x5411;&#x3001;&#x8F7B;&#x7387;&#x3001;&#x88AB;&#x675F;&#x7F1A;&#x3002;',
+                    keywords: '&#x5192;&#x9669;, &#x65B0;&#x5F00;&#x59CB;, &#x81EA;&#x7531;, &#x6F5C;&#x80FD;',
+                    suggestion: '&#x62E5;&#x62B1;&#x65B0;&#x7684;&#x53EF;&#x80FD;&#x6027;&#xFF0C;&#x653E;&#x624B;&#x4E00;&#x640F;&#xFF0C;&#x4F46;&#x8BF7;&#x8BB0;&#x4F4F;&#x4FDD;&#x6301;&#x7406;&#x6027;&#x548C;&#x8D23;&#x4EFB;&#x5FC3;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
                 },
                 {
-                    name: '魔术师',
-                    title: 'The Magician',
-                    image: 'images/the_magician.png',
-                    uprightMeaning: '力量、技巧、专注、创造力、实现目标。',
-                    reversedMeaning: '欺骗、操纵、缺乏力量、无能为力。',
-                    keywords: '行动力, 技能, 创造, 专注',
-                    suggestion: '你拥有实现目标所需的一切。现在是采取行动，将想法变为现实的最佳时机。详细解读请至abc169.vip'
+                    name: '&#x9B54;&#x672F;&#x5E08;', title: 'The Magician', image: 'images/the_magician.png', 
+                    uprightMeaning: '&#x529B;&#x91CF;&#x3001;&#x6280;&#x5DE7;&#x3001;&#x4E13;&#x6CE8;&#x3001;&#x521B;&#x9020;&#x529B;&#x3001;&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#x3002;',
+                    reversedMeaning: '&#x6B3A;&#x9A97;&#x3001;&#x64CD;&#x7EB5;&#x3001;&#x7F3A;&#x4E4F;&#x529B;&#x91CF;&#x3001;&#x65E0;&#x80FD;&#x4E3A;&#x529B;&#x3002;',
+                    keywords: '&#x884C;&#x52A8;&#x529B;, &#x6280;&#x80FD;, &#x521B;&#x9020;, &#x4E13;&#x6CE8;',
+                    suggestion: '&#x4F60;&#x62E5;&#x6709;&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#x6240;&#x9700;&#x7684;&#x4E00;&#x5207;&#x3002;&#x73B0;&#x5728;&#x662F;&#x91C7;&#x53D6;&#x884C;&#x52A8;&#xFF0C;&#x5C06;&#x60F3;&#x6CD5;&#x53D8;&#x4E3A;&#x73B0;&#x5B9E;&#x7684;&#x6700;&#x4F73;&#x65F6;&#x673A;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
                 },
                 {
-                    name: '女祭司',
-                    title: 'The High Priestess',
-                    image: 'images/the_high_priestess.png',
-                    uprightMeaning: '直觉、潜意识、神秘、内在智慧、安静、耐心。',
-                    reversedMeaning: '隐藏的秘密、直觉被忽略、表面化、情绪不稳定。',
-                    keywords: '直觉, 神秘, 智慧, 洞察',
-                    suggestion: '倾听你内心的声音，相信你的直觉。答案可能就在你内心深处，而非外部世界。详细解读请至abc169.vip'
+                    name: '&#x5973;&#x796D;&#x53F8;', title: 'The High Priestess', image: 'images/the_high_priestess.png',   
+                    uprightMeaning: '&#x76F4;&#x89C9;&#x3001;&#x6F5C;&#x610F;&#x8BC6;&#x3001;&#x795E;&#x79D8;&#x3001;&#x5185;&#x5728;&#x667A;&#x6167;&#x3001;&#x5B89;&#x9759;&#x3001;&#x8010;&#x5FC3;&#x3002;',
+                    reversedMeaning: '&#x9690;&#x85CF;&#x7684;&#x79D8;&#x5BC6;&#x3001;&#x76F4;&#x89C9;&#x88AB;&#x5FFD;&#x7565;&#x3001;&#x8868;&#x9762;&#x5316;&#x3001;&#x60C5;&#x7EEA;&#x4E0D;&#x7A33;&#x5B9A;&#x3002;',
+                    keywords: '&#x76F4;&#x89C9;, &#x795E;&#x79D8;, &#x667A;&#x6167;, &#x6D1E;&#x5BDF;',
+                    suggestion: '&#x503E;&#x542C;&#x4F60;&#x5185;&#x5FC3;&#x7684;&#x58F0;&#x97F3;&#xFF0C;&#x76F8;&#x4FE1;&#x4F60;&#x7684;&#x76F4;&#x89C9;&#x3002;&#x7B54;&#x6848;&#x53EF;&#x80FD;&#x5C31;&#x5728;&#x4F60;&#x5185;&#x5FC3;&#x6DF1;&#x5904;&#xFF0C;&#x800C;&#x975E;&#x5916;&#x90E8;&#x4E16;&#x754C;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
                 },
                 {
-                    name: '皇后',
-                    title: 'The Empress',
-                    image: 'images/the_empress.png',
-                    uprightMeaning: '丰收、生育、母性、自然、美丽、创造力。',
-                    reversedMeaning: '停滞、不孕、依赖他人、缺乏创意、物质主义。',
-                    keywords: '丰饶, 创造力, 美, 母性',
-                    suggestion: '你正处于一个充满创造力和丰收的时期。照顾好自己，享受生活中的美好。详细解读请至abc169.vip'
+                    name: '&#x7687;&#x540E;', title: 'The Empress', image: 'images/the_emp.png', 
+                    uprightMeaning: '&#x4E30;&#x6536;&#x3001;&#x751F;&#x80B2;&#x3001;&#x6BCD;&#x6027;&#x3001;&#x81EA;&#x7136;&#x3001;&#x7F8E;&#x4E3D;&#x3001;&#x521B;&#x9020;&#x529B;&#x3002;',
+                    reversedMeaning: '&#x505C;&#x6EDE;&#x3001;&#x4E0D;&#x5B55;&#x3001;&#x4F9D;&#x8D56;&#x4ED6;&#x4EBA;&#x3001;&#x7F3A;&#x4E4F;&#x521B;&#x610F;&#x3001;&#x7269;&#x8D28;&#x4E3B;&#x4E49;&#x3002;',
+                    keywords: '&#x4E30;&#x9976;, &#x521B;&#x9020;&#x529B;, &#x7F8E;, &#x6BCD;&#x6027;',
+                    suggestion: '&#x4F60;&#x6B63;&#x5904;&#x4E8E;&#x4E00;&#x4E2A;&#x5145;&#x6EE1;&#x521B;&#x9020;&#x529B;&#x548C;&#x4E30;&#x6536;&#x7684;&#x65F6;&#x671F;&#x3002;&#x7167;&#x987E;&#x597D;&#x81EA;&#x5DF1;&#xFF0C;&#x4EAB;&#x53D7;&#x751F;&#x6D3B;&#x4E2D;&#x7684;&#x7F8E;&#x597D;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
                 },
                 {
-                    name: '皇帝',
-                    title: 'The Emperor',
-                    image: 'images/the_emperor.png',
-                    uprightMeaning: '权威、结构、秩序、领导力、控制、稳固。',
-                    reversedMeaning: '暴君、独裁、缺乏控制、刚愎自用。',
-                    keywords: '权威, 领导力, 秩序, 稳定',
-                    suggestion: '现在是时候建立稳固的基础和秩序了。展现你的领导力，掌控局面。详细解读请至abc169.vip'
+                    name: '&#x7687;&#x5E1D;', title: 'The Emperor', image: 'images/the_emperor.png',   
+                    uprightMeaning: '&#x6743;&#x5A01;&#x3001;&#x7ED3;&#x6784;&#x3001;&#x79E9;&#x5E8F;&#x3001;&#x9886;&#x5BFC;&#x529B;&#x3001;&#x63A7;&#x5236;&#x3001;&#x7A33;&#x56FA;&#x3002;',
+                    reversedMeaning: '&#x66B4;&#x541B;&#x3001;&#x72EC;&#x88C1;&#x3001;&#x7F3A;&#x4E4F;&#x63A7;&#x5236;&#x3001;&#x521A;&#x610E;&#x81EA;&#x7528;&#x3002;',
+                    keywords: '&#x6743;&#x5A01;, &#x9886;&#x5BFC;&#x529B;, &#x79E9;&#x5E8F;, &#x7A33;&#x5B9A;',
+                    suggestion: '&#x73B0;&#x5728;&#x662F;&#x65F6;&#x5019;&#x5EFA;&#x7ACB;&#x7A33;&#x56FA;&#x7684;&#x57FA;&#x7840;&#x548C;&#x79E9;&#x5E8F;&#x4E86;&#x3002;&#x5C55;&#x73B0;&#x4F60;&#x7684;&#x9886;&#x5BFC;&#x529B;&#xFF0C;&#x638C;&#x63A7;&#x5C40;&#x9762;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
                 },
                 {
-                    name: '教皇',
-                    title: 'The Hierophant',
-                    image: 'images/the_hierophant.png',
-                    uprightMeaning: '传统、信仰、价值观、指导、仪式。',
-                    reversedMeaning: '反叛、非传统、束缚、落伍。',
-                    keywords: '传统, 指引, 学习, 精神',
-                    suggestion: '寻求一位导师或遵循既定的道路，以获得所需的智慧和指引。详细解读请至abc169.vip'
+                    name: '&#x6559;&#x7687;', title: 'The Hierophant', image: 'images/the_hierophant.png',   
+                    uprightMeaning: '&#x4F20;&#x7EDF;&#x3001;&#x4FE1;&#x4EF0;&#x3001;&#x4EF7;&#x503C;&#x89C2;&#x3001;&#x6307;&#x5BFC;&#x3001;&#x4EEA;&#x5F0F;&#x3002;',
+                    reversedMeaning: '&#x53CD;&#x53DB;&#x3001;&#x975E;&#x4F20;&#x7EDF;&#x3001;&#x675F;&#x7F1A;&#x3001;&#x843D;&#x4F0D;&#x3002;',
+                    keywords: '&#x4F20;&#x7EDF;, &#x6307;&#x5F15;, &#x5B66;&#x4E60;, &#x7CBE;&#x795E;',
+                    suggestion: '&#x5BFB;&#x6C42;&#x4E00;&#x4F4D;&#x5BFC;&#x5E08;&#x6216;&#x9075;&#x5FAA;&#x65E2;&#x5B9A;&#x7684;&#x9053;&#x8DEF;&#xFF0C;&#x4EE5;&#x83B7;&#x5F97;&#x6240;&#x9700;&#x7684;&#x667A;&#x6167;&#x548C;&#x6307;&#x5F15;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
                 },
                 {
-                    name: '恋人',
-                    title: 'The Lovers',
-                    image: 'images/the_lovers.png',
-                    uprightMeaning: '选择、爱、关系、和谐、价值观。',
-                    reversedMeaning: '冲突、不和谐、不负责任的选择、分离。',
-                    keywords: '爱, 选择, 关系, 价值观',
-                    suggestion: '你正面临一个重要的决定，它将影响你的人际关系和未来。跟随你的心，做出正确的选择。详细解读请至abc169.vip'
+                    name: '&#x604B;&#x4EBA;', title: 'The Lovers', image: 'images/the_lovers.png',   
+                    uprightMeaning: '&#x9009;&#x62E9;&#x3001;&#x7231;&#x3001;&#x5173;&#x7CFB;&#x3001;&#x548C;&#x8C10;&#x3001;&#x4EF7;&#x503C;&#x89C2;&#x3002;',
+                    reversedMeaning: '&#x51B2;&#x7A81;&#x3001;&#x4E0D;&#x548C;&#x8C10;&#x3001;&#x4E0D;&#x8D1F;&#x8D23;&#x4EFB;&#x7684;&#x9009;&#x62E9;&#x3001;&#x5206;&#x79BB;&#x3002;',
+                    keywords: '&#x7231;, &#x9009;&#x62E9;, &#x5173;&#x7CFB;, &#x4EF7;&#x503C;&#x89C2;',
+                    suggestion: '&#x4F60;&#x6B63;&#x9762;&#x4E34;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x7684;&#x51B3;&#x5B9A;&#xFF0C;&#x5B83;&#x5C06;&#x5F71;&#x54CD;&#x4F60;&#x7684;&#x4EBA;&#x9645;&#x5173;&#x7CFB;&#x548C;&#x672A;&#x6765;&#x3002;&#x8DDF;&#x968F;&#x4F60;&#x7684;&#x5FC3;&#xFF0C;&#x505A;&#x51FA;&#x6B63;&#x786E;&#x7684;&#x9009;&#x62E9;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
                 },
                 {
-                    name: '战车',
-                    title: 'The Chariot',
-                    image: 'images/the_chariot.png',
-                    uprightMeaning: '意志力、决心、胜利、控制、自信。',
-                    reversedMeaning: '缺乏控制、失败、方向不明、冲动。',
-                    keywords: '胜利, 决心, 控制, 成功',
-                    suggestion: '勇往直前，克服一切障碍。你的决心和自信将引领你走向胜利。详细解读请至abc169.vip'
+                    name: '&#x6218;&#x8F66;', title: 'The Chariot', image: 'images/the_chariot.png',   
+                    uprightMeaning: '&#x610F;&#x5FD7;&#x529B;&#x3001;&#x51B3;&#x5FC3;&#x3001;&#x80DC;&#x5229;&#x3001;&#x63A7;&#x5236;&#x3001;&#x81EA;&#x4FE1;&#x3002;',
+                    reversedMeaning: '&#x7F3A;&#x4E4F;&#x63A7;&#x5236;&#x3001;&#x5931;&#x8D25;&#x3001;&#x65B9;&#x5411;&#x4E0D;&#x660E;&#x3001;&#x51B2;&#x52A8;&#x3002;',
+                    keywords: '&#x80DC;&#x5229;, &#x51B3;&#x5FC3;, &#x63A7;&#x5236;, &#x6210;&#x529F;',
+                    suggestion: '&#x52C7;&#x5F80;&#x76F4;&#x524D;&#xFF0C;&#x514B;&#x670D;&#x4E00;&#x5207;&#x969C;&#x788D;&#x3002;&#x4F60;&#x7684;&#x51B3;&#x5FC3;&#x548C;&#x81EA;&#x4FE1;&#x5C06;&#x5F15;&#x9886;&#x4F60;&#x8D70;&#x5411;&#x80DC;&#x5229;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
                 },
                 {
-                    name: '力量',
-                    title: 'Strength',
-                    image: 'images/strength.png',
-                    uprightMeaning: '勇气、同情心、内在力量、耐心、对本能的驾驭。',
-                    reversedMeaning: '软弱、自我怀疑、缺乏自信、恐惧。',
-                    keywords: '勇气, 力量, 同情心, 内心',
-                    suggestion: '真正的力量源于内心的平静与温柔。用勇气和同情心去面对挑战。详细解读请至abc169.vip'
+                    name: '&#x529B;&#x91CF;', title: 'Strength', image: 'images/strength.png',   
+                    uprightMeaning: '&#x52C7;&#x6C14;&#x3001;&#x540C;&#x60C5;&#x5FC3;&#x3001;&#x5185;&#x5728;&#x529B;&#x91CF;&#x3001;&#x8010;&#x5FC3;&#x3001;&#x5BF9;&#x672C;&#x80FD;&#x7684;&#x9A7E;&#x9A6D;&#x3002;',
+                    reversedMeaning: '&#x8F6F;&#x5F31;&#x3001;&#x81EA;&#x6211;&#x6000;&#x7591;&#x3001;&#x7F3A;&#x4E4F;&#x81EA;&#x4FE1;&#x3001;&#x6050;&#x60E7;&#x3002;',
+                    keywords: '&#x52C7;&#x6C14;, &#x529B;&#x91CF;, &#x540C;&#x60C5;&#x5FC3;, &#x5185;&#x5FC3;',
+                    suggestion: '&#x771F;&#x6B63;&#x7684;&#x529B;&#x91CF;&#x6E90;&#x4E8E;&#x5185;&#x5FC3;&#x7684;&#x5E73;&#x9759;&#x4E0E;&#x6E29;&#x67D4;&#x3002;&#x7528;&#x52C7;&#x6C14;&#x548C;&#x540C;&#x60C5;&#x5FC3;&#x53BB;&#x9762;&#x5BF9;&#x6311;&#x6218;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
                 },
                 {
-                    name: '隐士',
-                    title: 'The Hermit',
-                    image: 'images/the_hermit.png',
-                    uprightMeaning: '内省、孤独、寻求真理、自我发现。',
-                    reversedMeaning: '孤立、退缩、孤独、不愿面对现实。',
-                    keywords: '内省, 智慧, 孤独, 沉思',
-                    suggestion: '现在是时候退一步思考，寻找内在的智慧和指引了。独处将为你带来答案。详细解读请至abc169.vip'
+                    name: '&#x9690;&#x58EB;', title: 'The Hermit', image: 'images/the_hermit.png',   
+                    uprightMeaning: '&#x5185;&#x7701;&#x3001;&#x5B64;&#x72EC;&#x3001;&#x5BFB;&#x6C42;&#x771F;&#x7406;&#x3001;&#x81EA;&#x6211;&#x53D1;&#x73B0;&#x3002;',
+                    reversedMeaning: '&#x5B64;&#x7ACB;&#x3001;&#x9000;&#x7F29;&#x3001;&#x5B64;&#x72EC;&#x3001;&#x4E0D;&#x613F;&#x9762;&#x5BF9;&#x73B0;&#x5B9E;&#x3002;',
+                    keywords: '&#x5185;&#x7701;, &#x667A;&#x6167;, &#x5B64;&#x72EC;, &#x6C89;&#x601D;',
+                    suggestion: '&#x73B0;&#x5728;&#x662F;&#x65F6;&#x5019;&#x9000;&#x4E00;&#x6B65;&#x601D;&#x8003;&#xFF0C;&#x5BFB;&#x627E;&#x5185;&#x5728;&#x7684;&#x667A;&#x6167;&#x548C;&#x6307;&#x5F15;&#x4E86;&#x3002;&#x72EC;&#x5904;&#x5C06;&#x4E3A;&#x4F60;&#x5E26;&#x6765;&#x7B54;&#x6848;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
                 },
                 {
-                    name: '命运之轮',
-                    title: 'Wheel of Fortune',
-                    image: 'images/wheel_of_fortune.png',
-                    uprightMeaning: '循环、命运、转折、好运、改变。',
-                    reversedMeaning: '厄运、停滞、失控、无法预测的变化。',
-                    keywords: '命运, 变化, 机会, 周期',
-                    suggestion: '生活正发生不可预测的变化，把握机会，迎接新的开始。详细解读请至abc169.vip'
+                    name: '&#x547D;&#x8FD0;&#x4E4B;&#x8F6E;', title: 'Wheel of Fortune', image: 'images/wheel_of_fortune.png',   
+                    uprightMeaning: '&#x5FAA;&#x73AF;&#x3001;&#x547D;&#x8FD0;&#x3001;&#x8F6C;&#x6298;&#x3001;&#x597D;&#x8FD0;&#x3001;&#x6539;&#x53D8;&#x3002;',
+                    reversedMeaning: '&#x5384;&#x8FD0;&#x3001;&#x505C;&#x6EDE;&#x3001;&#x5931;&#x63A7;&#x3001;&#x65E0;&#x6CD5;&#x9884;&#x6D4B;&#x7684;&#x53D8;&#x5316;&#x3002;',
+                    keywords: '&#x547D;&#x8FD0;, &#x53D8;&#x5316;, &#x673A;&#x4F1A;, &#x5468;&#x671F;',
+                    suggestion: '&#x751F;&#x6D3B;&#x6B63;&#x53D1;&#x751F;&#x4E0D;&#x53EF;&#x9884;&#x6D4B;&#x7684;&#x53D8;&#x5316;&#xFF0C;&#x628A;&#x63E1;&#x673A;&#x4F1A;&#xFF0C;&#x8FCE;&#x63A5;&#x65B0;&#x7684;&#x5F00;&#x59CB;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
                 },
                 {
-                    name: '正义',
-                    title: 'Justice',
-                    image: 'images/justice.png',
-                    uprightMeaning: '公平、真理、因果、法律、平衡。',
-                    reversedMeaning: '不公正、偏见、不诚实、逃避责任。',
-                    keywords: '公平, 真理, 平衡, 因果',
-                    suggestion: '所有行为都将带来相应的后果。确保你的行为公正，并为自己的决定负责。详细解读请至abc169.vip'
+                    name: '&#x6B63;&#x4E49;', title: 'Justice', image: 'images/justice.png',   
+                    uprightMeaning: '&#x516C;&#x5E73;&#x3001;&#x771F;&#x7406;&#x3001;&#x56E0;&#x679C;&#x3001;&#x6CD5;&#x5F8B;&#x3001;&#x5E73;&#x8861;&#x3002;',
+                    reversedMeaning: '&#x4E0D;&#x516C;&#x6B63;&#x3001;&#x504F;&#x89C1;&#x3001;&#x4E0D;&#x8BDA;&#x5B9E;&#x3001;&#x9003;&#x907F;&#x8D23;&#x4EFB;&#x3002;',
+                    keywords: '&#x516C;&#x5E73;, &#x771F;&#x7406;, &#x5E73;&#x8861;, &#x56E0;&#x679C;',
+                    suggestion: '&#x6240;&#x6709;&#x884C;&#x4E3A;&#x90FD;&#x5C06;&#x5E26;&#x6765;&#x76F8;&#x5E94;&#x7684;&#x540E;&#x679C;&#x3002;&#x786E;&#x4FDD;&#x4F60;&#x7684;&#x884C;&#x4E3A;&#x516C;&#x6B63;&#xFF0C;&#x5E76;&#x4E3A;&#x81EA;&#x5DF1;&#x7684;&#x51B3;&#x5B9A;&#x8D1F;&#x8D23;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
                 },
                 {
-                    name: '倒吊人',
-                    title: 'The Hanged Man',
-                    image: 'images/the_hanged_man.png',
-                    uprightMeaning: '新的视角、牺牲、放下、暂停、洞察。',
-                    reversedMeaning: '固执、无谓的牺牲、停滞不前、不愿改变。',
-                    keywords: '新视角, 牺牲, 放下, 等待',
-                    suggestion: '从不同的角度看问题。暂时放下控制，你将获得新的洞察。详细解读请至abc169.vip'
+                    name: '&#x5012;&#x540A;&#x4EBA;', title: 'The Hanged Man', image: 'images/the_hanged_man.png',   
+                    uprightMeaning: '&#x65B0;&#x7684;&#x89C6;&#x89D2;&#x3001;&#x727A;&#x7272;&#x3001;&#x653E;&#x4E0B;&#x3001;&#x6682;&#x505C;&#x3001;&#x6D1E;&#x5BDF;&#x3002;',
+                    reversedMeaning: '&#x56FA;&#x6267;&#x3001;&#x65E0;&#x8C13;&#x7684;&#x727A;&#x7272;&#x3001;&#x505C;&#x6EDE;&#x4E0D;&#x524D;&#x3001;&#x4E0D;&#x613F;&#x6539;&#x53D8;&#x3002;',
+                    keywords: '&#x65B0;&#x89C6;&#x89D2;, &#x727A;&#x7272;, &#x653E;&#x4E0B;, &#x7B49;&#x5F85;',
+                    suggestion: '&#x4ECE;&#x4E0D;&#x540C;&#x7684;&#x89D2;&#x5EA6;&#x770B;&#x95EE;&#x9898;&#x3002;&#x6682;&#x65F6;&#x653E;&#x4E0B;&#x63A7;&#x5236;&#xFF0C;&#x4F60;&#x5C06;&#x83B7;&#x5F97;&#x65B0;&#x7684;&#x6D1E;&#x5BDF;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
                 },
                 {
-                    name: '死神',
-                    title: 'Death',
-                    image: 'images/death.png',
-                    uprightMeaning: '结束、转变、重生、释放、新的开始。',
-                    reversedMeaning: '停滞、抗拒改变、恐惧、拒绝放手。',
-                    keywords: '结束, 转变, 重生, 释放',
-                    suggestion: '一个旧的阶段即将结束，新的开始即将到来。不要害怕改变，拥抱它，你将获得重生。详细解读请至abc169.vip'
+                    name: '&#x6B7B;&#x795E;', title: 'Death', image: 'images/death.png',   
+                    uprightMeaning: '&#x7ED3;&#x675F;&#x3001;&#x8F6C;&#x53D8;&#x3001;&#x91CD;&#x751F;&#x3001;&#x91CA;&#x653E;&#x3001;&#x65B0;&#x7684;&#x5F00;&#x59CB;&#x3002;',
+                    reversedMeaning: '&#x505C;&#x6EDE;&#x3001;&#x6297;&#x62D2;&#x6539;&#x53D8;&#x3001;&#x6050;&#x60E7;&#x3001;&#x62D2;&#x7EDD;&#x653E;&#x624B;&#x3002;',
+                    keywords: '&#x7ED3;&#x675F;, &#x8F6C;&#x53D8;, &#x91CD;&#x751F;, &#x91CA;&#x653E;',
+                    suggestion: '&#x4E00;&#x4E2A;&#x65E7;&#x7684;&#x9636;&#x6BB5;&#x5373;&#x5C06;&#x7ED3;&#x675F;&#xFF0C;&#x65B0;&#x7684;&#x5F00;&#x59CB;&#x5373;&#x5C06;&#x5230;&#x6765;&#x3002;&#x4E0D;&#x8981;&#x5BB3;&#x6015;&#x6539;&#x53D8;&#xFF0C;&#x62E5;&#x62B1;&#x5B83;&#xFF0C;&#x4F60;&#x5C06;&#x83B7;&#x5F97;&#x91CD;&#x751F;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
                 },
                 {
-                    name: '节制',
-                    title: 'Temperance',
-                    image: 'images/temperance.png',
-                    uprightMeaning: '平衡、中庸、和谐、耐心、适应。',
-                    reversedMeaning: '不平衡、冲突、极端、不和谐。',
-                    keywords: '平衡, 和谐, 耐心, 融合',
-                    suggestion: '将对立的力量融合在一起，保持平和的心态和中庸之道。详细解读请至abc169.vip'
+                    name: '&#x8282;&#x5236;', title: 'Temperance', image: 'images/temperance.png',   
+                    uprightMeaning: '&#x5E73;&#x8861;&#x3001;&#x4E2D;&#x5EB8;&#x3001;&#x548C;&#x8C10;&#x3001;&#x8010;&#x5FC3;&#x3001;&#x9002;&#x5E94;&#x3002;',
+                    reversedMeaning: '&#x4E0D;&#x5E73;&#x8861;&#x3001;&#x51B2;&#x7A81;&#x3001;&#x6781;&#x7AEF;&#x3001;&#x4E0D;&#x548C;&#x8C10;&#x3002;',
+                    keywords: '&#x5E73;&#x8861;, &#x548C;&#x8C10;, &#x8010;&#x5FC3;, &#x878D;&#x5408;',
+                    suggestion: '&#x5C06;&#x5BF9;&#x7ACB;&#x7684;&#x529B;&#x91CF;&#x878D;&#x5408;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x4FDD;&#x6301;&#x5E73;&#x548C;&#x7684;&#x5FC3;&#x6001;&#x548C;&#x4E2D;&#x5EB8;&#x4E4B;&#x9053;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
                 },
                 {
-                    name: '魔鬼',
-                    title: 'The Devil',
-                    image: 'images/the_devil.png',
-                    uprightMeaning: '诱惑、束缚、物质主义、阴影面。',
-                    reversedMeaning: '挣脱束缚、觉醒、挑战诱惑、获得自由。',
-                    keywords: '诱惑, 欲望, 束缚, 物质',
-                    suggestion: '面对你内心的阴影面。是时候挣脱那些束缚你的不良习惯或执念了。详细解读请至abc169.vip'
+                    name: '&#x9B54;&#x9B3C;', title: 'The Devil', image: 'images/the_devil.png',   
+                    uprightMeaning: '&#x8BF1;&#x60D1;&#x3001;&#x675F;&#x7F1A;&#x3001;&#x7269;&#x8D28;&#x4E3B;&#x4E49;&#x3001;&#x9634;&#x5F71;&#x9762;&#x3002;',
+                    reversedMeaning: '&#x6323;&#x8131;&#x675F;&#x7F1A;&#x3001;&#x89C9;&#x9192;&#x3001;&#x6311;&#x6218;&#x8BF1;&#x60D1;&#x3001;&#x83B7;&#x5F97;&#x81EA;&#x7531;&#x3002;',
+                    keywords: '&#x8BF1;&#x60D1;, &#x6B32;&#x671B;, &#x675F;&#x7F1A;, &#x7269;&#x8D28;',
+                    suggestion: '&#x9762;&#x5BF9;&#x4F60;&#x5185;&#x5FC3;&#x7684;&#x9634;&#x5F71;&#x9762;&#x3002;&#x662F;&#x65F6;&#x5019;&#x6323;&#x8131;&#x90A3;&#x4E9B;&#x675F;&#x7F1A;&#x4F60;&#x7684;&#x4E0D;&#x826F;&#x4E60;&#x60EF;&#x6216;&#x6267;&#x5FF5;&#x4E86;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
                 },
                 {
-                    name: '高塔',
-                    title: 'The Tower',
-                    image: 'images/the_tower.png',
-                    uprightMeaning: '突然的改变、混乱、颠覆、启示。',
-                    reversedMeaning: '避免灾难、延迟改变、固执、恐惧。',
-                    keywords: '巨变, 破坏, 启示, 混乱',
-                    suggestion: '虽然过程痛苦，但它会摧毁不稳固的根基，为真正的成长腾出空间。详细解读请至abc169.vip'
+                    name: '&#x9AD8;&#x5854;', title: 'The Tower', image: 'images/the_tower.png',   
+                    uprightMeaning: '&#x7A81;&#x7136;&#x7684;&#x6539;&#x53D8;&#x3001;&#x6DF7;&#x4E71;&#x3001;&#x98A0;&#x8986;&#x3001;&#x542F;&#x793A;&#x3002;',
+                    reversedMeaning: '&#x907F;&#x514D;&#x707E;&#x96BE;&#x3001;&#x5EF6;&#x8FDF;&#x6539;&#x53D8;&#x3001;&#x56FA;&#x6267;&#x3001;&#x6050;&#x60E7;&#x3002;',
+                    keywords: '&#x5DE8;&#x53D8;, &#x7834;&#x574F;, &#x542F;&#x793A;, &#x6DF7;&#x4E71;',
+                    suggestion: '&#x867D;&#x7136;&#x8FC7;&#x7A0B;&#x75DB;&#x82E6;&#xFF0C;&#x4F46;&#x5B83;&#x4F1A;&#x6467;&#x6BC1;&#x4E0D;&#x7A33;&#x56FA;&#x7684;&#x6839;&#x57FA;&#xFF0C;&#x4E3A;&#x771F;&#x6B63;&#x7684;&#x6210;&#x957F;&#x817E;&#x51FA;&#x7A7A;&#x95F4;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
                 },
                 {
-                    name: '星星',
-                    title: 'The Star',
-                    image: 'images/the_star.png',
-                    uprightMeaning: '希望、灵感、宁静、更新、治愈。',
-                    reversedMeaning: '绝望、缺乏灵感、悲观、挫败。',
-                    keywords: '希望, 灵感, 平静, 未来',
-                    suggestion: '为你带来希望和清晰的指引。相信未来，你正被祝福着。详细解读请至abc169.vip'
+                    name: '&#x661F;&#x661F;', title: 'The Star', image: 'images/the_star.png',   
+                    uprightMeaning: '&#x5E0C;&#x671B;&#x3001;&#x7075;&#x611F;&#x3001;&#x5B81;&#x9759;&#x3001;&#x66F4;&#x65B0;&#x3001;&#x6CBB;&#x6108;&#x3002;',
+                    reversedMeaning: '&#x7EDD;&#x671B;&#x3001;&#x7F3A;&#x4E4F;&#x7075;&#x611F;&#x3001;&#x60B2;&#x89C2;&#x3001;&#x632B;&#x8D25;&#x3002;',
+                    keywords: '&#x5E0C;&#x671B;, &#x7075;&#x611F;, &#x5E73;&#x9759;, &#x672A;&#x6765;',
+                    suggestion: '&#x4E3A;&#x4F60;&#x5E26;&#x6765;&#x5E0C;&#x671B;&#x548C;&#x6E05;&#x6670;&#x7684;&#x6307;&#x5F15;&#x3002;&#x76F8;&#x4FE1;&#x672A;&#x6765;&#xFF0C;&#x4F60;&#x6B63;&#x88AB;&#x795D;&#x798F;&#x7740;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
                 },
                 {
-                    name: '月亮',
-                    title: 'The Moon',
-                    image: 'images/the_moon.png',
-                    uprightMeaning: '幻觉、潜意识、不安、直觉、恐惧。',
-                    reversedMeaning: '看清真相、释放恐惧、克服不安。',
-                    keywords: '幻觉, 不安, 潜意识, 直觉',
-                    suggestion: '相信你的直觉来穿越不确定的时期，提防欺骗和自我欺骗。详细解读请至abc169.vip'
+                    name: '&#x6708;&#x4EAE;', title: 'The Moon', image: 'images/the_moon.png',   
+                    uprightMeaning: '&#x5E7B;&#x89C9;&#x3001;&#x6F5C;&#x610F;&#x8BC6;&#x3001;&#x4E0D;&#x5B89;&#x3001;&#x76F4;&#x89C9;&#x3001;&#x6050;&#x60E7;&#x3002;',
+                    reversedMeaning: '&#x770B;&#x6E05;&#x771F;&#x76F8;&#x3001;&#x91CA;&#x653E;&#x6050;&#x60E7;&#x3001;&#x514B;&#x670D;&#x4E0D;&#x5B89;&#x3002;',
+                    keywords: '&#x5E7B;&#x89C9;, &#x4E0D;&#x5B89;, &#x6F5C;&#x610F;&#x8BC6;, &#x76F4;&#x89C9;',
+                    suggestion: '&#x76F8;&#x4FE1;&#x4F60;&#x7684;&#x76F4;&#x89C9;&#x6765;&#x7A7F;&#x8D8A;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#x65F6;&#x671F;&#xFF0C;&#x63D0;&#x9632;&#x6B3A;&#x9A97;&#x548C;&#x81EA;&#x6211;&#x6B3A;&#x9A97;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
                 },
                 {
-                    name: '太阳',
-                    title: 'The Sun',
-                    image: 'images/the_sun.png',
-                    uprightMeaning: '成功、喜悦、活力、光明、幸福。',
-                    reversedMeaning: '缺乏活力、悲伤、失败、乌云密布。',
-                    keywords: '成功, 快乐, 活力, 光明',
-                    suggestion: '这是塔罗牌中最积极的牌之一。它预示着一切都将顺利。尽情享受生活吧！详细解读请至abc169.vip'
+                    name: '&#x592A;&#x9633;', title: 'The Sun', image: 'images/the_sun.png',   
+                    uprightMeaning: '&#x6210;&#x529F;&#x3001;&#x559C;&#x60A6;&#x3001;&#x6D3B;&#x529B;&#x3001;&#x5149;&#x660E;&#x3001;&#x5E78;&#x798F;&#x3002;',
+                    reversedMeaning: '&#x7F3A;&#x4E4F;&#x6D3B;&#x529B;&#x3001;&#x60B2;&#x4F24;&#x3001;&#x5931;&#x8D25;&#x3001;&#x4E4C;&#x4E91;&#x5BC6;&#x5E03;&#x3002;',
+                    keywords: '&#x6210;&#x529F;, &#x5FEB;&#x4E50;, &#x6D3B;&#x529B;, &#x5149;&#x660E;',
+                    suggestion: '&#x8FD9;&#x662F;&#x5854;&#x7F57;&#x724C;&#x4E2D;&#x6700;&#x79EF;&#x6781;&#x7684;&#x724C;&#x4E4B;&#x4E00;&#x3002;&#x5B83;&#x9884;&#x793A;&#x7740;&#x4E00;&#x5207;&#x90FD;&#x5C06;&#x987A;&#x5229;&#x3002;&#x5C3D;&#x60C5;&#x4EAB;&#x53D7;&#x751F;&#x6D3B;&#x5427;&#xFF01;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
                 },
                 {
-                    name: '审判',
-                    title: 'Judgement',
-                    image: 'images/judgement.png',
-                    uprightMeaning: '重生、审视、召唤、觉醒、评估。',
-                    reversedMeaning: '自我怀疑、拒绝改变、推迟决定。',
-                    keywords: '审判, 重生, 觉醒, 评估',
-                    suggestion: '你正准备进入人生的新阶段。诚实地审视你的过去，并为未来做出决定。详细解读请至abc169.vip'
+                    name: '&#x5BA1;&#x5224;', title: 'Judgement', image: 'images/judgement.png',   
+                    uprightMeaning: '&#x91CD;&#x751F;&#x3001;&#x5BA1;&#x89C6;&#x3001;&#x53EC;&#x5524;&#x3001;&#x89C9;&#x9192;&#x3001;&#x8BC4;&#x4F30;&#x3002;',
+                    reversedMeaning: '&#x81EA;&#x6211;&#x6000;&#x7591;&#x3001;&#x62D2;&#x7EDD;&#x6539;&#x53D8;&#x3001;&#x63A8;&#x8FDF;&#x51B3;&#x5B9A;&#x3002;',
+                    keywords: '&#x5BA1;&#x5224;, &#x91CD;&#x751F;, &#x89C9;&#x9192;, &#x8BC4;&#x4F30;',
+                    suggestion: '&#x4F60;&#x6B63;&#x51C6;&#x5907;&#x8FDB;&#x5165;&#x4EBA;&#x751F;&#x7684;&#x65B0;&#x9636;&#x6BB5;&#x3002;&#x8BDA;&#x5B9E;&#x5730;&#x5BA1;&#x89C6;&#x4F60;&#x7684;&#x8FC7;&#x53BB;&#xFF0C;&#x5E76;&#x4E3A;&#x672A;&#x6765;&#x505A;&#x51FA;&#x51B3;&#x5B9A;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
                 },
                 {
-                    name: '世界',
-                    title: 'The World',
-                    image: 'images/the_world.png',
-                    uprightMeaning: '完成、成就、整合、圆满、成功。',
-                    reversedMeaning: '未完成、缺乏整合、停滞、延迟成功。',
-                    keywords: '完成, 成就, 圆满, 整合',
-                    suggestion: '它预示着一段旅程的成功结束。你已经实现了你的目标，尽情庆祝吧！详细解读请至abc169.vip'
+                    name: '&#x4E16;&#x754C;', title: 'The World', image: 'images/the_world.png',   
+                    uprightMeaning: '&#x5B8C;&#x6210;&#x3001;&#x6210;&#x5C31;&#x3001;&#x6574;&#x5408;&#x3001;&#x5706;&#x6EE1;&#x3001;&#x6210;&#x529F;&#x3002;',
+                    reversedMeaning: '&#x672A;&#x5B8C;&#x6210;&#x3001;&#x7F3A;&#x4E4F;&#x6574;&#x5408;&#x3001;&#x505C;&#x6EDE;&#x3001;&#x5EF6;&#x8FDF;&#x6210;&#x529F;&#x3002;',
+                    keywords: '&#x5B8C;&#x6210;, &#x6210;&#x5C31;, &#x5706;&#x6EE1;, &#x6574;&#x5408;',
+                    suggestion: '&#x5B83;&#x9884;&#x793A;&#x7740;&#x4E00;&#x6BB5;&#x65C5;&#x7A0B;&#x7684;&#x6210;&#x529F;&#x7ED3;&#x675F;&#x3002;&#x4F60;&#x5DF2;&#x7ECF;&#x5B9E;&#x73B0;&#x4E86;&#x4F60;&#x7684;&#x76EE;&#x6807;&#xFF0C;&#x5C3D;&#x60C5;&#x5E86;&#x795D;&#x5427;&#xFF01;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x6743;&#x6756; ACE',
+                    title: 'Ace of Wands',
+                    image: 'images/wands_ace.png',
+                    uprightMeaning: '&#x7075;&#x611F;&#x3001;&#x673A;&#x4F1A;&#x3001;&#x521B;&#x9020;&#x529B;&#x3002;',
+                    reversedMeaning: '&#x5EF6;&#x8FDF;&#x3001;&#x632B;&#x6298;&#x3001;&#x7F3A;&#x4E4F;&#x52A8;&#x529B;&#x3002;',
+                    keywords: '&#x7075;&#x611F;, &#x5F00;&#x59CB;, &#x521B;&#x9020;',
+                    suggestion: '&#x6293;&#x4F4F;&#x65B0;&#x7684;&#x7075;&#x611F;&#x5E76;&#x4ED8;&#x8BF8;&#x884C;&#x52A8;&#xFF0C;&#x5B83;&#x4F1A;&#x5F00;&#x542F;&#x4F60;&#x7684;&#x65B0;&#x65C5;&#x7A0B;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x6743;&#x6756; &#x4E8C;',
+                    title: 'Two of Wands',
+                    image: 'images/wands_02.png',
+                    uprightMeaning: '&#x89C4;&#x5212;&#x3001;&#x672A;&#x6765;&#x613F;&#x666F;&#x3001;&#x638C;&#x63A7;&#x3002;',
+                    reversedMeaning: '&#x6050;&#x60E7;&#x672A;&#x77E5;&#x3001;&#x7F3A;&#x4E4F;&#x8FDC;&#x89C1;&#x3002;',
+                    keywords: '&#x89C4;&#x5212;, &#x9009;&#x62E9;, &#x638C;&#x63A7;',
+                    suggestion: '&#x4E3A;&#x672A;&#x6765;&#x505A;&#x597D;&#x51C6;&#x5907;&#xFF0C;&#x575A;&#x5B9A;&#x8D70;&#x5411;&#x4F60;&#x8BBE;&#x5B9A;&#x7684;&#x76EE;&#x6807;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x6743;&#x6756; &#x4E09;',
+                    title: 'Three of Wands',
+                    image: 'images/wands_03.png',
+                    uprightMeaning: '&#x62D3;&#x5C55;&#x3001;&#x8FDC;&#x89C1;&#x3001;&#x5192;&#x9669;&#x3002;',
+                    reversedMeaning: '&#x53D7;&#x963B;&#x3001;&#x5EF6;&#x8FDF;&#x3001;&#x9519;&#x5931;&#x673A;&#x4F1A;&#x3002;',
+                    keywords: '&#x8FDC;&#x89C1;, &#x62D3;&#x5C55;, &#x5192;&#x9669;',
+                    suggestion: '&#x4FDD;&#x6301;&#x4FE1;&#x5FC3;&#xFF0C;&#x52C7;&#x6562;&#x8FC8;&#x5411;&#x66F4;&#x5E7F;&#x9614;&#x7684;&#x821E;&#x53F0;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x6743;&#x6756; &#x56DB;',
+                    title: 'Four of Wands',
+                    image: 'images/wands_04.png',
+                    uprightMeaning: '&#x5E86;&#x795D;&#x3001;&#x7A33;&#x5B9A;&#x3001;&#x5F52;&#x5C5E;&#x3002;',
+                    reversedMeaning: '&#x4E0D;&#x548C;&#x8C10;&#x3001;&#x5EF6;&#x8FDF;&#x3001;&#x4E0D;&#x5B89;&#x3002;',
+                    keywords: '&#x5E86;&#x795D;, &#x7A33;&#x5B9A;, &#x5E78;&#x798F;',
+                    suggestion: '&#x4F60;&#x6B63;&#x5904;&#x4E8E;&#x503C;&#x5F97;&#x5E86;&#x795D;&#x7684;&#x65F6;&#x523B;&#xFF0C;&#x4EAB;&#x53D7;&#x4E0E;&#x4EBA;&#x5171;&#x4EAB;&#x7684;&#x559C;&#x60A6;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x6743;&#x6756; &#x4E94;',
+                    title: 'Five of Wands',
+                    image: 'images/wands_05.png',
+                    uprightMeaning: '&#x7ADE;&#x4E89;&#x3001;&#x51B2;&#x7A81;&#x3001;&#x610F;&#x89C1;&#x4E0D;&#x5408;&#x3002;',
+                    reversedMeaning: '&#x907F;&#x514D;&#x51B2;&#x7A81;&#x3001;&#x59A5;&#x534F;&#x3001;&#x5185;&#x8017;&#x3002;',
+                    keywords: '&#x7ADE;&#x4E89;, &#x51B2;&#x7A81;, &#x5206;&#x6B67;',
+                    suggestion: '&#x5B66;&#x4F1A;&#x4ECE;&#x7ADE;&#x4E89;&#x4E2D;&#x6210;&#x957F;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x88AB;&#x5176;&#x62D6;&#x7D2F;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x6743;&#x6756; &#x516D;',
+                    title: 'Six of Wands',
+                    image: 'images/wands_06.png',
+                    uprightMeaning: '&#x80DC;&#x5229;&#x3001;&#x8BA4;&#x53EF;&#x3001;&#x6210;&#x529F;&#x3002;',
+                    reversedMeaning: '&#x81EA;&#x8D1F;&#x3001;&#x5931;&#x8D25;&#x3001;&#x7F3A;&#x4E4F;&#x652F;&#x6301;&#x3002;',
+                    keywords: '&#x80DC;&#x5229;, &#x8BA4;&#x53EF;, &#x6210;&#x5C31;',
+                    suggestion: '&#x4F60;&#x7684;&#x52AA;&#x529B;&#x5C06;&#x5F97;&#x5230;&#x56DE;&#x62A5;&#xFF0C;&#x52C7;&#x6562;&#x63A5;&#x53D7;&#x638C;&#x58F0;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x6743;&#x6756; &#x4E03;',
+                    title: 'Seven of Wands',
+                    image: 'images/wands_07.png',
+                    uprightMeaning: '&#x9632;&#x5FA1;&#x3001;&#x575A;&#x6301;&#x7ACB;&#x573A;&#x3001;&#x6311;&#x6218;&#x3002;',
+                    reversedMeaning: '&#x653E;&#x5F03;&#x3001;&#x9632;&#x5FA1;&#x5931;&#x8D25;&#x3001;&#x72B9;&#x8C6B;&#x3002;',
+                    keywords: '&#x575A;&#x6301;, &#x6311;&#x6218;, &#x9632;&#x5FA1;',
+                    suggestion: '&#x5373;&#x4FBF;&#x538B;&#x529B;&#x91CD;&#x91CD;&#xFF0C;&#x4E5F;&#x8981;&#x575A;&#x5B9A;&#x5730;&#x5B88;&#x62A4;&#x4F60;&#x7684;&#x7ACB;&#x573A;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x6743;&#x6756; &#x516B;',
+                    title: 'Eight of Wands',
+                    image: 'images/wands_08.png',
+                    uprightMeaning: '&#x5FEB;&#x901F;&#x884C;&#x52A8;&#x3001;&#x8FDB;&#x5C55;&#x3001;&#x6C9F;&#x901A;&#x3002;',
+                    reversedMeaning: '&#x5EF6;&#x8FDF;&#x3001;&#x6DF7;&#x4E71;&#x3001;&#x963B;&#x788D;&#x3002;',
+                    keywords: '&#x901F;&#x5EA6;, &#x8FDB;&#x5C55;, &#x4EA4;&#x6D41;',
+                    suggestion: '&#x673A;&#x4F1A;&#x6B63;&#x5728;&#x5FEB;&#x901F;&#x9760;&#x8FD1;&#xFF0C;&#x628A;&#x63E1;&#x65F6;&#x673A;&#x7ACB;&#x5373;&#x884C;&#x52A8;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x6743;&#x6756; &#x4E5D;',
+                    title: 'Nine of Wands',
+                    image: 'images/wands_09.png',
+                    uprightMeaning: '&#x575A;&#x97E7;&#x3001;&#x9632;&#x5FA1;&#x3001;&#x6BC5;&#x529B;&#x3002;',
+                    reversedMeaning: '&#x75B2;&#x60EB;&#x3001;&#x653E;&#x5F03;&#x3001;&#x6000;&#x7591;&#x3002;',
+                    keywords: '&#x575A;&#x97E7;, &#x9632;&#x5FA1;, &#x6BC5;&#x529B;',
+                    suggestion: '&#x5373;&#x5C06;&#x5230;&#x8FBE;&#x7EC8;&#x70B9;&#xFF0C;&#x4E0D;&#x8981;&#x5728;&#x6700;&#x540E;&#x65F6;&#x523B;&#x653E;&#x5F03;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x6743;&#x6756; &#x5341;',
+                    title: 'Ten of Wands',
+                    image: 'images/wands_10.png',
+                    uprightMeaning: '&#x8D23;&#x4EFB;&#x3001;&#x538B;&#x529B;&#x3001;&#x8D1F;&#x62C5;&#x3002;',
+                    reversedMeaning: '&#x5378;&#x4E0B;&#x91CD;&#x62C5;&#x3001;&#x8FC7;&#x52B3;&#x3001;&#x963B;&#x788D;&#x3002;',
+                    keywords: '&#x8D1F;&#x62C5;, &#x8D23;&#x4EFB;, &#x538B;&#x529B;',
+                    suggestion: '&#x5B66;&#x4F1A;&#x5206;&#x62C5;&#x538B;&#x529B;&#xFF0C;&#x522B;&#x8BA9;&#x81EA;&#x5DF1;&#x88AB;&#x8D23;&#x4EFB;&#x538B;&#x57AE;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x6743;&#x6756; &#x4F8D;&#x4ECE;',
+                    title: 'Page of Wands',
+                    image: 'images/wands_page.png',
+                    uprightMeaning: '&#x5192;&#x9669;&#x3001;&#x63A2;&#x7D22;&#x3001;&#x70ED;&#x60C5;&#x3002;',
+                    reversedMeaning: '&#x51B2;&#x52A8;&#x3001;&#x7F3A;&#x4E4F;&#x65B9;&#x5411;&#x3001;&#x5E7C;&#x7A1A;&#x3002;',
+                    keywords: '&#x63A2;&#x7D22;, &#x70ED;&#x60C5;, &#x65B0;&#x5192;&#x9669;',
+                    suggestion: '&#x4FDD;&#x6301;&#x597D;&#x5947;&#x4E0E;&#x70ED;&#x60C5;&#xFF0C;&#x65B0;&#x7684;&#x65C5;&#x7A0B;&#x6B63;&#x7B49;&#x5F85;&#x4F60;&#x51FA;&#x53D1;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x6743;&#x6756; &#x9A91;&#x58EB;',
+                    title: 'Knight of Wands',
+                    image: 'images/wands_knight.png',
+                    uprightMeaning: '&#x5192;&#x9669;&#x3001;&#x51B2;&#x52B2;&#x3001;&#x70ED;&#x60C5;&#x3002;',
+                    reversedMeaning: '&#x9C81;&#x83BD;&#x3001;&#x51B2;&#x52A8;&#x3001;&#x77ED;&#x6682;&#x6FC0;&#x60C5;&#x3002;',
+                    keywords: '&#x51B2;&#x52B2;, &#x884C;&#x52A8;, &#x6FC0;&#x60C5;',
+                    suggestion: '&#x5927;&#x80C6;&#x8FFD;&#x6C42;&#x4F60;&#x7684;&#x76EE;&#x6807;&#xFF0C;&#x4F46;&#x6CE8;&#x610F;&#x4E0D;&#x8981;&#x9C81;&#x83BD;&#x884C;&#x4E8B;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x6743;&#x6756; &#x7687;&#x540E;',
+                    title: 'Queen of Wands',
+                    image: 'images/wands_queen.png',
+                    uprightMeaning: '&#x81EA;&#x4FE1;&#x3001;&#x72EC;&#x7ACB;&#x3001;&#x9B45;&#x529B;&#x3002;',
+                    reversedMeaning: '&#x5AC9;&#x5992;&#x3001;&#x4E0D;&#x5B89;&#x3001;&#x4F9D;&#x8D56;&#x3002;',
+                    keywords: '&#x81EA;&#x4FE1;, &#x72EC;&#x7ACB;, &#x9B45;&#x529B;',
+                    suggestion: '&#x76F8;&#x4FE1;&#x4F60;&#x7684;&#x529B;&#x91CF;&#x4E0E;&#x5438;&#x5F15;&#x529B;&#xFF0C;&#x4F60;&#x6BD4;&#x81EA;&#x5DF1;&#x60F3;&#x8C61;&#x7684;&#x66F4;&#x5F3A;&#x5927;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x6743;&#x6756; &#x56FD;&#x738B;',
+                    title: 'King of Wands',
+                    image: 'images/wands_king.png',
+                    uprightMeaning: '&#x9886;&#x5BFC;&#x529B;&#x3001;&#x8FDC;&#x89C1;&#x3001;&#x51B3;&#x65AD;&#x529B;&#x3002;',
+                    reversedMeaning: '&#x4E13;&#x5236;&#x3001;&#x51B2;&#x52A8;&#x3001;&#x64CD;&#x63A7;&#x3002;',
+                    keywords: '&#x9886;&#x5BFC;, &#x51B3;&#x65AD;, &#x8FDC;&#x89C1;',
+                    suggestion: '&#x7528;&#x8FDC;&#x89C1;&#x4E0E;&#x667A;&#x6167;&#x5F15;&#x5BFC;&#x4ED6;&#x4EBA;&#xFF0C;&#x4F60;&#x4F1A;&#x6210;&#x4E3A;&#x53D7;&#x4EBA;&#x656C;&#x4EF0;&#x7684;&#x9886;&#x5BFC;&#x8005;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5723;&#x676F; ACE',
+                    title: 'Ace of Cups',
+                    image: 'images/cups_ace.png',
+                    uprightMeaning: '&#x7231;&#x3001;&#x65B0;&#x7684;&#x611F;&#x60C5;&#x3001;&#x7075;&#x611F;&#x3002;',
+                    reversedMeaning: '&#x60C5;&#x611F;&#x963B;&#x585E;&#x3001;&#x7A7A;&#x865A;&#x3001;&#x51B7;&#x6F20;&#x3002;',
+                    keywords: '&#x65B0;&#x611F;&#x60C5;, &#x7231;, &#x7075;&#x611F;',
+                    suggestion: '&#x5411;&#x7231;&#x4E0E;&#x611F;&#x6027;&#x655E;&#x5F00;&#x5FC3;&#x6249;&#xFF0C;&#x4F60;&#x4F1A;&#x83B7;&#x5F97;&#x610F;&#x60F3;&#x4E0D;&#x5230;&#x7684;&#x6E29;&#x6696;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5723;&#x676F; &#x4E8C;',
+                    title: 'Two of Cups',
+                    image: 'images/cups_02.png',
+                    uprightMeaning: '&#x7ED3;&#x5408;&#x3001;&#x4F19;&#x4F34;&#x5173;&#x7CFB;&#x3001;&#x4E92;&#x76F8;&#x5438;&#x5F15;&#x3002;',
+                    reversedMeaning: '&#x4E0D;&#x548C;&#x8C10;&#x3001;&#x5206;&#x79BB;&#x3001;&#x4E0D;&#x5E73;&#x8861;&#x3002;',
+                    keywords: '&#x7ED3;&#x5408;, &#x7231;, &#x4F19;&#x4F34;',
+                    suggestion: '&#x73CD;&#x60DC;&#x8FD9;&#x4EFD;&#x7F8E;&#x597D;&#x7684;&#x8054;&#x7ED3;&#xFF0C;&#x5B83;&#x80FD;&#x5E26;&#x6765;&#x6DF1;&#x523B;&#x7684;&#x60C5;&#x611F;&#x6ECB;&#x517B;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5723;&#x676F; &#x4E09;',
+                    title: 'Three of Cups',
+                    image: 'images/cups_03.png',
+                    uprightMeaning: '&#x5E86;&#x795D;&#x3001;&#x53CB;&#x8C0A;&#x3001;&#x793E;&#x4EA4;&#x3002;',
+                    reversedMeaning: '&#x8FC7;&#x5EA6;&#x653E;&#x7EB5;&#x3001;&#x758F;&#x8FDC;&#x3001;&#x4E09;&#x89D2;&#x5173;&#x7CFB;&#x3002;',
+                    keywords: '&#x53CB;&#x8C0A;, &#x5E86;&#x795D;, &#x5FEB;&#x4E50;',
+                    suggestion: '&#x4E0E;&#x670B;&#x53CB;&#x6216;&#x4EB2;&#x4EBA;&#x5206;&#x4EAB;&#x559C;&#x60A6;&#xFF0C;&#x4F60;&#x4F1A;&#x611F;&#x5230;&#x80FD;&#x91CF;&#x88AB;&#x91CD;&#x65B0;&#x70B9;&#x71C3;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5723;&#x676F; &#x56DB;',
+                    title: 'Four of Cups',
+                    image: 'images/cups_04.png',
+                    uprightMeaning: '&#x51B7;&#x6F20;&#x3001;&#x5185;&#x7701;&#x3001;&#x4E0D;&#x6EE1;&#x8DB3;&#x3002;',
+                    reversedMeaning: '&#x89C9;&#x9192;&#x3001;&#x673A;&#x4F1A;&#x3001;&#x63A5;&#x53D7;&#x65B0;&#x4E8B;&#x7269;&#x3002;',
+                    keywords: '&#x51B7;&#x6F20;, &#x5185;&#x7701;, &#x673A;&#x4F1A;',
+                    suggestion: '&#x522B;&#x5FFD;&#x7565;&#x8EAB;&#x8FB9;&#x7684;&#x673A;&#x4F1A;&#xFF0C;&#x9002;&#x65F6;&#x8F6C;&#x53D8;&#x5FC3;&#x6001;&#x80FD;&#x5E26;&#x6765;&#x7A81;&#x7834;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5723;&#x676F; &#x4E94;',
+                    title: 'Five of Cups',
+                    image: 'images/cups_05.png',
+                    uprightMeaning: '&#x5931;&#x671B;&#x3001;&#x9057;&#x61BE;&#x3001;&#x54C0;&#x4F24;&#x3002;',
+                    reversedMeaning: '&#x91CA;&#x6000;&#x3001;&#x63A5;&#x53D7;&#x3001;&#x627E;&#x5230;&#x51FA;&#x8DEF;&#x3002;',
+                    keywords: '&#x5931;&#x843D;, &#x54C0;&#x4F24;, &#x540E;&#x6094;',
+                    suggestion: '&#x4E0D;&#x8981;&#x53EA;&#x770B;&#x5931;&#x53BB;&#x7684;&#xFF0C;&#x8F6C;&#x8EAB;&#x770B;&#x770B;&#x4ECD;&#x7136;&#x62E5;&#x6709;&#x7684;&#x795D;&#x798F;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5723;&#x676F; &#x516D;',
+                    title: 'Six of Cups',
+                    image: 'images/cups_06.png',
+                    uprightMeaning: '&#x6000;&#x65E7;&#x3001;&#x7AE5;&#x5E74;&#x3001;&#x91CD;&#x9022;&#x3002;',
+                    reversedMeaning: '&#x8FC7;&#x5EA6;&#x6C89;&#x6EBA;&#x8FC7;&#x53BB;&#x3001;&#x4E0D;&#x6210;&#x719F;&#x3002;',
+                    keywords: '&#x6000;&#x65E7;, &#x7AE5;&#x5E74;, &#x91CD;&#x9022;',
+                    suggestion: '&#x8FC7;&#x53BB;&#x7684;&#x7F8E;&#x597D;&#x80FD;&#x5E26;&#x6765;&#x529B;&#x91CF;&#xFF0C;&#x4F46;&#x522B;&#x5FD8;&#x4E86;&#x6D3B;&#x5728;&#x5F53;&#x4E0B;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5723;&#x676F; &#x4E03;',
+                    title: 'Seven of Cups',
+                    image: 'images/cups_07.png',
+                    uprightMeaning: '&#x5E7B;&#x60F3;&#x3001;&#x9009;&#x62E9;&#x3001;&#x8BF1;&#x60D1;&#x3002;',
+                    reversedMeaning: '&#x6E05;&#x9192;&#x3001;&#x505A;&#x51FA;&#x51B3;&#x5B9A;&#x3001;&#x73B0;&#x5B9E;&#x3002;',
+                    keywords: '&#x5E7B;&#x60F3;, &#x9009;&#x62E9;, &#x8BF1;&#x60D1;',
+                    suggestion: '&#x4F17;&#x591A;&#x9009;&#x9879;&#x8BA9;&#x4F60;&#x773C;&#x82B1;&#x7F2D;&#x4E71;&#xFF0C;&#x4E13;&#x6CE8;&#x4E8E;&#x771F;&#x6B63;&#x91CD;&#x8981;&#x7684;&#x90A3;&#x4E2A;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5723;&#x676F; &#x516B;',
+                    title: 'Eight of Cups',
+                    image: 'images/cups_08.png',
+                    uprightMeaning: '&#x79BB;&#x5F00;&#x3001;&#x5BFB;&#x627E;&#x610F;&#x4E49;&#x3001;&#x81EA;&#x6211;&#x63A2;&#x7D22;&#x3002;',
+                    reversedMeaning: '&#x9003;&#x907F;&#x3001;&#x72B9;&#x8C6B;&#x3001;&#x4E0D;&#x6EE1;&#x8DB3;&#x3002;',
+                    keywords: '&#x79BB;&#x5F00;, &#x63A2;&#x7D22;, &#x81EA;&#x6211;',
+                    suggestion: '&#x52C7;&#x6562;&#x79BB;&#x5F00;&#x4E0D;&#x518D;&#x9002;&#x5408;&#x4F60;&#x7684;&#x73AF;&#x5883;&#xFF0C;&#x65B0;&#x7684;&#x65C5;&#x7A0B;&#x5728;&#x7B49;&#x4F60;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5723;&#x676F; &#x4E5D;',
+                    title: 'Nine of Cups',
+                    image: 'images/cups_09.png',
+                    uprightMeaning: '&#x613F;&#x671B;&#x5B9E;&#x73B0;&#x3001;&#x6EE1;&#x8DB3;&#x3001;&#x6109;&#x60A6;&#x3002;',
+                    reversedMeaning: '&#x8D2A;&#x5A6A;&#x3001;&#x7A7A;&#x865A;&#x3001;&#x4E0D;&#x6EE1;&#x8DB3;&#x3002;',
+                    keywords: '&#x6EE1;&#x8DB3;, &#x6109;&#x60A6;, &#x5FC3;&#x613F;',
+                    suggestion: '&#x4F60;&#x7684;&#x5FC3;&#x613F;&#x5373;&#x5C06;&#x5B9E;&#x73B0;&#xFF0C;&#x4FDD;&#x6301;&#x611F;&#x6069;&#x4E4B;&#x5FC3;&#x53BB;&#x8FCE;&#x63A5;&#x5B83;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5723;&#x676F; &#x5341;',
+                    title: 'Ten of Cups',
+                    image: 'images/cups_10.png',
+                    uprightMeaning: '&#x5E78;&#x798F;&#x3001;&#x5BB6;&#x5EAD;&#x548C;&#x8C10;&#x3001;&#x5706;&#x6EE1;&#x3002;',
+                    reversedMeaning: '&#x4E0D;&#x548C;&#x8C10;&#x3001;&#x7834;&#x88C2;&#x3001;&#x5E7B;&#x706D;&#x3002;',
+                    keywords: '&#x5BB6;&#x5EAD;, &#x5E78;&#x798F;, &#x5706;&#x6EE1;',
+                    suggestion: '&#x4EAB;&#x53D7;&#x5BB6;&#x5EAD;&#x548C;&#x5173;&#x7CFB;&#x7684;&#x6E29;&#x6696;&#xFF0C;&#x5B83;&#x662F;&#x4F60;&#x6700;&#x575A;&#x5B9E;&#x7684;&#x540E;&#x76FE;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5723;&#x676F; &#x4F8D;&#x4ECE;',
+                    title: 'Page of Cups',
+                    image: 'images/cups_page.png',
+                    uprightMeaning: '&#x76F4;&#x89C9;&#x3001;&#x60F3;&#x8C61;&#x529B;&#x3001;&#x60C5;&#x611F;&#x4FE1;&#x606F;&#x3002;',
+                    reversedMeaning: '&#x60C5;&#x7EEA;&#x4E0D;&#x7A33;&#x3001;&#x9003;&#x907F;&#x73B0;&#x5B9E;&#x3001;&#x5E7C;&#x7A1A;&#x3002;',
+                    keywords: '&#x76F4;&#x89C9;, &#x60F3;&#x8C61;, &#x60C5;&#x611F;',
+                    suggestion: '&#x655E;&#x5F00;&#x4F60;&#x7684;&#x5FC3;&#xFF0C;&#x503E;&#x542C;&#x76F4;&#x89C9;&#xFF0C;&#x5B83;&#x4F1A;&#x5E26;&#x6765;&#x7075;&#x611F;&#x4E0E;&#x65B0;&#x5173;&#x7CFB;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5723;&#x676F; &#x9A91;&#x58EB;',
+                    title: 'Knight of Cups',
+                    image: 'images/cups_knight.png',
+                    uprightMeaning: '&#x6D6A;&#x6F2B;&#x3001;&#x7406;&#x60F3;&#x4E3B;&#x4E49;&#x3001;&#x8FFD;&#x6C42;&#x3002;',
+                    reversedMeaning: '&#x5E7B;&#x60F3;&#x3001;&#x4E0D;&#x5207;&#x5B9E;&#x9645;&#x3001;&#x6EE5;&#x60C5;&#x3002;',
+                    keywords: '&#x6D6A;&#x6F2B;, &#x7406;&#x60F3;, &#x60C5;&#x611F;',
+                    suggestion: '&#x8DDF;&#x968F;&#x5185;&#x5FC3;&#x7684;&#x6D6A;&#x6F2B;&#x51B2;&#x52A8;&#xFF0C;&#x4F46;&#x4E5F;&#x8981;&#x811A;&#x8E0F;&#x5B9E;&#x5730;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5723;&#x676F; &#x7687;&#x540E;',
+                    title: 'Queen of Cups',
+                    image: 'images/cups_queen.png',
+                    uprightMeaning: '&#x540C;&#x7406;&#x5FC3;&#x3001;&#x5173;&#x6000;&#x3001;&#x76F4;&#x89C9;&#x3002;',
+                    reversedMeaning: '&#x60C5;&#x7EEA;&#x4E0D;&#x7A33;&#x3001;&#x8FC7;&#x5EA6;&#x654F;&#x611F;&#x3001;&#x4F9D;&#x8D56;&#x3002;',
+                    keywords: '&#x76F4;&#x89C9;, &#x5173;&#x6000;, &#x540C;&#x7406;&#x5FC3;',
+                    suggestion: '&#x4FE1;&#x4EFB;&#x4F60;&#x7684;&#x76F4;&#x89C9;&#x4E0E;&#x6E29;&#x67D4;&#xFF0C;&#x5B83;&#x662F;&#x4F60;&#x6700;&#x5927;&#x7684;&#x529B;&#x91CF;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5723;&#x676F; &#x56FD;&#x738B;',
+                    title: 'King of Cups',
+                    image: 'images/cups_king.png',
+                    uprightMeaning: '&#x60C5;&#x7EEA;&#x5E73;&#x8861;&#x3001;&#x667A;&#x6167;&#x3001;&#x4EC1;&#x6148;&#x3002;',
+                    reversedMeaning: '&#x64CD;&#x7EB5;&#x3001;&#x51B7;&#x6F20;&#x3001;&#x60C5;&#x7EEA;&#x538B;&#x6291;&#x3002;',
+                    keywords: '&#x5E73;&#x8861;, &#x667A;&#x6167;, &#x4EC1;&#x6148;',
+                    suggestion: '&#x7528;&#x51B7;&#x9759;&#x4E0E;&#x667A;&#x6167;&#x6765;&#x9762;&#x5BF9;&#x60C5;&#x611F;&#x95EE;&#x9898;&#xFF0C;&#x4F60;&#x4F1A;&#x8D62;&#x5F97;&#x5C0A;&#x91CD;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5B9D;&#x5251; ACE',
+                    title: 'Ace of Swords',
+                    image: 'images/swords_ace.png',
+                    uprightMeaning: '&#x6E05;&#x6670;&#x3001;&#x7A81;&#x7834;&#x3001;&#x771F;&#x7406;&#x3002;',
+                    reversedMeaning: '&#x6DF7;&#x4E71;&#x3001;&#x8C0E;&#x8A00;&#x3001;&#x8BEF;&#x89E3;&#x3002;',
+                    keywords: '&#x771F;&#x7406;, &#x7A81;&#x7834;, &#x6E05;&#x6670;',
+                    suggestion: '&#x7528;&#x7406;&#x6027;&#x548C;&#x771F;&#x76F8;&#x65A9;&#x65AD;&#x8FF7;&#x96FE;&#xFF0C;&#x4F60;&#x4F1A;&#x627E;&#x5230;&#x7B54;&#x6848;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5B9D;&#x5251; &#x4E8C;',
+                    title: 'Two of Swords',
+                    image: 'images/swords_02.png',
+                    uprightMeaning: '&#x6289;&#x62E9;&#x3001;&#x50F5;&#x5C40;&#x3001;&#x5E73;&#x8861;&#x3002;',
+                    reversedMeaning: '&#x56F0;&#x60D1;&#x3001;&#x56DE;&#x907F;&#x3001;&#x5931;&#x8861;&#x3002;',
+                    keywords: '&#x6289;&#x62E9;, &#x5E73;&#x8861;, &#x50F5;&#x5C40;',
+                    suggestion: '&#x9762;&#x5BF9;&#x9009;&#x62E9;&#x65F6;&#xFF0C;&#x4E0D;&#x8981;&#x9003;&#x907F;&#xFF0C;&#x52C7;&#x6562;&#x505A;&#x51FA;&#x51B3;&#x5B9A;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5B9D;&#x5251; &#x4E09;',
+                    title: 'Three of Swords',
+                    image: 'images/swords_03.png',
+                    uprightMeaning: '&#x5FC3;&#x788E;&#x3001;&#x80CC;&#x53DB;&#x3001;&#x75DB;&#x82E6;&#x3002;',
+                    reversedMeaning: '&#x7597;&#x6108;&#x3001;&#x91CA;&#x653E;&#x3001;&#x6062;&#x590D;&#x3002;',
+                    keywords: '&#x5FC3;&#x788E;, &#x80CC;&#x53DB;, &#x75DB;&#x82E6;',
+                    suggestion: '&#x5373;&#x4F7F;&#x4F24;&#x53E3;&#x5F88;&#x6DF1;&#xFF0C;&#x4E5F;&#x4F1A;&#x5728;&#x65F6;&#x95F4;&#x4E2D;&#x6162;&#x6162;&#x6108;&#x5408;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5B9D;&#x5251; &#x56DB;',
+                    title: 'Four of Swords',
+                    image: 'images/swords_04.png',
+                    uprightMeaning: '&#x4F11;&#x606F;&#x3001;&#x6062;&#x590D;&#x3001;&#x6C89;&#x601D;&#x3002;',
+                    reversedMeaning: '&#x4E0D;&#x5B89;&#x3001;&#x538B;&#x529B;&#x3001;&#x65E0;&#x7720;&#x3002;',
+                    keywords: '&#x4F11;&#x606F;, &#x6062;&#x590D;, &#x6C89;&#x601D;',
+                    suggestion: '&#x9002;&#x65F6;&#x505C;&#x4E0B;&#x6765;&#xFF0C;&#x7ED9;&#x81EA;&#x5DF1;&#x7A7A;&#x95F4;&#x4FEE;&#x590D;&#x80FD;&#x91CF;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5B9D;&#x5251; &#x4E94;',
+                    title: 'Five of Swords',
+                    image: 'images/swords_05.png',
+                    uprightMeaning: '&#x51B2;&#x7A81;&#x3001;&#x8F93;&#x8D62;&#x3001;&#x5B64;&#x7ACB;&#x3002;',
+                    reversedMeaning: '&#x548C;&#x89E3;&#x3001;&#x907F;&#x514D;&#x4E89;&#x7AEF;&#x3001;&#x53CD;&#x601D;&#x3002;',
+                    keywords: '&#x51B2;&#x7A81;, &#x5931;&#x8D25;, &#x5B64;&#x7ACB;',
+                    suggestion: '&#x8D62;&#x5F97;&#x4E89;&#x6267;&#x4E0D;&#x4EE3;&#x8868;&#x771F;&#x6B63;&#x7684;&#x80DC;&#x5229;&#xFF0C;&#x5B66;&#x4F1A;&#x653E;&#x4E0B;&#x624D;&#x662F;&#x667A;&#x6167;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5B9D;&#x5251; &#x516D;',
+                    title: 'Six of Swords',
+                    image: 'images/swords_06.png',
+                    uprightMeaning: '&#x8FC7;&#x6E21;&#x3001;&#x79BB;&#x5F00;&#x3001;&#x7597;&#x6108;&#x3002;',
+                    reversedMeaning: '&#x505C;&#x6EDE;&#x3001;&#x65E0;&#x6CD5;&#x79BB;&#x5F00;&#x3001;&#x56F0;&#x5883;&#x3002;',
+                    keywords: '&#x8FC7;&#x6E21;, &#x7597;&#x6108;, &#x79BB;&#x5F00;',
+                    suggestion: '&#x662F;&#x65F6;&#x5019;&#x79BB;&#x5F00;&#x7EB7;&#x4E89;&#xFF0C;&#x8E0F;&#x4E0A;&#x66F4;&#x5E73;&#x9759;&#x7684;&#x65C5;&#x7A0B;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5B9D;&#x5251; &#x4E03;',
+                    title: 'Seven of Swords',
+                    image: 'images/swords_07.png',
+                    uprightMeaning: '&#x6B3A;&#x9A97;&#x3001;&#x9690;&#x7792;&#x3001;&#x7B56;&#x7565;&#x3002;',
+                    reversedMeaning: '&#x63ED;&#x7A7F;&#x3001;&#x8BDA;&#x5B9E;&#x3001;&#x540E;&#x679C;&#x3002;',
+                    keywords: '&#x6B3A;&#x9A97;, &#x7B56;&#x7565;, &#x9690;&#x7792;',
+                    suggestion: '&#x5C0F;&#x5FC3;&#x9690;&#x7792;&#x4E0E;&#x6B3A;&#x9A97;&#xFF0C;&#x5B83;&#x53EF;&#x80FD;&#x8BA9;&#x4F60;&#x5931;&#x53BB;&#x4FE1;&#x4EFB;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5B9D;&#x5251; &#x516B;',
+                    title: 'Eight of Swords',
+                    image: 'images/swords_08.png',
+                    uprightMeaning: '&#x53D7;&#x56F0;&#x3001;&#x53D7;&#x9650;&#x3001;&#x6050;&#x60E7;&#x3002;',
+                    reversedMeaning: '&#x89E3;&#x8131;&#x3001;&#x52C7;&#x6562;&#x3001;&#x770B;&#x6E05;&#x771F;&#x76F8;&#x3002;',
+                    keywords: '&#x53D7;&#x56F0;, &#x6050;&#x60E7;, &#x9650;&#x5236;',
+                    suggestion: '&#x56F0;&#x5883;&#x66F4;&#x591A;&#x662F;&#x5FC3;&#x7406;&#x9020;&#x6210;&#xFF0C;&#x52C7;&#x6562;&#x8FC8;&#x51FA;&#x7B2C;&#x4E00;&#x6B65;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5B9D;&#x5251; &#x4E5D;',
+                    title: 'Nine of Swords',
+                    image: 'images/swords_09.png',
+                    uprightMeaning: '&#x7126;&#x8651;&#x3001;&#x5669;&#x68A6;&#x3001;&#x6050;&#x60E7;&#x3002;',
+                    reversedMeaning: '&#x91CA;&#x6000;&#x3001;&#x6062;&#x590D;&#x3001;&#x5E0C;&#x671B;&#x3002;',
+                    keywords: '&#x7126;&#x8651;, &#x6050;&#x60E7;, &#x5669;&#x68A6;',
+                    suggestion: '&#x522B;&#x8BA9;&#x6050;&#x60E7;&#x541E;&#x566C;&#x4F60;&#xFF0C;&#x6B63;&#x89C6;&#x5B83;&#x624D;&#x80FD;&#x627E;&#x56DE;&#x5E73;&#x9759;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5B9D;&#x5251; &#x5341;',
+                    title: 'Ten of Swords',
+                    image: 'images/swords_10.png',
+                    uprightMeaning: '&#x7ED3;&#x675F;&#x3001;&#x6BC1;&#x706D;&#x3001;&#x6700;&#x4F4E;&#x70B9;&#x3002;',
+                    reversedMeaning: '&#x91CD;&#x751F;&#x3001;&#x6062;&#x590D;&#x3001;&#x5E0C;&#x671B;&#x51FA;&#x73B0;&#x3002;',
+                    keywords: '&#x7ED3;&#x675F;, &#x6BC1;&#x706D;, &#x91CD;&#x751F;',
+                    suggestion: '&#x5373;&#x4F7F;&#x8DCC;&#x5230;&#x8C37;&#x5E95;&#xFF0C;&#x4E5F;&#x610F;&#x5473;&#x7740;&#x65B0;&#x7684;&#x5F00;&#x59CB;&#x5373;&#x5C06;&#x5230;&#x6765;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5B9D;&#x5251; &#x4F8D;&#x4ECE;',
+                    title: 'Page of Swords',
+                    image: 'images/swords_page.png',
+                    uprightMeaning: '&#x597D;&#x5947;&#x3001;&#x89C2;&#x5BDF;&#x3001;&#x601D;&#x8003;&#x3002;',
+                    reversedMeaning: '&#x6D41;&#x8A00;&#x3001;&#x7126;&#x8E81;&#x3001;&#x7F3A;&#x4E4F;&#x65B9;&#x5411;&#x3002;',
+                    keywords: '&#x597D;&#x5947;, &#x5B66;&#x4E60;, &#x601D;&#x8003;',
+                    suggestion: '&#x4FDD;&#x6301;&#x5B66;&#x4E60;&#x7684;&#x5FC3;&#x6001;&#xFF0C;&#x4F46;&#x522B;&#x6025;&#x8E81;&#xFF0C;&#x6162;&#x6162;&#x6210;&#x957F;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5B9D;&#x5251; &#x9A91;&#x58EB;',
+                    title: 'Knight of Swords',
+                    image: 'images/swords_knight.png',
+                    uprightMeaning: '&#x5FEB;&#x901F;&#x884C;&#x52A8;&#x3001;&#x91CE;&#x5FC3;&#x3001;&#x51B2;&#x52B2;&#x3002;',
+                    reversedMeaning: '&#x51B2;&#x52A8;&#x3001;&#x9C81;&#x83BD;&#x3001;&#x6025;&#x8E81;&#x3002;',
+                    keywords: '&#x51B2;&#x52B2;, &#x884C;&#x52A8;, &#x91CE;&#x5FC3;',
+                    suggestion: '&#x6709;&#x76EE;&#x6807;&#x5C31;&#x52C7;&#x6562;&#x524D;&#x8FDB;&#xFF0C;&#x4F46;&#x522B;&#x5931;&#x53BB;&#x51B7;&#x9759;&#x4E0E;&#x7406;&#x667A;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5B9D;&#x5251; &#x7687;&#x540E;',
+                    title: 'Queen of Swords',
+                    image: 'images/swords_queen.png',
+                    uprightMeaning: '&#x7406;&#x6027;&#x3001;&#x72EC;&#x7ACB;&#x3001;&#x6D1E;&#x5BDF;&#x529B;&#x3002;',
+                    reversedMeaning: '&#x51B7;&#x6F20;&#x3001;&#x523B;&#x8584;&#x3001;&#x5B64;&#x7ACB;&#x3002;',
+                    keywords: '&#x7406;&#x6027;, &#x6D1E;&#x5BDF;, &#x72EC;&#x7ACB;',
+                    suggestion: '&#x8FD0;&#x7528;&#x7406;&#x6027;&#x770B;&#x6E05;&#x771F;&#x76F8;&#xFF0C;&#x4F60;&#x4F1A;&#x627E;&#x5230;&#x6700;&#x4F18;&#x89E3;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x5B9D;&#x5251; &#x56FD;&#x738B;',
+                    title: 'King of Swords',
+                    image: 'images/swords_king.png',
+                    uprightMeaning: '&#x667A;&#x6167;&#x3001;&#x516C;&#x6B63;&#x3001;&#x6743;&#x5A01;&#x3002;',
+                    reversedMeaning: '&#x4E13;&#x5236;&#x3001;&#x51B7;&#x9177;&#x3001;&#x6EE5;&#x7528;&#x6743;&#x529B;&#x3002;',
+                    keywords: '&#x667A;&#x6167;, &#x516C;&#x6B63;, &#x6743;&#x5A01;',
+                    suggestion: '&#x4FDD;&#x6301;&#x516C;&#x6B63;&#x4E0E;&#x6E05;&#x6670;&#x7684;&#x5934;&#x8111;&#xFF0C;&#x4F60;&#x4F1A;&#x8D62;&#x5F97;&#x5C0A;&#x656C;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x661F;&#x5E01; ACE',
+                    title: 'Ace of Pentacles',
+                    image: 'images/pentacles_ace.png',
+                    uprightMeaning: '&#x8D22;&#x5BCC;&#x65B0;&#x673A;&#x9047;&#x3001;&#x7A33;&#x5B9A;&#x3001;&#x7E41;&#x8363;&#x3002;',
+                    reversedMeaning: '&#x673A;&#x4F1A;&#x6D41;&#x5931;&#x3001;&#x4E0D;&#x5B89;&#x5168;&#x611F;&#x3002;',
+                    keywords: '&#x8D22;&#x5BCC;, &#x673A;&#x4F1A;, &#x7E41;&#x8363;',
+                    suggestion: '&#x65B0;&#x7684;&#x8D22;&#x5BCC;&#x4E0E;&#x7A33;&#x5B9A;&#x673A;&#x4F1A;&#x6B63;&#x5728;&#x51FA;&#x73B0;&#xFF0C;&#x628A;&#x63E1;&#x4F4F;&#x5B83;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x661F;&#x5E01; &#x4E8C;',
+                    title: 'Two of Pentacles',
+                    image: 'images/pentacles_02.png',
+                    uprightMeaning: '&#x5E73;&#x8861;&#x3001;&#x7075;&#x6D3B;&#x3001;&#x9002;&#x5E94;&#x3002;',
+                    reversedMeaning: '&#x5931;&#x8861;&#x3001;&#x6DF7;&#x4E71;&#x3001;&#x8FC7;&#x5EA6;&#x538B;&#x529B;&#x3002;',
+                    keywords: '&#x5E73;&#x8861;, &#x7075;&#x6D3B;, &#x9002;&#x5E94;',
+                    suggestion: '&#x5B66;&#x4F1A;&#x7075;&#x6D3B;&#x5904;&#x7406;&#x591A;&#x91CD;&#x4E8B;&#x52A1;&#xFF0C;&#x4F60;&#x4F1A;&#x627E;&#x5230;&#x8282;&#x594F;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x661F;&#x5E01; &#x4E09;',
+                    title: 'Three of Pentacles',
+                    image: 'images/pentacles_03.png',
+                    uprightMeaning: '&#x5408;&#x4F5C;&#x3001;&#x5B66;&#x4E60;&#x3001;&#x6210;&#x5C31;&#x3002;',
+                    reversedMeaning: '&#x7F3A;&#x4E4F;&#x534F;&#x4F5C;&#x3001;&#x505C;&#x6EDE;&#x3002;',
+                    keywords: '&#x5408;&#x4F5C;, &#x5B66;&#x4E60;, &#x6210;&#x5C31;',
+                    suggestion: '&#x56E2;&#x961F;&#x5408;&#x4F5C;&#x80FD;&#x8BA9;&#x4F60;&#x7684;&#x6210;&#x679C;&#x66F4;&#x4E0A;&#x4E00;&#x5C42;&#x697C;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x661F;&#x5E01; &#x56DB;',
+                    title: 'Four of Pentacles',
+                    image: 'images/pentacles_04.png',
+                    uprightMeaning: '&#x63A7;&#x5236;&#x3001;&#x4FDD;&#x5B88;&#x3001;&#x7A33;&#x5B9A;&#x3002;',
+                    reversedMeaning: '&#x8D2A;&#x5A6A;&#x3001;&#x56FA;&#x6267;&#x3001;&#x5931;&#x53BB;&#x5B89;&#x5168;&#x611F;&#x3002;',
+                    keywords: '&#x4FDD;&#x5B88;, &#x7A33;&#x5B9A;, &#x63A7;&#x5236;',
+                    suggestion: '&#x8D22;&#x5BCC;&#x5E26;&#x6765;&#x5B89;&#x5168;&#x611F;&#xFF0C;&#x4F46;&#x5B66;&#x4F1A;&#x9002;&#x5EA6;&#x5206;&#x4EAB;&#x624D;&#x4F1A;&#x957F;&#x4E45;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x661F;&#x5E01; &#x4E94;',
+                    title: 'Five of Pentacles',
+                    image: 'images/pentacles_05.png',
+                    uprightMeaning: '&#x8D2B;&#x56F0;&#x3001;&#x5B64;&#x7ACB;&#x3001;&#x56F0;&#x96BE;&#x3002;',
+                    reversedMeaning: '&#x63F4;&#x52A9;&#x3001;&#x6062;&#x590D;&#x3001;&#x5E0C;&#x671B;&#x51FA;&#x73B0;&#x3002;',
+                    keywords: '&#x8D2B;&#x56F0;, &#x5B64;&#x7ACB;, &#x56F0;&#x5883;',
+                    suggestion: '&#x5373;&#x4FBF;&#x8EAB;&#x5904;&#x56F0;&#x5883;&#xFF0C;&#x4E5F;&#x4E0D;&#x8981;&#x5FFD;&#x89C6;&#x4F38;&#x5411;&#x4F60;&#x7684;&#x63F4;&#x624B;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x661F;&#x5E01; &#x516D;',
+                    title: 'Six of Pentacles',
+                    image: 'images/pentacles_06.png',
+                    uprightMeaning: '&#x6177;&#x6168;&#x3001;&#x5206;&#x4EAB;&#x3001;&#x5E73;&#x8861;&#x3002;',
+                    reversedMeaning: '&#x4E0D;&#x516C;&#x5E73;&#x3001;&#x4F9D;&#x8D56;&#x3001;&#x64CD;&#x7EB5;&#x3002;',
+                    keywords: '&#x6177;&#x6168;, &#x5206;&#x4EAB;, &#x5E73;&#x8861;',
+                    suggestion: '&#x7ED9;&#x4E88;&#x548C;&#x63A5;&#x53D7;&#x4E4B;&#x95F4;&#x8981;&#x4FDD;&#x6301;&#x5E73;&#x8861;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x661F;&#x5E01; &#x4E03;',
+                    title: 'Seven of Pentacles',
+                    image: 'images/pentacles_07.png',
+                    uprightMeaning: '&#x8010;&#x5FC3;&#x3001;&#x8BC4;&#x4F30;&#x3001;&#x957F;&#x671F;&#x6295;&#x8D44;&#x3002;',
+                    reversedMeaning: '&#x7126;&#x8E81;&#x3001;&#x7F3A;&#x4E4F;&#x6210;&#x679C;&#x3001;&#x6D6A;&#x8D39;&#x3002;',
+                    keywords: '&#x8010;&#x5FC3;, &#x6295;&#x8D44;, &#x8BC4;&#x4F30;',
+                    suggestion: '&#x575A;&#x6301;&#x8010;&#x5FC3;&#x7B49;&#x5F85;&#xFF0C;&#x4F60;&#x7684;&#x52AA;&#x529B;&#x4F1A;&#x7ED3;&#x51FA;&#x679C;&#x5B9E;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x661F;&#x5E01; &#x516B;',
+                    title: 'Eight of Pentacles',
+                    image: 'images/pentacles_08.png',
+                    uprightMeaning: '&#x4E13;&#x6CE8;&#x3001;&#x52E4;&#x594B;&#x3001;&#x6280;&#x80FD;&#x63D0;&#x5347;&#x3002;',
+                    reversedMeaning: '&#x61D2;&#x6563;&#x3001;&#x534A;&#x9014;&#x800C;&#x5E9F;&#x3001;&#x6577;&#x884D;&#x3002;',
+                    keywords: '&#x52E4;&#x594B;, &#x6280;&#x80FD;, &#x5B66;&#x4E60;',
+                    suggestion: '&#x4E13;&#x6CE8;&#x4E8E;&#x63D0;&#x5347;&#x6280;&#x80FD;&#xFF0C;&#x5B83;&#x4F1A;&#x5E26;&#x6765;&#x957F;&#x8FDC;&#x56DE;&#x62A5;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x661F;&#x5E01; &#x4E5D;',
+                    title: 'Nine of Pentacles',
+                    image: 'images/pentacles_09.png',
+                    uprightMeaning: '&#x72EC;&#x7ACB;&#x3001;&#x4EAB;&#x53D7;&#x6210;&#x679C;&#x3001;&#x5962;&#x534E;&#x3002;',
+                    reversedMeaning: '&#x4F9D;&#x8D56;&#x3001;&#x5B64;&#x72EC;&#x3001;&#x5931;&#x53BB;&#x4FDD;&#x969C;&#x3002;',
+                    keywords: '&#x72EC;&#x7ACB;, &#x6210;&#x679C;, &#x5962;&#x534E;',
+                    suggestion: '&#x4EAB;&#x53D7;&#x4F60;&#x52AA;&#x529B;&#x6362;&#x6765;&#x7684;&#x6210;&#x679C;&#xFF0C;&#x5B66;&#x4F1A;&#x81EA;&#x6211;&#x6B23;&#x8D4F;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x661F;&#x5E01; &#x5341;',
+                    title: 'Ten of Pentacles',
+                    image: 'images/pentacles_10.png',
+                    uprightMeaning: '&#x8D22;&#x5BCC;&#x3001;&#x5BB6;&#x5EAD;&#x4F20;&#x627F;&#x3001;&#x7A33;&#x5B9A;&#x3002;',
+                    reversedMeaning: '&#x5206;&#x88C2;&#x3001;&#x7834;&#x4EA7;&#x3001;&#x5931;&#x53BB;&#x5B89;&#x5168;&#x611F;&#x3002;',
+                    keywords: '&#x8D22;&#x5BCC;, &#x5BB6;&#x5EAD;, &#x7A33;&#x5B9A;',
+                    suggestion: '&#x4F60;&#x7684;&#x52AA;&#x529B;&#x80FD;&#x4E3A;&#x5BB6;&#x65CF;&#x4E0E;&#x540E;&#x4EE3;&#x7559;&#x4E0B;&#x957F;&#x8FDC;&#x4FDD;&#x969C;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x661F;&#x5E01; &#x4F8D;&#x4ECE;',
+                    title: 'Page of Pentacles',
+                    image: 'images/pentacles_page.png',
+                    uprightMeaning: '&#x5B66;&#x4E60;&#x3001;&#x673A;&#x4F1A;&#x3001;&#x7A33;&#x5B9A;&#x5F00;&#x7AEF;&#x3002;',
+                    reversedMeaning: '&#x62D6;&#x5EF6;&#x3001;&#x7F3A;&#x4E4F;&#x4E13;&#x6CE8;&#x3001;&#x9519;&#x5931;&#x673A;&#x4F1A;&#x3002;',
+                    keywords: '&#x5B66;&#x4E60;, &#x673A;&#x4F1A;, &#x5F00;&#x7AEF;',
+                    suggestion: '&#x65B0;&#x7684;&#x673A;&#x4F1A;&#x6B63;&#x5728;&#x51FA;&#x73B0;&#xFF0C;&#x4FDD;&#x6301;&#x5B66;&#x4E60;&#x5FC3;&#x6001;&#x53BB;&#x8FCE;&#x63A5;&#x5B83;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x661F;&#x5E01; &#x9A91;&#x58EB;',
+                    title: 'Knight of Pentacles',
+                    image: 'images/pentacles_knight.png',
+                    uprightMeaning: '&#x8D23;&#x4EFB;&#x5FC3;&#x3001;&#x7A33;&#x91CD;&#x3001;&#x575A;&#x6301;&#x3002;',
+                    reversedMeaning: '&#x6B7B;&#x677F;&#x3001;&#x505C;&#x6EDE;&#x3001;&#x62D6;&#x5EF6;&#x3002;',
+                    keywords: '&#x8D23;&#x4EFB;, &#x7A33;&#x5B9A;, &#x575A;&#x6301;',
+                    suggestion: '&#x7A33;&#x624E;&#x7A33;&#x6253;&#xFF0C;&#x4F60;&#x7684;&#x575A;&#x6301;&#x4F1A;&#x5E26;&#x6765;&#x53EF;&#x9760;&#x7684;&#x6210;&#x679C;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x661F;&#x5E01; &#x7687;&#x540E;',
+                    title: 'Queen of Pentacles',
+                    image: 'images/pentacles_queen.png',
+                    uprightMeaning: '&#x5BCC;&#x8DB3;&#x3001;&#x52A1;&#x5B9E;&#x3001;&#x5173;&#x6000;&#x3002;',
+                    reversedMeaning: '&#x8FC7;&#x5EA6;&#x4F9D;&#x8D56;&#x3001;&#x7269;&#x8D28;&#x4E3B;&#x4E49;&#x3001;&#x7126;&#x8651;&#x3002;',
+                    keywords: '&#x5BCC;&#x8DB3;, &#x52A1;&#x5B9E;, &#x5173;&#x6000;',
+                    suggestion: '&#x4FDD;&#x6301;&#x52A1;&#x5B9E;&#x5E76;&#x7167;&#x987E;&#x597D;&#x4ED6;&#x4EBA;&#xFF0C;&#x4F60;&#x4F1A;&#x6536;&#x83B7;&#x5C0A;&#x91CD;&#x4E0E;&#x7A33;&#x5B9A;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
+                },
+                {
+                    name: '&#x661F;&#x5E01; &#x56FD;&#x738B;',
+                    title: 'King of Pentacles',
+                    image: 'images/pentacles_king.png',
+                    uprightMeaning: '&#x6210;&#x529F;&#x3001;&#x7A33;&#x5B9A;&#x3001;&#x8D22;&#x5BCC;&#x3002;',
+                    reversedMeaning: '&#x8D2A;&#x5A6A;&#x3001;&#x7269;&#x8D28;&#x5316;&#x3001;&#x5931;&#x63A7;&#x3002;',
+                    keywords: '&#x8D22;&#x5BCC;, &#x7A33;&#x5B9A;, &#x6210;&#x529F;',
+                    suggestion: '&#x4EE5;&#x7A33;&#x5065;&#x4E0E;&#x667A;&#x6167;&#x638C;&#x63A7;&#x8D22;&#x5BCC;&#xFF0C;&#x4F60;&#x4F1A;&#x62E5;&#x6709;&#x957F;&#x8FDC;&#x7684;&#x6210;&#x5C31;&#x3002;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x8BF7;&#x81F3;abc169.vip'
                 }
             ];
 
             function getRandomCards(num) {
-                // 随机算法
-                const shuffled = [...majorArcana].sort(() => 0.5 - Math.random());
+                const shuffled = [...fullTarotDeck].sort(() => 0.5 - Math.random());
                 const selected = shuffled.slice(0, num);
-                
-                // 随机每张卡牌添加正逆位属性
                 return selected.map(card => {
-                    const isReversed = Math.random() < 0.5; // 50%几率逆位
+                    const isReversed = Math.random() < 0.5; 
                     return {
                         ...card,
                         isReversed
@@ -945,10 +1366,10 @@ window.addEventListener('load', () => {
             }
 
             fortuneBtn.addEventListener('click', () => {
-                // 验证名称输入框是否为空
+
                 if (nameInput.value.trim() === '') {
                     showMessageBox('请输入你的称谓，才能开始占卜哦！');
-                    return; // 停止执行后续
+                    return; 
                 }
 
                 const spreadType = document.getElementById('spread-select').value;
@@ -984,7 +1405,7 @@ window.addEventListener('load', () => {
                 cards.forEach((card, index) => {
                     const cardDiv = document.createElement('div');
                     cardDiv.className = 'tarot-card';
-                    
+
                     if (card.isReversed) {
                         cardDiv.classList.add('reversed');
                     }
@@ -1020,7 +1441,6 @@ window.addEventListener('load', () => {
             window.restart = function() {
                 formCard.classList.remove('result-hidden');
                 resultCard.classList.add('result-hidden');
-                // 重置日期和天数
                 yearSelect.value = 2000;
                 monthSelect.value = 1;
                 updateDays();
@@ -1028,12 +1448,10 @@ window.addEventListener('load', () => {
             };
 
             function showMessageBox(message) {
-                // 确保之前没有消息框，避免重复创建
                 if (document.querySelector('.message-overlay')) {
                     return;
                 }
 
-                // 创建背景遮罩层
                 const overlay = document.createElement('div');
                 overlay.className = 'message-overlay';
 
@@ -1053,7 +1471,7 @@ window.addEventListener('load', () => {
                 okButton.addEventListener('click', () => {
                     document.body.removeChild(overlay);
                     document.body.removeChild(messageBox);
-                    
+
                     nameInput.focus();
                 });
             }
@@ -1061,6 +1479,3 @@ window.addEventListener('load', () => {
     </script>
 </body>
 </html>
-
-
-
